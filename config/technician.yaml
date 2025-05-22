@@ -1,0 +1,5 @@
+user_role: technician
+primary_goal: maintenance
+system_type: complete_farm_control
+dashboard_mode: advanced
+privacy_mode: backup

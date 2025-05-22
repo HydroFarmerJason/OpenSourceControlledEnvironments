@@ -20,3 +20,4 @@ node_modules/
 
 # Temporary directories
 /tmp/
+config/user_choices.json

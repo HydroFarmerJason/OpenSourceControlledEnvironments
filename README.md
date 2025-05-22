@@ -8,6 +8,14 @@ The Container Farm Control System is a comprehensive, open-source solution desig
 
 This enhanced version includes specialized features for diverse user communities including educators, agritherapists, researchers, community organizers, and commercial growers. The system operates entirely offline when desired, ensuring complete control over your growing environment and data.
 
+REPOSITORY STRUCTURE
+
+- setup/: shell scripts including the Setup Wizard
+- config/: role profiles and user selections
+- rpi_scripts/: Raspberry Pi helper scripts
+- dashboards/: dashboard templates
+- docs/: documentation
+
 KEY FEATURES
 
 Complete Environmental Control
