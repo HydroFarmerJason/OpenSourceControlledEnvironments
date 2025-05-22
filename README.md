@@ -15,7 +15,7 @@ REPOSITORY STRUCTURE
 - rpi_scripts/: Raspberry Pi helper scripts
 - dashboards/: dashboard templates
 - docs/: documentation
-- api/: lightweight REST API
+- api/: lightweight REST API (works over your local network) with docs in `api/docs/`
 - docker/: containerization files
 
 KEY FEATURES
@@ -299,11 +299,12 @@ Data Export
 - Photo documentation packages
 - System configuration backups
 - REST API for integrations
+- See `api/docs/openapi.yaml` for the API specification
 
 Privacy Controls
 - Granular data sharing controls
 - Anonymous system statistics option
-- Complete offline operation mode
+- Complete offline operation mode; the REST API can be used locally without internet
 - User-controlled data retention
 
 AUTOMATION CAPABILITIES
