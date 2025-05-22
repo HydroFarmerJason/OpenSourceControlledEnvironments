@@ -9,6 +9,9 @@ as a foundation for mobile apps or third party services.
 from flask import Flask, jsonify, request
 import json
 import os
+from middleware.auth import require_api_key
+from middleware.rate_limiting import rate_limit
+from middleware.validation import require_json, validate_control_action
 
 app = Flask(__name__)
 
@@ -27,6 +30,8 @@ def load_data():
 
 
 @app.route('/api/status', methods=['GET'])
+@require_api_key
+@rate_limit
 def status():
     """Return basic system status."""
     data = load_data()
@@ -37,9 +42,13 @@ def status():
 
 
 @app.route('/api/control/<string:output>', methods=['POST'])
+@require_api_key
+@rate_limit
+@require_json
+@validate_control_action
 def control(output):
     """Placeholder route to toggle an output."""
-    action = request.json.get('action', 'toggle')
+    action = request.get_json().get('action', 'toggle')
     # This is only a placeholder; real implementation would
     # interface with Mycodo or GPIO to control hardware.
     return jsonify({

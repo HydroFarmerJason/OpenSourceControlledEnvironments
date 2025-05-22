@@ -15,7 +15,7 @@ REPOSITORY STRUCTURE
 - rpi_scripts/: Raspberry Pi helper scripts
 - dashboards/: dashboard templates
 - docs/: documentation
-- api/: lightweight REST API
+- api/: lightweight REST API with docs in `api/docs/` (see security notes)
 - docker/: containerization files
 
 KEY FEATURES
@@ -299,6 +299,10 @@ Data Export
 - Photo documentation packages
 - System configuration backups
 - REST API for integrations
+- See `api/docs/openapi.yaml` for the API specification
+- See `api/docs/security.md` for authentication and rate limit details
+- API requests require an `X-API-Key` header and are limited to 60
+  requests per minute. Invalid control actions are rejected with `400`.
 
 Privacy Controls
 - Granular data sharing controls

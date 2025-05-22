@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: Container Farm Control API
+  version: "1.0"
+servers:
+  - url: http://localhost:5000
+paths:
+  /api/status:
+    get:
+      summary: Get basic system status
+      responses:
+        '200':
+          description: Status response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        '429':
+          description: Too many requests
+      security:
+        - ApiKeyAuth: []
+  /api/control/{output}:
+    post:
+      summary: Control a specific output
+      parameters:
+        - in: path
+          name: output
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  default: toggle
+      responses:
+        '200':
+          description: Control response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                  action:
+                    type: string
+                  success:
+                    type: boolean
+        '400':
+          description: Invalid request
+        '429':
+          description: Too many requests
+      security:
+        - ApiKeyAuth: []
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
