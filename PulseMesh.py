@@ -2540,10 +2540,6 @@ class PulseMeshFederatedNode:
             "success": True,
             "node_count": len(nodes),
             "nodes": nodes,
-            "timestamp return {
-            "success": True,
-            "node_count": len(nodes),
-            "nodes": nodes,
             "timestamp": time.time()
         }
     
