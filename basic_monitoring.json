@@ -1,0 +1,142 @@
+{
+  "mycodo_version": "8.14.0",
+  "timestamp": "2025-05-20 14:30:00",
+  "input": [
+    {
+      "unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9",
+      "name": "Grow Area Temperature/Humidity",
+      "position_y": 1,
+      "interface": "GPIO",
+      "device": "DHT22",
+      "period": 60,
+      "gpio": 4,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "measurements_enabled": ["temperature", "humidity"]
+    },
+    {
+      "unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c",
+      "name": "Water Temperature",
+      "position_y": 2,
+      "interface": "1WIRE",
+      "device": "DS18B20",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": "28-000000000001",
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "resolution": 12,
+      "measurements_enabled": ["temperature"]
+    },
+    {
+      "unique_id": "f9f1ad1e-5c06-4a9d-8722-59b8c1f0a2e5",
+      "name": "Ambient Temperature",
+      "position_y": 3,
+      "interface": "1WIRE",
+      "device": "DS18B20",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": "28-000000000002",
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "resolution": 12,
+      "measurements_enabled": ["temperature"]
+    }
+  ],
+  "output": [],
+  "function": [
+    {
+      "unique_id": "d7b0c1a7-5f4e-4d9a-b0f2-2e5ae1f29c3a",
+      "name": "Data Logger",
+      "function_type": "data_logger",
+      "is_activated": true,
+      "log_level_debug": false,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature", "period": 60},
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity", "period": 60},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature", "period": 60},
+        {"unique_id": "f9f1ad1e-5c06-4a9d-8722-59b8c1f0a2e5", "measurement": "temperature", "period": 60}
+      ]
+    }
+  ],
+  "widget": [
+    {
+      "unique_id": "af8b2e6d-7c51-4c36-9c75-d1a9bf1b3a6e",
+      "name": "Temperature (°C)",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature"},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature"},
+        {"unique_id": "f9f1ad1e-5c06-4a9d-8722-59b8c1f0a2e5", "measurement": "temperature"}
+      ]
+    },
+    {
+      "unique_id": "ce8a1d2b-3f59-4e80-9c2a-1d6f0c5b7a2e",
+      "name": "Humidity (%)",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity"}
+      ]
+    },
+    {
+      "unique_id": "de1c9a3b-5f76-4b8c-9e41-2a7bd1c5a3e5",
+      "name": "Current Conditions",
+      "widget_type": "gauge",
+      "refresh_duration": 30,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature", "min": 0, "max": 40, "name": "Air Temp"},
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity", "min": 0, "max": 100, "name": "Humidity"},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature", "min": 0, "max": 40, "name": "Water Temp"}
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "unique_id": "b1c9a2e7-4f86-4c9a-a1e2-9d7bb1c5a3e5",
+      "name": "Basic Monitoring Dashboard",
+      "widgets": [
+        {"unique_id": "af8b2e6d-7c51-4c36-9c75-d1a9bf1b3a6e", "position_x": 0, "position_y": 10, "width": 6, "height": 6},
+        {"unique_id": "ce8a1d2b-3f59-4e80-9c2a-1d6f0c5b7a2e", "position_x": 6, "position_y": 10, "width": 6, "height": 6},
+        {"unique_id": "de1c9a3b-5f76-4b8c-9e41-2a7bd1c5a3e5", "position_x": 0, "position_y": 0, "width": 12, "height": 4}
+      ]
+    }
+  ],
+  "note": [
+    {
+      "unique_id": "e5c2a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5",
+      "name": "Configuration Notes",
+      "note": "Basic Monitoring Configuration\n\nThis configuration includes:\n- DHT22 temperature and humidity sensor on GPIO 4\n- Two DS18B20 temperature sensors for water and ambient temperature\n- Dashboard with temperature and humidity graphs\n\nSetup Instructions:\n1. Adjust the DS18B20 'location' values to match your actual sensor IDs\n2. Use 'sudo ls /sys/bus/w1/devices/' to find your actual sensor IDs\n3. Check that GPIO 4 is correct for your DHT22 wiring\n\nCreate by Container Farm Control System"
+    }
+  ]
+}
