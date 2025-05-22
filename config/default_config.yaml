@@ -1,0 +1,13 @@
+# Default configuration profiles
+educator:
+  dashboard: educational.json
+  backup: weekly
+farmer:
+  dashboard: standard.json
+  backup: daily
+researcher:
+  dashboard: standard.json
+  backup: weekly
+community:
+  dashboard: social.json
+  backup: monthly
