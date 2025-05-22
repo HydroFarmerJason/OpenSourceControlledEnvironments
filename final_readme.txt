@@ -205,7 +205,7 @@ Contributions to the Container Farm Control System are welcome!
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project uses a dual-license model. Code is licensed under the MIT License and documentation is licensed under CC BY-SA 4.0. See license.md for details.
 
 ## Acknowledgments
 

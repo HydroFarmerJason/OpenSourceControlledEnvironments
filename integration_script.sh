@@ -1,5 +1,10 @@
 #!/bin/bash
 # integration_script.sh - Applies agritherapy and enhancement patches
+# Check if running as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root (sudo)" >&2
+  exit 1
+fi
 
 # Original script
 ORIGINAL_SCRIPT="/opt/container-farm-control/scripts/setup_wizard.sh"

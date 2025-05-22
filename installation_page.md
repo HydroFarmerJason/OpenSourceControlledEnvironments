@@ -13,7 +13,7 @@ For a complete automated setup, you can use our master setup script:
 
 ```bash
 # Download the script
-wget https://raw.githubusercontent.com/your-username/container-farm-control-system/main/scripts/master_setup.sh
+wget https://raw.githubusercontent.com/example-user/container-farm-control-system/main/scripts/master_setup.sh
 
 # Make it executable
 chmod +x master_setup.sh

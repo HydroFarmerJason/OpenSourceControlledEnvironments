@@ -100,6 +100,10 @@ The setup wizard will automatically:
 - Set up appropriate dashboards for your use case
 - Configure backup and maintenance schedules
 - Apply accessibility settings if needed
+DEPENDENCIES AND TESTING
+
+The setup scripts require root privileges and an internet connection to install packages via apt and pip. Package versions are not pinned, so behavior may change over time. Run the scripts on a fresh Raspberry Pi OS image and review them before execution. Most scripts should be executed with sudo.
+
 
 CONFIGURATION OPTIONS
 
@@ -358,11 +362,12 @@ LICENSE AND LEGAL
 The project uses a dual-license approach to balance openness with proper attribution:
 
 Documentation License
-All documentation, guides, and educational materials are licensed under Creative Commons Attribution-ShareAlike 4.0 International, allowing free use with attribution and share-alike requirements.
+All documentation, guides, and educational materials are licensed under Creative Commons Attribution-ShareAlike 4.0 International.
 
 Code License
-All software code and scripts are licensed under the MIT License, providing maximum flexibility for modification and redistribution while requiring attribution.
+All software code and scripts are licensed under the MIT License.
 
+See license.md for full terms.
 COMMUNITY AND CONTRIBUTION
 
 This project welcomes contributions from the growing community:
