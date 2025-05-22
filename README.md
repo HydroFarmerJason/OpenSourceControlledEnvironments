@@ -15,6 +15,8 @@ REPOSITORY STRUCTURE
 - rpi_scripts/: Raspberry Pi helper scripts
 - dashboards/: dashboard templates
 - docs/: documentation
+- api/: lightweight REST API
+- docker/: containerization files
 
 KEY FEATURES
 
@@ -99,6 +101,8 @@ Quick Start Installation
 5. Follow the interactive prompts to configure your system
 6. Complete hardware connections based on your selected configuration
 7. Access the web interface at your Raspberry Pi's IP address
+
+For a minimal temperature and humidity monitor, run `sudo ./micro_monitoring_setup.sh`.
 
 The setup wizard will automatically:
 - Update your system packages
@@ -243,6 +247,8 @@ Hydroponic System Setup
 
 Safety considerations are built into all configurations with special attention to educational and therapeutic environments.
 
+Starter kits are available to simplify hardware selection; see `docs/hardware_starter_kits.md` for details.
+
 SOFTWARE ARCHITECTURE
 
 The system utilizes a layered architecture:
@@ -292,6 +298,7 @@ Data Export
 - PDF report generation
 - Photo documentation packages
 - System configuration backups
+- REST API for integrations
 
 Privacy Controls
 - Granular data sharing controls
@@ -401,6 +408,8 @@ Documentation
 - Comprehensive setup guides
 - Hardware compatibility lists
 - Troubleshooting procedures
+- Regional adaptation guides
+- Docker usage instructions
 - Best practices documentation
 
 Community Support
