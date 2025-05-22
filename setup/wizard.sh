@@ -11,11 +11,19 @@ choose_role() {
   echo "1) Educator"
   echo "2) Technician"
   echo "3) Farmer"
-  read -p "Choice [1-3]: " ans
+  echo "4) Researcher"
+  echo "5) Therapist"
+  echo "6) Agritherapist"
+  echo "7) Community Organizer"
+  read -p "Choice [1-7]: " ans
   case $ans in
     1) ROLE="educator" ;;
     2) ROLE="technician" ;;
     3) ROLE="farmer" ;;
+    4) ROLE="researcher" ;;
+    5) ROLE="therapist" ;;
+    6) ROLE="agritherapist" ;;
+    7) ROLE="community" ;;
     *) ROLE="general" ;;
   esac
 }
@@ -32,6 +40,33 @@ choose_goal() {
     3) GOAL="research" ;;
     *) GOAL="demo" ;;
   esac
+}
+
+choose_learning_goal() {
+  if [ "$ROLE" = "educator" ] || [ "$ROLE" = "therapist" ] || [ "$ROLE" = "agritherapist" ]; then
+    read -p "Learning or therapy goal (optional): " LEARNING_GOAL
+  fi
+}
+
+choose_therapy_options() {
+  if [ "$ROLE" = "agritherapist" ] || [ "$ROLE" = "therapist" ]; then
+    read -p "Therapy type (group/individual): " THERAPY_TYPE
+    read -p "Accessibility accommodations needed? (y/n): " ACCESS_NEEDED
+    if [[ "$ACCESS_NEEDED" =~ ^[yY]$ ]]; then
+      echo "1) Visual impairments"
+      echo "2) Motor limitations"
+      echo "3) Cognitive"
+      echo "4) Multiple"
+      read -p "Select accommodation [1-4]: " acc
+      case $acc in
+        1) ACCOMMODATION="visual" ;;
+        2) ACCOMMODATION="motor" ;;
+        3) ACCOMMODATION="cognitive" ;;
+        4) ACCOMMODATION="multiple" ;;
+        *) ACCOMMODATION="general" ;;
+      esac
+    fi
+  fi
 }
 
 choose_hardware() {
@@ -56,6 +91,17 @@ choose_privacy() {
   esac
 }
 
+choose_photo_journaling() {
+  read -p "Enable daily photo journaling? (y/n): " PHOTO_JOURNAL
+}
+
+consent_reminder() {
+  if [[ "$PRIVACY" != "local" || "$PHOTO_JOURNAL" =~ ^[yY]$ ]]; then
+    echo "Data collection features selected." 
+    read -p "Confirm all participants are informed (y/n): " CONSENT_CONFIRMED
+  fi
+}
+
 save_config() {
   mkdir -p "$(dirname "$CONFIG_LOG")"
   cat > "$CONFIG_LOG" <<EOC
@@ -63,7 +109,12 @@ save_config() {
   "user_role": "$ROLE",
   "primary_goal": "$GOAL",
   "system_type": "$HARDWARE",
-  "privacy_mode": "$PRIVACY"
+  "privacy_mode": "$PRIVACY",
+  "learning_goal": "$LEARNING_GOAL",
+  "therapy_type": "$THERAPY_TYPE",
+  "accommodation": "$ACCOMMODATION",
+  "photo_journaling": "$PHOTO_JOURNAL",
+  "consent_confirmed": "$CONSENT_CONFIRMED"
 }
 EOC
   echo "Configuration saved to $CONFIG_LOG"
@@ -72,8 +123,12 @@ EOC
 main() {
   choose_role
   choose_goal
+  choose_learning_goal
+  choose_therapy_options
   choose_hardware
   choose_privacy
+  choose_photo_journaling
+  consent_reminder
   save_config
 }
 
