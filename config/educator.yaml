@@ -1,0 +1,6 @@
+user_role: educator
+primary_goal: education
+system_type: basic_monitoring
+light_cycle: 8am-3pm
+dashboard_mode: student_simple
+privacy_mode: local

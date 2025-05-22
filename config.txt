@@ -1,0 +1,34 @@
+title: Container Farm Control System
+description: An open-source Raspberry Pi and Mycodo solution for container farms previously using farmhand.ag
+theme: jekyll-theme-cayman
+
+# GitHub Pages settings
+permalink: pretty
+markdown: kramdown
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Installation
+    url: /pages/installation
+  - title: Hardware Setup
+    url: /pages/hardware-setup
+  - title: Software Configuration
+    url: /pages/software-configuration
+  - title: Mycodo Importing
+    url: /pages/mycodo-importing
+  - title: System Integration
+    url: /pages/system-integration
+  - title: Troubleshooting
+    url: /pages/troubleshooting
+  - title: Ethics
+    url: /pages/ethics
+  - title: GitHub
+    url: https://github.com/example-user/container-farm-control-system
+
+# Custom variables
+author: Jason DeLooze and contributors
+version: 1.0.0
+github_username: example-user
+repository: example-user/container-farm-control-system

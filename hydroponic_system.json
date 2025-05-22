@@ -1,0 +1,414 @@
+{
+  "mycodo_version": "8.14.0",
+  "timestamp": "2025-05-20 16:30:00",
+  "input": [
+    {
+      "unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9",
+      "name": "Grow Area Temperature/Humidity",
+      "position_y": 1,
+      "interface": "GPIO",
+      "device": "DHT22",
+      "period": 60,
+      "gpio": 4,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "measurements_enabled": ["temperature", "humidity"]
+    },
+    {
+      "unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c",
+      "name": "Water Temperature",
+      "position_y": 2,
+      "interface": "1WIRE",
+      "device": "DS18B20",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": "28-000000000001",
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "resolution": 12,
+      "measurements_enabled": ["temperature"]
+    },
+    {
+      "unique_id": "a1e5c7d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "pH Sensor",
+      "position_y": 3,
+      "interface": "I2C",
+      "device": "ADS1x15",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": "0x48",
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "adc_channel": 0,
+      "adc_gain": 1,
+      "adc_volts_min": 0.0,
+      "adc_volts_max": 4.096,
+      "ph_cal_v_4": 1.5,
+      "ph_cal_v_7": 2.5,
+      "ph_cal_v_10": 3.5,
+      "measurements_enabled": ["ph"]
+    },
+    {
+      "unique_id": "c7e5a1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "EC Sensor",
+      "position_y": 4,
+      "interface": "I2C",
+      "device": "ADS1x15",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": "0x48",
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "adc_channel": 1,
+      "adc_gain": 1,
+      "adc_volts_min": 0.0,
+      "adc_volts_max": 4.096,
+      "ec_cal_low_ms": 1.4,
+      "ec_cal_low_v": 0.5,
+      "ec_cal_high_ms": 2.76,
+      "ec_cal_high_v": 1.0,
+      "measurements_enabled": ["ec"]
+    },
+    {
+      "unique_id": "e5a7c1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Water Level Sensor",
+      "position_y": 5,
+      "interface": "GPIO",
+      "device": "GPIO_STATE",
+      "period": 60,
+      "gpio": 25,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "measurements_enabled": ["edge"]
+    }
+  ],
+  "output": [
+    {
+      "unique_id": "c1e7a8d9-6f42-49b5-a3e8-7d9f1c5b8e4a",
+      "name": "Nutrient Pump A",
+      "output_type": "gpio",
+      "gpio": 17,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "f3a9e1c7-8d54-47b6-a2d9-6e8f1b5c4d7a",
+      "name": "Nutrient Pump B",
+      "output_type": "gpio",
+      "gpio": 18,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "b5c7a9e3-2d48-41a6-8f9c-3e7d5b9c1a4e",
+      "name": "pH Down Pump",
+      "output_type": "gpio",
+      "gpio": 22,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "e1c9a7b5-3f42-49d6-8a2c-5e7f1b9d3c8a",
+      "name": "Main Water Pump",
+      "output_type": "gpio",
+      "gpio": 23,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "d7a9c1e5-2b48-47a6-9f3c-5e7d1b9c3a4e",
+      "name": "Water Refill Valve",
+      "output_type": "gpio",
+      "gpio": 24,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    }
+  ],
+  "function": [
+    {
+      "unique_id": "d7b0c1a7-5f4e-4d9a-b0f2-2e5ae1f29c3a",
+      "name": "Data Logger",
+      "function_type": "data_logger",
+      "is_activated": true,
+      "log_level_debug": false,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature", "period": 60},
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity", "period": 60},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature", "period": 60},
+        {"unique_id": "a1e5c7d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "ph", "period": 60},
+        {"unique_id": "c7e5a1d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "ec", "period": 60},
+        {"unique_id": "e5a7c1d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "edge", "period": 60}
+      ]
+    },
+    {
+      "unique_id": "e5c3a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5",
+      "name": "pH Control",
+      "function_type": "pid",
+      "is_activated": true,
+      "log_level_debug": false,
+      "measurement": "ph",
+      "device_id": "a1e5c7d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "direction": "lower",
+      "period": 60,
+      "setpoint": 5.8,
+      "band": 0.0,
+      "kp": 0.8,
+      "ki": 0.1,
+      "kd": 0.05,
+      "integrator_min": -500.0,
+      "integrator_max": 500.0,
+      "lower_output_id": "b5c7a9e3-2d48-41a6-8f9c-3e7d5b9c1a4e",
+      "lower_min_duration": 1,
+      "lower_max_duration": 5,
+      "lower_min_off_duration": 300,
+      "lower_always_min_pwm": false,
+      "store_lower_as_negative": true,
+      "timer": 900
+    },
+    {
+      "unique_id": "a1c7e5d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "EC Control",
+      "function_type": "conditional",
+      "is_activated": true,
+      "log_level_debug": false,
+      "conditional_type": "measurement",
+      "period": 60,
+      "measurement": "ec",
+      "device_id": "c7e5a1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "condition": "<",
+      "setpoint": 1.5,
+      "duration": 5,
+      "direction": "output",
+      "output_id": "c1e7a8d9-6f42-49b5-a3e8-7d9f1c5b8e4a",
+      "output_state": "on",
+      "output_duration": 3
+    },
+    {
+      "unique_id": "c5a7e1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Water Level Monitor",
+      "function_type": "conditional",
+      "is_activated": true,
+      "log_level_debug": false,
+      "conditional_type": "measurement",
+      "period": 60,
+      "measurement": "edge",
+      "device_id": "e5a7c1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "condition": "==",
+      "setpoint": 0,
+      "direction": "output",
+      "output_id": "d7a9c1e5-2b48-47a6-9f3c-5e7d1b9c3a4e",
+      "output_state": "on",
+      "output_duration": 120
+    },
+    {
+      "unique_id": "e9c7a5d1-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Pump Cycling",
+      "function_type": "timer_daily",
+      "is_activated": true,
+      "log_level_debug": false,
+      "schedule": [
+        {"id": 1, "schedule_start": "08:00", "schedule_end": "08:15", "schedule_interval": 1},
+        {"id": 2, "schedule_start": "10:00", "schedule_end": "10:15", "schedule_interval": 1},
+        {"id": 3, "schedule_start": "12:00", "schedule_end": "12:15", "schedule_interval": 1},
+        {"id": 4, "schedule_start": "14:00", "schedule_end": "14:15", "schedule_interval": 1},
+        {"id": 5, "schedule_start": "16:00", "schedule_end": "16:15", "schedule_interval": 1},
+        {"id": 6, "schedule_start": "18:00", "schedule_end": "18:15", "schedule_interval": 1}
+      ],
+      "output_id": "e1c9a7b5-3f42-49d6-8a2c-5e7f1b9d3c8a",
+      "output_state": "on"
+    },
+    {
+      "unique_id": "f1c7a5e9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Alert - pH",
+      "function_type": "conditional",
+      "is_activated": true,
+      "log_level_debug": false,
+      "conditional_type": "measurement",
+      "period": 60,
+      "measurement": "ph",
+      "device_id": "a1e5c7d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "condition": ">",
+      "setpoint": 6.5,
+      "direction": "alert",
+      "email_notify": "REPLACE_WITH_YOUR_EMAIL@example.com",
+      "message": "pH is too high: {0}"
+    },
+    {
+      "unique_id": "g3c7a5e9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Alert - EC",
+      "function_type": "conditional",
+      "is_activated": true,
+      "log_level_debug": false,
+      "conditional_type": "measurement",
+      "period": 60,
+      "measurement": "ec",
+      "device_id": "c7e5a1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "condition": ">",
+      "setpoint": 2.0,
+      "direction": "alert",
+      "email_notify": "REPLACE_WITH_YOUR_EMAIL@example.com",
+      "message": "EC is too high: {0}"
+    }
+  ],
+  "widget": [
+    {
+      "unique_id": "af8b2e6d-7c51-4c36-9c75-d1a9bf1b3a6e",
+      "name": "Temperature (°C)",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature"},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature"}
+      ]
+    },
+    {
+      "unique_id": "ce8a1d2b-3f59-4e80-9c2a-1d6f0c5b7a2e",
+      "name": "pH Level",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "a1e5c7d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "ph"},
+        {"unique_id": "e5c3a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5", "measurement": "setpoint"}
+      ]
+    },
+    {
+      "unique_id": "de1c9a3b-5f76-4b8c-9e41-2a7bd1c5a3e5",
+      "name": "EC Level",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "c7e5a1d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "ec"}
+      ]
+    },
+    {
+      "unique_id": "bc6a1d2e-7f59-4b80-9c2a-1d6f0c5b7a2e",
+      "name": "Current Readings",
+      "widget_type": "gauge",
+      "refresh_duration": 30,
+      "measurements": [
+        {"unique_id": "a1e5c7d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "ph", "min": 4, "max": 8, "name": "pH"},
+        {"unique_id": "c7e5a1d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "ec", "min": 0, "max": 3, "name": "EC (mS/cm)"},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature", "min": 15, "max": 30, "name": "Water Temp"}
+      ]
+    },
+    {
+      "unique_id": "ed8c1a2b-9f76-4c8b-7e41-8a7bd1c5a3e5",
+      "name": "System Status",
+      "widget_type": "indicator",
+      "refresh_duration": 30,
+      "indicators": [
+        {"unique_id": "c1e7a8d9-6f42-49b5-a3e8-7d9f1c5b8e4a", "name": "Nutrient A"},
+        {"unique_id": "f3a9e1c7-8d54-47b6-a2d9-6e8f1b5c4d7a", "name": "Nutrient B"},
+        {"unique_id": "b5c7a9e3-2d48-41a6-8f9c-3e7d5b9c1a4e", "name": "pH Down"},
+        {"unique_id": "e1c9a7b5-3f42-49d6-8a2c-5e7f1b9d3c8a", "name": "Main Pump"},
+        {"unique_id": "d7a9c1e5-2b48-47a6-9f3c-5e7d1b9c3a4e", "name": "Water Refill"}
+      ]
+    },
+    {
+      "unique_id": "fc8d1a2b-9f76-4c8b-7e41-8a7bd1c5a3e5",
+      "name": "Water Level",
+      "widget_type": "indicator",
+      "refresh_duration": 30,
+      "measurements": [
+        {"unique_id": "e5a7c1d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "edge", "name": "Water Level"}
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "unique_id": "b1c9a2e7-4f86-4c9a-a1e2-9d7bb1c5a3e5",
+      "name": "Hydroponic System Dashboard",
+      "widgets": [
+        {"unique_id": "bc6a1d2e-7f59-4b80-9c2a-1d6f0c5b7a2e", "position_x": 0, "position_y": 0, "width": 6, "height": 4},
+        {"unique_id": "ed8c1a2b-9f76-4c8b-7e41-8a7bd1c5a3e5", "position_x": 6, "position_y": 0, "width": 3, "height": 4},
+        {"unique_id": "fc8d1a2b-9f76-4c8b-7e41-8a7bd1c5a3e5", "position_x": 9, "position_y": 0, "width": 3, "height": 4},
+        {"unique_id": "ce8a1d2b-3f59-4e80-9c2a-1d6f0c5b7a2e", "position_x": 0, "position_y": 4, "width": 6, "height": 6},
+        {"unique_id": "de1c9a3b-5f76-4b8c-9e41-2a7bd1c5a3e5", "position_x": 6, "position_y": 4, "width": 6, "height": 6},
+        {"unique_id": "af8b2e6d-7c51-4c36-9c75-d1a9bf1b3a6e", "position_x": 0, "position_y": 10, "width": 12, "height": 6}
+      ]
+    }
+  ],
+  "note": [
+    {
+      "unique_id": "e5c2a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5",
+      "name": "Configuration Notes",
+      "note": "Hydroponic System Configuration\n\nThis configuration includes:\n- Temperature and humidity monitoring with DHT22 (GPIO 4)\n- Water temperature monitoring with DS18B20\n- pH monitoring with analog pH sensor via ADS1115 ADC\n- EC (electrical conductivity) monitoring with analog EC sensor via ADS1115 ADC\n- Water level monitoring with float switch (GPIO 25)\n- PID control for pH regulation\n- Conditional control for EC/nutrient dosing\n- Water level monitoring and automatic refill\n- Scheduled pump cycling\n- Alert notifications for pH and EC\n\nSetup Instructions:\n1. Adjust all GPIO pin assignments to match your wiring\n2. Update the DS18B20 'location' to match your actual sensor ID\n3. Calibrate your pH sensor with known buffer solutions and update ph_cal_v_4, ph_cal_v_7, and ph_cal_v_10\n4. Calibrate your EC sensor with known calibration solutions and update ec_cal values\n5. Set your email address for alerts\n6. Adjust pump durations based on your specific dosing requirements\n7. Modify setpoints based on your specific crop requirements\n\nCreated by Container Farm Control System"
+    }
+  ]
+}

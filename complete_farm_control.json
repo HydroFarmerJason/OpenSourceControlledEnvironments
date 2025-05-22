@@ -1,0 +1,382 @@
+{
+  "mycodo_version": "8.14.0",
+  "timestamp": "2025-05-20 15:45:00",
+  "input": [
+    {
+      "unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9",
+      "name": "Grow Area Temperature/Humidity",
+      "position_y": 1,
+      "interface": "GPIO",
+      "device": "DHT22",
+      "period": 60,
+      "gpio": 4,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "measurements_enabled": ["temperature", "humidity"]
+    },
+    {
+      "unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c",
+      "name": "Water Temperature",
+      "position_y": 2,
+      "interface": "1WIRE",
+      "device": "DS18B20",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": null,
+      "baud_rate": null,
+      "location": "28-000000000001",
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "resolution": 12,
+      "measurements_enabled": ["temperature"]
+    },
+    {
+      "unique_id": "d4e8c2f1-6a38-4b9d-90c5-87ba31e4c2d7",
+      "name": "CO2 Sensor",
+      "position_y": 3,
+      "interface": "UART",
+      "device": "MH_Z19",
+      "period": 120,
+      "gpio": null,
+      "i2c_location": null,
+      "baud_rate": 9600,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": "/dev/ttyS0",
+      "measurements_enabled": ["co2", "temperature"]
+    },
+    {
+      "unique_id": "a7e9d2c1-5b47-43a8-b1d6-95ca27e5d1f3",
+      "name": "Light Sensor",
+      "position_y": 4,
+      "interface": "I2C",
+      "device": "TSL2561",
+      "period": 60,
+      "gpio": null,
+      "i2c_location": "0x39",
+      "baud_rate": null,
+      "location": null,
+      "times_check": 2,
+      "pre_relay_id": null,
+      "pre_relay_duration": 0,
+      "uart_location": null,
+      "measurements_enabled": ["light"]
+    }
+  ],
+  "output": [
+    {
+      "unique_id": "c1e7a8d9-6f42-49b5-a3e8-7d9f1c5b8e4a",
+      "name": "Fan Relay",
+      "output_type": "gpio",
+      "gpio": 17,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "f3a9e1c7-8d54-47b6-a2d9-6e8f1b5c4d7a",
+      "name": "Heater Relay",
+      "output_type": "gpio",
+      "gpio": 18,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "b5c7a9e3-2d48-41a6-8f9c-3e7d5b9c1a4e",
+      "name": "Humidifier Relay",
+      "output_type": "gpio",
+      "gpio": 22,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "e1c9a7b5-3f42-49d6-8a2c-5e7f1b9d3c8a",
+      "name": "Lights Relay",
+      "output_type": "gpio",
+      "gpio": 23,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    },
+    {
+      "unique_id": "d7a9c1e5-2b48-47a6-9f3c-5e7d1b9c3a4e",
+      "name": "CO2 Ventilation Relay",
+      "output_type": "gpio",
+      "gpio": 24,
+      "amps": 0,
+      "trigger_state": 1,
+      "on_state": 1,
+      "state_at_startup": 0,
+      "startup_value": 0,
+      "state_at_shutdown": 0,
+      "shutdown_value": 0,
+      "pwm_frequency": 100
+    }
+  ],
+  "function": [
+    {
+      "unique_id": "d7b0c1a7-5f4e-4d9a-b0f2-2e5ae1f29c3a",
+      "name": "Data Logger",
+      "function_type": "data_logger",
+      "is_activated": true,
+      "log_level_debug": false,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature", "period": 60},
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity", "period": 60},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature", "period": 60},
+        {"unique_id": "d4e8c2f1-6a38-4b9d-90c5-87ba31e4c2d7", "measurement": "co2", "period": 120},
+        {"unique_id": "a7e9d2c1-5b47-43a8-b1d6-95ca27e5d1f3", "measurement": "light", "period": 60}
+      ]
+    },
+    {
+      "unique_id": "e5c3a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5",
+      "name": "Temperature Control",
+      "function_type": "pid",
+      "is_activated": true,
+      "log_level_debug": false,
+      "measurement": "temperature",
+      "device_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9",
+      "direction": "both",
+      "period": 60,
+      "setpoint": 24.0,
+      "band": 0.0,
+      "kp": 1.0,
+      "ki": 0.1,
+      "kd": 0.05,
+      "integrator_min": -500.0,
+      "integrator_max": 500.0,
+      "raise_output_id": "f3a9e1c7-8d54-47b6-a2d9-6e8f1b5c4d7a",
+      "raise_min_duration": 5,
+      "raise_max_duration": 300,
+      "raise_min_off_duration": 30,
+      "raise_always_min_pwm": false,
+      "lower_output_id": "c1e7a8d9-6f42-49b5-a3e8-7d9f1c5b8e4a",
+      "lower_min_duration": 5,
+      "lower_max_duration": 300,
+      "lower_min_off_duration": 30,
+      "lower_always_min_pwm": false,
+      "store_lower_as_negative": true,
+      "timer": 900
+    },
+    {
+      "unique_id": "a1c7e5d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Humidity Control",
+      "function_type": "pid",
+      "is_activated": true,
+      "log_level_debug": false,
+      "measurement": "humidity",
+      "device_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9",
+      "direction": "raise",
+      "period": 60,
+      "setpoint": 60.0,
+      "band": 0.0,
+      "kp": 1.0,
+      "ki": 0.1,
+      "kd": 0.05,
+      "integrator_min": -500.0,
+      "integrator_max": 500.0,
+      "raise_output_id": "b5c7a9e3-2d48-41a6-8f9c-3e7d5b9c1a4e",
+      "raise_min_duration": 5,
+      "raise_max_duration": 300,
+      "raise_min_off_duration": 30,
+      "raise_always_min_pwm": false,
+      "timer": 900
+    },
+    {
+      "unique_id": "c5a7e1d9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "CO2 Control",
+      "function_type": "conditional",
+      "is_activated": true,
+      "log_level_debug": false,
+      "conditional_type": "measurement",
+      "period": 60,
+      "measurement": "co2",
+      "device_id": "d4e8c2f1-6a38-4b9d-90c5-87ba31e4c2d7",
+      "condition": ">",
+      "setpoint": 1200,
+      "direction": "output",
+      "output_id": "d7a9c1e5-2b48-47a6-9f3c-5e7d1b9c3a4e",
+      "output_state": "on",
+      "output_duration": 300
+    },
+    {
+      "unique_id": "e9c7a5d1-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Light Cycle",
+      "function_type": "time",
+      "is_activated": true,
+      "log_level_debug": false,
+      "period": 60,
+      "start_time": "07:00",
+      "end_time": "23:00",
+      "duration_on": 0,
+      "duration_off": 0,
+      "output_id": "e1c9a7b5-3f42-49d6-8a2c-5e7f1b9d3c8a",
+      "output_state": "on"
+    },
+    {
+      "unique_id": "f1c7a5e9-3b48-46a2-8f3c-5e7d1b9c3a4e",
+      "name": "Alert - Temperature",
+      "function_type": "conditional",
+      "is_activated": true,
+      "log_level_debug": false,
+      "conditional_type": "measurement",
+      "period": 60,
+      "measurement": "temperature",
+      "device_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9",
+      "condition": ">",
+      "setpoint": 30,
+      "direction": "alert",
+      "email_notify": "REPLACE_WITH_YOUR_EMAIL@example.com",
+      "message": "Temperature is too high: {0}"
+    }
+  ],
+  "widget": [
+    {
+      "unique_id": "af8b2e6d-7c51-4c36-9c75-d1a9bf1b3a6e",
+      "name": "Temperature (°C)",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature"},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature"},
+        {"unique_id": "e5c3a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5", "measurement": "setpoint"}
+      ]
+    },
+    {
+      "unique_id": "ce8a1d2b-3f59-4e80-9c2a-1d6f0c5b7a2e",
+      "name": "Humidity (%)",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity"},
+        {"unique_id": "a1c7e5d9-3b48-46a2-8f3c-5e7d1b9c3a4e", "measurement": "setpoint"}
+      ]
+    },
+    {
+      "unique_id": "de1c9a3b-5f76-4b8c-9e41-2a7bd1c5a3e5",
+      "name": "Current Conditions",
+      "widget_type": "gauge",
+      "refresh_duration": 30,
+      "measurements": [
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "temperature", "min": 0, "max": 40, "name": "Air Temp"},
+        {"unique_id": "2c23a389-1fca-4e44-bee2-a2e29a384ac9", "measurement": "humidity", "min": 0, "max": 100, "name": "Humidity"},
+        {"unique_id": "b3f19c1e-05c9-4c1f-9033-44e4b4c2fb7c", "measurement": "temperature", "min": 0, "max": 40, "name": "Water Temp"}
+      ]
+    },
+    {
+      "unique_id": "bc6a1d2e-7f59-4b80-9c2a-1d6f0c5b7a2e",
+      "name": "CO2 (ppm)",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "d4e8c2f1-6a38-4b9d-90c5-87ba31e4c2d7", "measurement": "co2"}
+      ]
+    },
+    {
+      "unique_id": "ac9e1d2b-5f76-4c8b-9e41-2a7bd1c5a3e5",
+      "name": "Light Intensity",
+      "widget_type": "graph",
+      "graph_type": "line",
+      "refresh_duration": 120,
+      "x_axis_duration": 1440,
+      "enable_auto_refresh": true,
+      "enable_graph_shift": true,
+      "enable_navbar": true,
+      "enable_export": true,
+      "enable_range": true,
+      "enable_graph_legend": true,
+      "measurements": [
+        {"unique_id": "a7e9d2c1-5b47-43a8-b1d6-95ca27e5d1f3", "measurement": "light"}
+      ]
+    },
+    {
+      "unique_id": "ed8c1a2b-9f76-4c8b-7e41-8a7bd1c5a3e5",
+      "name": "System Status",
+      "widget_type": "indicator",
+      "refresh_duration": 30,
+      "indicators": [
+        {"unique_id": "c1e7a8d9-6f42-49b5-a3e8-7d9f1c5b8e4a", "name": "Fan"},
+        {"unique_id": "f3a9e1c7-8d54-47b6-a2d9-6e8f1b5c4d7a", "name": "Heater"},
+        {"unique_id": "b5c7a9e3-2d48-41a6-8f9c-3e7d5b9c1a4e", "name": "Humidifier"},
+        {"unique_id": "e1c9a7b5-3f42-49d6-8a2c-5e7f1b9d3c8a", "name": "Lights"},
+        {"unique_id": "d7a9c1e5-2b48-47a6-9f3c-5e7d1b9c3a4e", "name": "CO2 Vent"}
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "unique_id": "b1c9a2e7-4f86-4c9a-a1e2-9d7bb1c5a3e5",
+      "name": "Complete Farm Dashboard",
+      "widgets": [
+        {"unique_id": "de1c9a3b-5f76-4b8c-9e41-2a7bd1c5a3e5", "position_x": 0, "position_y": 0, "width": 6, "height": 4},
+        {"unique_id": "ed8c1a2b-9f76-4c8b-7e41-8a7bd1c5a3e5", "position_x": 6, "position_y": 0, "width": 6, "height": 4},
+        {"unique_id": "af8b2e6d-7c51-4c36-9c75-d1a9bf1b3a6e", "position_x": 0, "position_y": 4, "width": 6, "height": 6},
+        {"unique_id": "ce8a1d2b-3f59-4e80-9c2a-1d6f0c5b7a2e", "position_x": 6, "position_y": 4, "width": 6, "height": 6},
+        {"unique_id": "bc6a1d2e-7f59-4b80-9c2a-1d6f0c5b7a2e", "position_x": 0, "position_y": 10, "width": 6, "height": 6},
+        {"unique_id": "ac9e1d2b-5f76-4c8b-9e41-2a7bd1c5a3e5", "position_x": 6, "position_y": 10, "width": 6, "height": 6}
+      ]
+    }
+  ],
+  "note": [
+    {
+      "unique_id": "e5c2a1d9-7f38-4c6a-b1e2-3d7ab1c5a3e5",
+      "name": "Configuration Notes",
+      "note": "Complete Farm Control Configuration\n\nThis configuration includes:\n- Temperature and humidity monitoring with DHT22 (GPIO 4)\n- Water temperature monitoring with DS18B20\n- CO2 monitoring with MH-Z19 (UART /dev/ttyS0)\n- Light monitoring with TSL2561 (I2C address 0x39)\n- PID control for temperature and humidity\n- CO2 conditional control for ventilation\n- Time-based control for lighting cycles\n- Temperature alert notification\n\nSetup Instructions:\n1. Adjust all GPIO pin assignments to match your wiring\n2. Update the DS18B20 'location' to match your actual sensor ID\n3. Set your email address for alerts\n4. Adjust PID parameters if needed for your environment\n5. Modify setpoints based on your crop requirements\n\nCreated by Container Farm Control System"
+    }
+  ]
+}
