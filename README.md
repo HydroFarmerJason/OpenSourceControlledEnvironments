@@ -15,7 +15,11 @@ REPOSITORY STRUCTURE
 - rpi_scripts/: Raspberry Pi helper scripts
 - dashboards/: dashboard templates
 - docs/: documentation
+wrajjm-codex/enhance-api-and-documentation
 - api/: lightweight REST API with documentation in `api/docs/` (spec in `openapi.yaml`)
+=======
+- api/: lightweight REST API with docs in `api/docs/`
+main
 - docker/: containerization files
 
 KEY FEATURES
