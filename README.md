@@ -1,3 +1,15 @@
+# Open Source Controlled Environments
+
+This repository contains tooling for setting up an autonomous container farm control system.
+
+The main script `setup_wizard.sh` implements a full-featured interactive setup wizard. Run it as root on your Raspberry Pi to configure sensors, privacy settings, optional software packages, and dashboard generation.
+
+```bash
+sudo bash setup_wizard.sh
+```
+
+The wizard walks you through hardware configuration, Mycodo installation, backup scheduling, and other options tailored to your use case.
+=======
 Container Farm Control System
 
 Enhanced Interactive Setup Wizard and Control Platform
@@ -454,3 +466,4 @@ Community Features
 This Container Farm Control System represents a commitment to user autonomy, educational access, therapeutic support, and sustainable growing practices. By providing a comprehensive, locally-controlled alternative to cloud-based systems, it ensures that growers maintain full control over their operations and data while supporting diverse community needs from education to therapy to commercial production.
 
 The system's emphasis on accessibility, ethical use, and community support makes it suitable for a wide range of applications while maintaining the core principle that technology should serve users rather than extracting value from them. Whether used in classrooms, therapy programs, research facilities, or commercial operations, this system prioritizes user needs and community values above all else.
+ main
