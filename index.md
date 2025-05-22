@@ -51,7 +51,7 @@ This control system provides a local, open-source alternative to the cloud-based
 
 ## Getting Started
 
-Ready to build your own system? Start with our [installation guide](pages/installation.html) or download the [master setup script](https://github.com/your-username/container-farm-control-system/blob/main/scripts/master_setup.sh) to automate the process.
+Ready to build your own system? Start with our [installation guide](pages/installation.html) or download the [master setup script](https://github.com/example-user/container-farm-control-system/blob/main/scripts/master_setup.sh) to automate the process.
 
 ## Contributing
 
@@ -60,8 +60,8 @@ Contributions are welcome! Please read our [contributing guidelines](pages/contr
 ## License
 
 This project uses a dual-license approach:
-- **Documentation** is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](pages/license.html)
-- **Code and scripts** are licensed under the [MIT License](pages/license.html)
+- **Documentation** is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](license.md)
+- **Code and scripts** are licensed under the [MIT License](license.md)
 
 ## Acknowledgments
 

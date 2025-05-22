@@ -1,5 +1,10 @@
 #!/bin/bash
 # Container Farm Control System - Offline Curriculum Binder
+# Check if running as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root (sudo)" >&2
+  exit 1
+fi
 # This script creates a system for managing offline lesson plans and curricula
 # Install in SCRIPTS_DIR
 

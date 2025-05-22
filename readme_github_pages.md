@@ -21,14 +21,14 @@ This repository includes files for GitHub Pages to make the documentation easily
 
 6. Click "Save"
 
-Your documentation will be available at: `https://your-username.github.io/container-farm-control-system/`
+Your documentation will be available at: `https://example-user.github.io/container-farm-control-system/`
 
 ## Customizing Your Site
 
 Before enabling GitHub Pages, make these changes:
 
 1. Update your repository information in `_config.yml`:
-   - Change `your-username` to your actual GitHub username
+   - Change `example-user` to your actual GitHub username
    - Update any other information as needed
 
 2. Add images to the `assets/images/` directory:
