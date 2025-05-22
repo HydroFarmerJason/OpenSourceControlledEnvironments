@@ -15,7 +15,7 @@ REPOSITORY STRUCTURE
 - rpi_scripts/: Raspberry Pi helper scripts
 - dashboards/: dashboard templates
 - docs/: documentation
-- api/: lightweight REST API
+- api/: lightweight REST API with documentation in `api/docs/` (spec in `openapi.yaml`)
 - docker/: containerization files
 
 KEY FEATURES
@@ -299,6 +299,7 @@ Data Export
 - Photo documentation packages
 - System configuration backups
 - REST API for integrations
+- See `api/docs/openapi.yaml` for the API specification
 
 Privacy Controls
 - Granular data sharing controls
