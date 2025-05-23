@@ -4,13 +4,13 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| 2.x.x   | :white_check_mark: |
+| 1.x.x   | :x:                |
 
 ## Reporting a Vulnerability
 
 ### Security Contact
-Report security vulnerabilities to: [security@your-project.com]
+Report security vulnerabilities to: [security@opensourcefarm.org]
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
