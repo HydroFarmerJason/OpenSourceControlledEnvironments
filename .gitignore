@@ -1,23 +1,87 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
-*.pyo
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Editor backups
-*~
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
 *.swp
+*.swo
+*~
 
-# Logs and databases
-*.log
-*.sqlite3
-
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
 
-# Node modules
-node_modules/
+# Logs
+logs/
+*.log
 
-# Temporary directories
-/tmp/
-config/user_choices.json
+# Database
+*.db
+*.sqlite3
+
+# Configuration with secrets
+.env
+config/secrets.json
+config/local_config.json
+
+# Hardware-specific
+hardware/custom_configs/
+calibration_data/
+
+# Backup files
+backups/
+*.backup
+*.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Photo storage (keep structure, ignore content)
+data/photos/*
+!data/photos/.gitkeep
+
+# User data
+user_data/
+student_records/
+therapy_records/
+
+# Compiled documentation
+docs/_build/
+docs/site/
+
+# Test coverage
+.coverage
+htmlcov/
+
+# Security
+*.key
+*.pem
+*.crt
+secrets/

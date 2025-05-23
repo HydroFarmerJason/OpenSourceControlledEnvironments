@@ -1,0 +1,48 @@
+{
+  "profile_name": "educator",
+  "display_name": "Educational Environment",
+  "description": "Configuration optimized for classroom use",
+  "safety_level": "high",
+  "complexity_level": "simplified",
+  "features": {
+    "student_tracking": true,
+    "simplified_interface": true,
+    "safety_interlocks": true,
+    "data_logging": true,
+    "photo_journaling": true,
+    "assessment_tools": true
+  },
+  "dashboard": {
+    "theme": "educational",
+    "widgets": [
+      "temperature_gauge",
+      "humidity_gauge",
+      "growth_photos",
+      "daily_activities",
+      "safety_status"
+    ],
+    "student_access": {
+      "view_data": true,
+      "control_lights": false,
+      "control_pumps": false,
+      "emergency_stop": true
+    }
+  },
+  "alerts": {
+    "temperature_range": {"min": 18, "max": 26},
+    "humidity_range": {"min": 40, "max": 70},
+    "notification_methods": ["dashboard", "email"],
+    "emergency_contacts": ["teacher@school.edu"]
+  },
+  "data_retention": {
+    "student_data": "1_semester",
+    "sensor_data": "1_year",
+    "photos": "1_year"
+  },
+  "safety": {
+    "voltage_limit": "12V",
+    "chemical_restrictions": ["ph_solutions_diluted_only"],
+    "supervision_required": true,
+    "age_restrictions": "6+"
+  }
+}
