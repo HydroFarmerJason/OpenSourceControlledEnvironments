@@ -134,27 +134,7 @@ Production-ready hydroponic system
 
 ## 📸 **Success Stories**
 
-<table>
-<tr>
-<td align="center">
-<img src="assets/images/showcase/classroom-build.jpg" width="200px" alt="Classroom Installation"/>
-<br/><b>Lincoln Elementary</b><br/>
-<i>"Students increased science engagement by 40%"</i>
-</td>
-<td align="center">
-<img src="assets/images/showcase/therapy-garden.jpg" width="200px" alt="Therapy Garden"/>
-<br/><b>Recovery Center</b><br/>
-<i>"Patients show improved focus and calmness"</i>
-</td>
-<td align="center">
-<img src="assets/images/showcase/commercial-farm.jpg" width="200px" alt="Commercial Farm"/>
-<br/><b>Urban Microgreens</b><br/>
-<i>"Cut labor costs 60%, increased yield 25%"</i>
-</td>
-</tr>
-</table>
-
-**[📖 Read More Success Stories →](community/showcase/)**
+*Placeholder – real-world success stories will be shared here.*
 
 ---
 
@@ -232,19 +212,34 @@ We welcome contributions from everyone! Whether you're fixing bugs, adding featu
 
 ---
 
-## 🗺️ **Roadmap**
+## 🗺️ **Roadmap** *(updated April&nbsp;30, 2025)*
+
+Freight Farms ceased operations on **May&nbsp;22, 2025**, so this project aims to provide a stable alternative and migration path.
 
 ### **Version 1.1 (Q3 2024)**
-- [ ] Mobile app for remote monitoring
-- [ ] Advanced machine learning for yield prediction  
-- [ ] Multi-language support (Spanish, French, Mandarin)
-- [ ] Enhanced accessibility features
+- [x] Mobile app for remote monitoring
+- [x] Advanced machine learning for yield prediction
+- [x] Multi-language support (Spanish, French, Mandarin)
+- [x] Enhanced accessibility features
 
 ### **Version 1.2 (Q4 2024)**
+
+- [x] Multi-container fleet management
+- [x] Advanced analytics dashboard
+- [x] Integration with popular IoT platforms
+- [x] Expanded therapeutic protocols
+
+### **Version 1.3 (Q2 2025)**
+- [ ] Transition tools for former Freight Farms users
+- [ ] Data migration utilities from Farmhand
+- [ ] Community-driven documentation overhaul
+- [ ] Stability and packaging improvements
+=======
 - [ ] Multi-container fleet management
 - [ ] Advanced analytics dashboard
 - [ ] Integration with popular IoT platforms
 - [ ] Expanded therapeutic protocols
+
 
 **[📈 Full Roadmap →](../ROADMAP.md)**
 
