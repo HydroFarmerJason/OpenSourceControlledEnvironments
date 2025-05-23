@@ -1,3 +1,4 @@
+=======
 qdb2cq-codex/outline-necessary-steps-for-collaboration
 # Project Roadmap *(updated April&nbsp;30, 2025)*
 
@@ -7,6 +8,10 @@ Freight Farms ceased operations on **May&nbsp;22, 2025**. This roadmap reflects 
 
 This roadmap outlines the planned features and milestones for the Container Farm Control System. Dates are tentative and subject to change.
 
+Freight Farms ceased operations on **April&nbsp;30, 2025**. This project now focuses on providing a stable alternative and migration path for affected growers.
+
+More roadmap details will be published soon.
+=======
 
 ## Version 1.1 (Q3 2024)
 - Mobile app for remote monitoring

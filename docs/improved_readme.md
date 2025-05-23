@@ -134,6 +134,8 @@ Production-ready hydroponic system
 
 ## 📸 **Success Stories**
 
+*Success stories coming soon*
+=======
 *Placeholder – real-world success stories will be shared here.*
 
 ---
@@ -216,6 +218,11 @@ We welcome contributions from everyone! Whether you're fixing bugs, adding featu
 
 Freight Farms ceased operations on **May&nbsp;22, 2025**, so this project aims to provide a stable alternative and migration path.
 
+Freight Farms ceased operations on **April&nbsp;30, 2025**. This project now focuses on providing a stable alternative and migration path for affected growers.
+
+More roadmap details will be published soon.
+
+=======
 ### **Version 1.1 (Q3 2024)**
 - [x] Mobile app for remote monitoring
 - [x] Advanced machine learning for yield prediction
