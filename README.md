@@ -130,6 +130,16 @@ Production-ready hydroponic system
 
 **[📋 Complete Parts List →](hardware/compatibility/shopping_lists/commercial.json)**
 
+### 📚 **Classroom Setup Example**
+Open-source configuration for K-12 classroom grow labs
+
+**[📂 Example Files →](examples/classroom_setup/)**
+
+### 🌿 **Therapy Garden Example**
+Therapeutic garden setup with accessibility features
+
+**[📂 Example Files →](examples/therapy_garden/)**
+
 ---
 
 ## 📸 **Success Stories**
@@ -155,6 +165,9 @@ Production-ready hydroponic system
 </table>
 
 **[📖 Read More Success Stories →](community/showcase/)**
+
+- *Classroom Setup success stories coming soon*
+- *Therapy Garden success stories coming soon*
 
 ---
 
