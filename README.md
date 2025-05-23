@@ -8,9 +8,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation: CC BY-SA 4.0](https://img.shields.io/badge/Documentation-CC%20BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Hardware Compatibility](https://img.shields.io/badge/Hardware-Pi%204B%20Tested-green.svg)](docs/HARDWARE_COMPATIBILITY.md)
+[![Hardware Compatibility](https://img.shields.io/badge/Hardware-Pi%204B%20Tested-green.svg)](hardware/compatibility/HARDWARE_COMPATIBILITY.md)
 
-[Quick Start](#quick-start) • [Documentation](docs/) • [Examples](examples/) • [Hardware Guide](docs/HARDWARE_COMPATIBILITY.md)
+[Quick Start](#quick-start) • [Documentation](docs/) • [Examples](examples/) • [Hardware Guide](hardware/compatibility/HARDWARE_COMPATIBILITY.md)
 
 </div>
 
@@ -179,7 +179,7 @@ Therapeutic garden setup with accessibility features
 - ✅ **Controllers**: Relay boards, solid-state relays, contactors
 - ✅ **Communication**: I2C, SPI, 1-Wire, UART, Analog
 
-**[📋 Complete Compatibility Guide →](docs/HARDWARE_COMPATIBILITY.md)**
+**[📋 Complete Compatibility Guide →](hardware/compatibility/HARDWARE_COMPATIBILITY.md)**
 
 ---
 
@@ -226,7 +226,7 @@ We welcome contributions from everyone! Whether you're fixing bugs, adding featu
 
 ## ⚖️ **License & Legal**
 
-- **Software**: [MIT License](LICENSE.md) - Use commercially, modify freely
+- **Software**: [MIT License](LICENSE) - Use commercially, modify freely
 - **Documentation**: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) - Share with attribution
 - **Hardware Designs**: [CERN-OHL-W v2](https://cern-ohl.web.cern.ch/) - Open hardware license
 
