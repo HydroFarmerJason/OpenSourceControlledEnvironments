@@ -52,6 +52,7 @@ wget -qO- https://get.osce.io | bash
 
 This script installs dependencies, detects your hardware, and starts the server
 on port 8080—just like WordPress' famous 5‑minute setup.
+The new Hardware Abstraction Layer (HAL) in `osce.hardware` lets OSCE run on Pi, ESP32, or even a mock setup.
 
 **🎯 Ready in 15 minutes!** Access your dashboard at `http://your-pi-ip-address`
 
@@ -71,6 +72,7 @@ git clone https://github.com/osce-plugins/temperature-alert
 The next time you start the server, the plugin is active and its API routes are
 available.
 
+For development details, see [Plugin API](docs/developer/plugin_api.md).
 ---
 
 ## 📊 **Dashboard Previews**
