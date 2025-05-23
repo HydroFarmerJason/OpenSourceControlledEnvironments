@@ -2,10 +2,10 @@
 
 This repository contains tooling for setting up an autonomous container farm control system.
 
-The main script `setup_wizard.sh` implements a full-featured interactive setup wizard. Run it as root on your Raspberry Pi to configure sensors, privacy settings, optional software packages, and dashboard generation.
+The main script `setup/configuration_wizard/wizard.sh` implements a full-featured interactive setup wizard. Run it as root on your Raspberry Pi to configure sensors, privacy settings, optional software packages, and dashboard generation.
 
 ```bash
-sudo bash setup_wizard.sh
+sudo bash setup/configuration_wizard/wizard.sh
 ```
 
 The wizard walks you through hardware configuration, Mycodo installation, backup scheduling, and other options tailored to your use case.
@@ -113,7 +113,7 @@ Quick Start Installation
 1. Download and flash Raspberry Pi OS to your SD card
 2. Enable SSH and configure basic network settings
 3. Clone or download this repository to your Raspberry Pi
-4. Run the enhanced setup wizard: sudo ./enhanced_setup_wizard.sh
+4. Run the enhanced setup wizard: sudo setup/configuration_wizard/wizard.sh
 5. Follow the interactive prompts to configure your system
 6. Complete hardware connections based on your selected configuration
 7. Access the web interface at your Raspberry Pi's IP address
