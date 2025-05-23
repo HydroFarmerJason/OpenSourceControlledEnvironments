@@ -223,6 +223,7 @@ Freight Farms ceased operations on **May&nbsp;22, 2025**, so this project aims t
 - [x] Enhanced accessibility features
 
 ### **Version 1.2 (Q4 2024)**
+
 - [x] Multi-container fleet management
 - [x] Advanced analytics dashboard
 - [x] Integration with popular IoT platforms
@@ -233,6 +234,12 @@ Freight Farms ceased operations on **May&nbsp;22, 2025**, so this project aims t
 - [ ] Data migration utilities from Farmhand
 - [ ] Community-driven documentation overhaul
 - [ ] Stability and packaging improvements
+=======
+- [ ] Multi-container fleet management
+- [ ] Advanced analytics dashboard
+- [ ] Integration with popular IoT platforms
+- [ ] Expanded therapeutic protocols
+
 
 **[📈 Full Roadmap →](../ROADMAP.md)**
 
