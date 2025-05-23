@@ -175,8 +175,8 @@ plugin_manifest = {
     },
     "tags": ["alerts", "notifications", "temperature", "email"],
     "screenshots": [
-        "https://example.com/screenshot1.png",
-        "https://example.com/screenshot2.png"
+        "https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/assets/images/screenshots/screenshot1.png",
+        "https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/assets/images/screenshots/screenshot2.png"
     ],
     "category": "Monitoring",
     "license": "MIT"

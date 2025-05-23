@@ -55,7 +55,7 @@ Thank you for your interest in contributing! This project serves diverse communi
 
 ### Installation
 ```bash
-git clone https://github.com/yourusername/OpenSourceControlledEnvironments.git
+git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
 cd OpenSourceControlledEnvironments
 sudo ./setup/setup.sh
 ```

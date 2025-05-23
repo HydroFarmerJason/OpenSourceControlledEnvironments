@@ -42,13 +42,13 @@ my-awesome-plugin/
     "minimum": "1.0.0",
     "maximum": "2.0.0"
   },
-  "homepage": "https://github.com/yourusername/my-awesome-plugin",
+  "homepage": "https://github.com/HydroFarmerJason/my-awesome-plugin",
   "license": "MIT",
   "keywords": ["sensors", "automation", "monitoring"],
   "category": "Automation",
   "screenshots": [
-    "https://example.com/screenshot1.png",
-    "https://example.com/screenshot2.png"
+    "https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/assets/images/screenshots/screenshot1.png",
+    "https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/assets/images/screenshots/screenshot2.png"
   ],
   "dependencies": {
     "python": ["requests>=2.25.0", "numpy>=1.19.0"],
