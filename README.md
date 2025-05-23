@@ -8,9 +8,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation: CC BY-SA 4.0](https://img.shields.io/badge/Documentation-CC%20BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Hardware Compatibility](https://img.shields.io/badge/Hardware-Pi%204B%20Tested-green.svg)](docs/HARDWARE_COMPATIBILITY.md)
+[![Hardware Compatibility](https://img.shields.io/badge/Hardware-Pi%204B%20Tested-green.svg)](hardware/compatibility/HARDWARE_COMPATIBILITY.md)
 
-[Quick Start](#quick-start) • [Documentation](docs/) • [Examples](examples/) • [Hardware Guide](docs/HARDWARE_COMPATIBILITY.md)
+[Quick Start](#quick-start) • [Documentation](docs/) • [Examples](examples/) • [Hardware Guide](hardware/compatibility/HARDWARE_COMPATIBILITY.md)
 
 </div>
 
@@ -144,30 +144,7 @@ Therapeutic garden setup with accessibility features
 
 ## 📸 **Success Stories**
 
-<table>
-<tr>
-<td align="center">
-<img src="assets/images/showcase/classroom-build.jpg" width="200px" alt="Classroom Installation"/>
-<br/><b>Lincoln Elementary</b><br/>
-<i>"Students increased science engagement by 40%"</i>
-</td>
-<td align="center">
-<img src="assets/images/showcase/therapy-garden.jpg" width="200px" alt="Therapy Garden"/>
-<br/><b>Recovery Center</b><br/>
-<i>"Patients show improved focus and calmness"</i>
-</td>
-<td align="center">
-<img src="assets/images/showcase/commercial-farm.jpg" width="200px" alt="Commercial Farm"/>
-<br/><b>Urban Microgreens</b><br/>
-<i>"Cut labor costs 60%, increased yield 25%"</i>
-</td>
-</tr>
-</table>
-
-**[📖 Read More Success Stories →](community/showcase/)**
-
-- *Classroom Setup success stories coming soon*
-- *Therapy Garden success stories coming soon*
+*Success stories coming soon*
 
 ---
 
@@ -179,7 +156,7 @@ Therapeutic garden setup with accessibility features
 - ✅ **Controllers**: Relay boards, solid-state relays, contactors
 - ✅ **Communication**: I2C, SPI, 1-Wire, UART, Analog
 
-**[📋 Complete Compatibility Guide →](docs/HARDWARE_COMPATIBILITY.md)**
+**[📋 Complete Compatibility Guide →](hardware/compatibility/HARDWARE_COMPATIBILITY.md)**
 
 ---
 
@@ -226,7 +203,7 @@ We welcome contributions from everyone! Whether you're fixing bugs, adding featu
 
 ## ⚖️ **License & Legal**
 
-- **Software**: [MIT License](LICENSE.md) - Use commercially, modify freely
+- **Software**: [MIT License](LICENSE) - Use commercially, modify freely
 - **Documentation**: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) - Share with attribution
 - **Hardware Designs**: [CERN-OHL-W v2](https://cern-ohl.web.cern.ch/) - Open hardware license
 
@@ -247,17 +224,9 @@ We welcome contributions from everyone! Whether you're fixing bugs, adding featu
 
 ## 🗺️ **Roadmap**
 
-### **Version 1.1 (Q3 2024)**
-- [ ] Mobile app for remote monitoring
-- [ ] Advanced machine learning for yield prediction  
-- [ ] Multi-language support (Spanish, French, Mandarin)
-- [ ] Enhanced accessibility features
+Freight Farms ceased operations on **April&nbsp;30, 2025**. This project now focuses on providing a stable alternative and migration path for affected growers.
 
-### **Version 1.2 (Q4 2024)**
-- [ ] Multi-container fleet management
-- [ ] Advanced analytics dashboard
-- [ ] Integration with popular IoT platforms
-- [ ] Expanded therapeutic protocols
+More roadmap details will be published soon.
 
 **[📈 Full Roadmap →](ROADMAP.md)**
 
