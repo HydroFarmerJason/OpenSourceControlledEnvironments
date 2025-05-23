@@ -1,0 +1,57 @@
+{
+  "system_name": "basic_monitoring",
+  "display_name": "Basic Environmental Monitoring",
+  "description": "Simple temperature and humidity monitoring with basic controls",
+  "complexity": "beginner",
+  "estimated_cost": "$75-150",
+  "hardware_requirements": {
+    "raspberry_pi": "Pi 4B 2GB minimum",
+    "sensors": [
+      {
+        "type": "temperature",
+        "model": "DS18B20",
+        "quantity": 1,
+        "interface": "1-wire",
+        "gpio": 4
+      },
+      {
+        "type": "humidity",
+        "model": "DHT22",
+        "quantity": 1,
+        "interface": "digital",
+        "gpio": 17
+      }
+    ],
+    "actuators": [
+      {
+        "type": "relay",
+        "model": "2-channel_relay_board",
+        "quantity": 1,
+        "controls": ["grow_light", "exhaust_fan"]
+      }
+    ]
+  },
+  "automation_rules": {
+    "temperature_control": {
+      "target": 22,
+      "tolerance": 2,
+      "heating_device": "grow_light",
+      "cooling_device": "exhaust_fan"
+    },
+    "humidity_control": {
+      "target": 60,
+      "tolerance": 10,
+      "action": "ventilation_adjustment"
+    },
+    "lighting_schedule": {
+      "on_time": "06:00",
+      "off_time": "22:00",
+      "override": "manual_allowed"
+    }
+  },
+  "data_logging": {
+    "interval_minutes": 5,
+    "retention_days": 30,
+    "metrics": ["temperature", "humidity", "light_status", "fan_status"]
+  }
+}

@@ -1,1 +1,53 @@
+# Core dependencies
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+Flask-Login==0.6.3
+Flask-WTF==1.1.1
+WTForms==3.0.1
 
+# Hardware interfaces
+RPi.GPIO==0.7.1
+gpiozero==1.6.2
+spidev==3.6
+smbus2==0.4.2
+w1thermsensor==2.0.0
+
+# Sensor libraries
+adafruit-circuitpython-ads1x15==2.2.21
+adafruit-circuitpython-bme280==2.6.15
+adafruit-circuitpython-dht==3.7.8
+
+# Data handling
+pandas==2.0.3
+numpy==1.24.4
+influxdb-client==1.37.0
+redis==4.6.0
+
+# Web and API
+requests==2.31.0
+gunicorn==21.2.0
+eventlet==0.33.3
+
+# Automation and scheduling
+APScheduler==3.10.4
+celery==5.3.1
+
+# Image processing
+Pillow==10.0.0
+opencv-python==4.8.0.76
+
+# Communication protocols
+pyserial==3.5
+paho-mqtt==1.6.1
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2023.3
+psutil==5.9.5
+configparser==6.0.0
+
+# Development and testing
+pytest==7.4.2
+pytest-cov==4.1.0
+black==23.7.0
+flake8==6.0.0

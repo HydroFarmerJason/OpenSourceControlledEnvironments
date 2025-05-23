@@ -1,0 +1,51 @@
+{
+  "crop_category": "leafy_greens",
+  "display_name": "Leafy Greens (Lettuce, Spinach, Kale)",
+  "crops": ["lettuce", "spinach", "kale", "arugula", "swiss_chard"],
+  "growth_stages": {
+    "germination": {
+      "duration_days": "3-7",
+      "temperature": {"day": 22, "night": 18},
+      "humidity": {"min": 60, "max": 80},
+      "light_hours": 16,
+      "ph_range": {"min": 5.5, "max": 6.5},
+      "ec_range": {"min": 0.8, "max": 1.2}
+    },
+    "seedling": {
+      "duration_days": "7-14",
+      "temperature": {"day": 20, "night": 16},
+      "humidity": {"min": 50, "max": 70},
+      "light_hours": 14,
+      "ph_range": {"min": 5.8, "max": 6.2},
+      "ec_range": {"min": 1.0, "max": 1.6}
+    },
+    "vegetative": {
+      "duration_days": "14-30",
+      "temperature": {"day": 18, "night": 14},
+      "humidity": {"min": 45, "max": 65},
+      "light_hours": 12,
+      "ph_range": {"min": 5.8, "max": 6.2},
+      "ec_range": {"min": 1.2, "max": 2.0}
+    },
+    "harvest": {
+      "duration_days": "30-45",
+      "indicators": ["leaf_size_mature", "color_vibrant"],
+      "harvest_method": "cut_and_come_again"
+    }
+  },
+  "nutrients": {
+    "primary": "balanced_leafy_green",
+    "n_p_k_ratio": "3-1-2",
+    "supplements": ["calcium", "magnesium"],
+    "deficiency_symptoms": {
+      "nitrogen": "yellowing_lower_leaves",
+      "phosphorus": "purple_leaf_edges",
+      "potassium": "brown_leaf_tips"
+    }
+  },
+  "common_issues": {
+    "tip_burn": "reduce_ec_increase_airflow",
+    "bolting": "reduce_temperature_increase_light",
+    "slow_growth": "check_ph_increase_nutrients"
+  }
+}
