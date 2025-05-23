@@ -16,6 +16,7 @@ from farm.security.config import create_secure_app, AuthenticationManager
 from farm.error_handling.framework import ErrorHandler
 from farm.api import api_bp
 from farm.monitoring import init_monitoring
+from farm.plugins import PluginManager
 
 
 def create_app(config_name='production'):
@@ -38,6 +39,11 @@ def create_app(config_name='production'):
     
     # Initialize monitoring
     init_monitoring(app)
+
+    # Initialize plugins
+    plugin_dir = app.config.get('PLUGIN_DIR', os.path.join(os.path.dirname(os.path.dirname(__file__)), 'plugins'))
+    app.plugin_manager = PluginManager(app, plugin_dir)
+    app.plugin_manager.load_plugins()
     
     # Register blueprints
     app.register_blueprint(api_bp, url_prefix='/api/v1')

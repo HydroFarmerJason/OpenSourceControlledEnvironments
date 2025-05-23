@@ -45,7 +45,31 @@ sudo ./setup/setup.sh
 sudo ./setup/educational_setup.sh
 ```
 
+### **Option 3: 5‑Minute Install**
+```bash
+wget -qO- https://get.osce.io | bash
+```
+
+This script installs dependencies, detects your hardware, and starts the server
+on port 8080—just like WordPress' famous 5‑minute setup.
+
 **🎯 Ready in 15 minutes!** Access your dashboard at `http://your-pi-ip-address`
+
+---
+
+## 🔌 **Plugin System**
+
+OSCE works just like WordPress—drop plugins into the `plugins/` folder and they
+automatically load on startup. Each plugin lives in its own directory with a
+`plugin.py` and `plugin.json` file. To install a plugin:
+
+```bash
+cd OpenSourceControlledEnvironments/plugins
+git clone https://github.com/osce-plugins/temperature-alert
+```
+
+The next time you start the server, the plugin is active and its API routes are
+available.
 
 ---
 

@@ -6,6 +6,8 @@ Application configuration
 import os
 from datetime import timedelta
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
 
 class Config:
     """Base configuration"""
@@ -40,6 +42,9 @@ class Config:
     # Logging
     LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
     LOG_FILE = os.getenv('LOG_FILE', '/var/log/farm/app.log')
+
+    # Plugins
+    PLUGIN_DIR = os.getenv('PLUGIN_DIR', os.path.join(BASE_DIR, 'plugins'))
 
 
 class DevelopmentConfig(Config):
