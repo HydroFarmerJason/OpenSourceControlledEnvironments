@@ -61,10 +61,10 @@ jobs:
     - name: Check required documentation
       run: |
         required_files=(
-          "docs/HARDWARE_COMPATIBILITY.md"
+          "hardware/compatibility/HARDWARE_COMPATIBILITY.md"
           ".github/CONTRIBUTING.md"
           ".github/CODE_OF_CONDUCT.md"
-          "LICENSE.md"
+          "LICENSE"
         )
         
         for file in "${required_files[@]}"; do
