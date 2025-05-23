@@ -57,6 +57,80 @@ paths:
                     type: boolean
       security:
         - ApiKeyAuth: []
+  /api/students:
+    get:
+      summary: List registered students
+      responses:
+        '200':
+          description: Student list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  students:
+                    type: array
+                    items:
+                      type: object
+    post:
+      summary: Add a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                grade:
+                  type: string
+                id:
+                  type: string
+      responses:
+        '200':
+          description: Added student
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  student:
+                    type: object
+      security:
+        - ApiKeyAuth: []
+  /api/activities:
+    post:
+      summary: Log a student activity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                student:
+                  type: string
+                action:
+                  type: string
+                details:
+                  type: string
+      responses:
+        '200':
+          description: Activity logged
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  entry:
+                    type: object
+      security:
+        - ApiKeyAuth: []
 components:
   securitySchemes:
     ApiKeyAuth:
