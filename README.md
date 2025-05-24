@@ -179,6 +179,16 @@ Experience multi-agent coordination with our FFT-based hive mind:
 python osce-hivemind-fft.py
 ```
 
+## 📂 Example Scripts
+
+Explore advanced functionality using the scripts in the repository root:
+
+- `osce_unified_setup.py` – Production-ready setup leveraging the IoT Abstract Resource Model.
+- `osce_hal_enhanced.py` – Enhanced hardware abstraction layer with monitoring and security.
+- `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
+
+Run any script with `python <script>` to see it in action.
+
 ## 🔌 Plugin Ecosystem
 
 Extend OSCE with our growing plugin marketplace:
