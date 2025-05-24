@@ -11,6 +11,7 @@
 **The WordPress of IoT for Controlled Environment Agriculture**
 
 Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source)
+osce@duck.com
 
 [Installation](#-quick-start) • [Features](#-features) • [Documentation](#-documentation) • [Community](#-community) • [Contributing](#-contributing)
 
