@@ -395,19 +395,19 @@ echo "$i2c_devices"
 echo "$i2c_devices" > "${CONFIG_DIR}/i2c_devices.txt"
 
 if echo "$i2c_devices" | grep -q "48"; then
-  echo -e "${GREEN}✓ Found ADS1115 ADC at address 0x48${NC}"
+  echo -e "${GREEN} Found ADS1115 ADC at address 0x48${NC}"
   echo "ads1115,0x48" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 if echo "$i2c_devices" | grep -q "39"; then
-  echo -e "${GREEN}✓ Found TSL2561 Light Sensor at address 0x39${NC}"
+  echo -e "${GREEN} Found TSL2561 Light Sensor at address 0x39${NC}"
   echo "tsl2561,0x39" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 if echo "$i2c_devices" | grep -q "76"; then
-  echo -e "${GREEN}✓ Found BME280 Temperature/Humidity/Pressure at address 0x76${NC}"
+  echo -e "${GREEN} Found BME280 Temperature/Humidity/Pressure at address 0x76${NC}"
   echo "bme280,0x76" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 if echo "$i2c_devices" | grep -q "44"; then
-  echo -e "${GREEN}✓ Found SHT31 Temperature/Humidity at address 0x44${NC}"
+  echo -e "${GREEN} Found SHT31 Temperature/Humidity at address 0x44${NC}"
   echo "sht31,0x44" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 
@@ -416,16 +416,16 @@ echo -e "\n${CYAN}1-Wire Temperature Sensors:${NC}"
 if [ -d /sys/bus/w1/devices ]; then
   ds18b20_devices=$(ls /sys/bus/w1/devices/ | grep -v "w1_bus_master")
   if [ -z "$ds18b20_devices" ]; then
-    echo -e "${RED}✗ No DS18B20 temperature sensors detected${NC}"
+    echo -e "${RED} No DS18B20 temperature sensors detected${NC}"
   else
-    echo -e "${GREEN}✓ Found DS18B20 temperature sensors:${NC}"
+    echo -e "${GREEN} Found DS18B20 temperature sensors:${NC}"
     for device in $ds18b20_devices; do
       echo "  - $device"
       echo "ds18b20,$device" >> "${CONFIG_DIR}/detected_sensors.txt"
     done
   fi
 else
-  echo -e "${RED}✗ 1-Wire bus not detected${NC}"
+  echo -e "${RED} 1-Wire bus not detected${NC}"
 fi
 
 # Check for USB devices
@@ -829,43 +829,43 @@ echo "Hostname: $(hostname)" >> $LOG_FILE
 
 echo "Checking Mycodo services..." >> $LOG_FILE
 if systemctl is-active --quiet mycodoflask && systemctl is-active --quiet mycododaemon; then
-  echo "✓ Mycodo services running" >> $LOG_FILE
+  echo " Mycodo services running" >> $LOG_FILE
 else
-  echo "✗ Mycodo services not running properly" >> $LOG_FILE
+  echo " Mycodo services not running properly" >> $LOG_FILE
   systemctl restart mycodoflask
   systemctl restart mycododaemon
 fi
 
 echo "Checking network connection..." >> $LOG_FILE
 if ping -c 1 8.8.8.8 &> /dev/null; then
-  echo "✓ Network connection active" >> $LOG_FILE
+  echo " Network connection active" >> $LOG_FILE
 else
-  echo "✗ Network connection issue" >> $LOG_FILE
+  echo " Network connection issue" >> $LOG_FILE
 fi
 
 echo "Checking I2C sensors..." >> $LOG_FILE
 if i2cdetect -y 1 &> /dev/null; then
-  echo "✓ I2C bus accessible" >> $LOG_FILE
+  echo " I2C bus accessible" >> $LOG_FILE
   i2c_devices=$(i2cdetect -y 1 | grep -v "\-\-" | grep -v "00:" | tr -d ' ' | tr -d ':' | tr -d 'UU' | wc -c)
   if [ $i2c_devices -gt 0 ]; then
-    echo "✓ Found I2C devices" >> $LOG_FILE
+    echo " Found I2C devices" >> $LOG_FILE
   else
-    echo "✗ No I2C devices found" >> $LOG_FILE
+    echo " No I2C devices found" >> $LOG_FILE
   fi
 else
-  echo "✗ I2C bus not accessible" >> $LOG_FILE
+  echo " I2C bus not accessible" >> $LOG_FILE
 fi
 
 echo "Checking 1-Wire sensors..." >> $LOG_FILE
 if [ -d /sys/bus/w1/devices ]; then
   w1_devices=$(ls /sys/bus/w1/devices/ | grep -v "w1_bus_master" | wc -l)
   if [ $w1_devices -gt 0 ]; then
-    echo "✓ Found $w1_devices 1-Wire temperature sensors" >> $LOG_FILE
+    echo " Found $w1_devices 1-Wire temperature sensors" >> $LOG_FILE
   else
-    echo "✗ No 1-Wire sensors found" >> $LOG_FILE
+    echo " No 1-Wire sensors found" >> $LOG_FILE
   fi
 else
-  echo "✗ 1-Wire bus not accessible" >> $LOG_FILE
+  echo " 1-Wire bus not accessible" >> $LOG_FILE
 fi
 
 if [[ -f /var/mycodo/databases/mycodo.db && -x $(which sqlite3) ]]; then

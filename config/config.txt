@@ -25,10 +25,10 @@ navigation:
   - title: Ethics
     url: /pages/ethics
   - title: GitHub
-    url: https://github.com/example-user/container-farm-control-system
+    url: https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments
 
 # Custom variables
 author: Jason DeLooze and contributors
 version: 1.0.0
-github_username: example-user
-repository: example-user/container-farm-control-system
+github_username: HydroFarmerJason
+repository: HydroFarmerJason/OpenSourceControlledEnvironments

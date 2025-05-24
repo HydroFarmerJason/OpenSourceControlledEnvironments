@@ -1,0 +1,15 @@
+{
+  "id": "temperature-alert",
+  "name": "Temperature Alert",
+  "version": "1.0.0",
+  "description": "Get email alerts when temperature goes out of range",
+  "author": "OSCE Community",
+  "homepage": "https://github.com/osce-plugins/temperature-alert",
+  "requirements": {
+    "osce": ">=1.0.0",
+    "python": ">=3.7"
+  },
+  "tags": ["alerts", "notifications", "temperature", "email"],
+  "category": "Monitoring",
+  "license": "MIT"
+}
