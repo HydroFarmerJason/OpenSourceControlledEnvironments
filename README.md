@@ -71,6 +71,11 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
   - Automatic failover
   - Global collaboration network
 
+- **🧠 Unified Hive Mind**
+  - Frequency-domain agent coordination via FFT
+  - Bridges digital decisions with physical actions
+  - Demonstration: `osce-hivemind-fft.py`
+
 ### 🎮 Interface Options
 
 1. **Web Dashboard** - Beautiful, responsive interface
@@ -102,6 +107,7 @@ OSCE introduces revolutionary concepts to IoT:
 1. **IoT Abstract Resource Model (IARM)** - Write once, run on any hardware
 2. **Zero-Trust IoT Security Model (ZISM)** - Enterprise security for all
 3. **Federated Learning Network** - Shared intelligence, private data
+4. **Unified Hive Mind (UHM)** - Frequency-based agent orchestration bridging digital decisions with real actions
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -163,6 +169,14 @@ await env.add_sensor("greenhouse_temp", type="DHT22", pin=4)
 env.add_rule("if greenhouse_temp > 28°C then turn exhaust_fan on")
 
 # That's it! No complex programming required
+```
+
+## 🧠 Hive Mind Demonstration
+
+Experience multi-agent coordination with our FFT-based hive mind:
+
+```bash
+python osce-hivemind-fft.py
 ```
 
 ## 🔌 Plugin Ecosystem
