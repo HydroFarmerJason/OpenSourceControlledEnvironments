@@ -1,4 +1,4 @@
-#  OSCE - Open Source Controlled Environments
+# OSCE - Open Source Controlled Environments
 
 <div align="center">
 
@@ -10,167 +10,145 @@
 
 **The WordPress of IoT for Controlled Environment Agriculture**
 
-Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source)
-osce@duck.com
-
-[Installation](#-quick-start) • [Features](#-features) • [Documentation](#-documentation) • [Community](#-community) • [Contributing](#-contributing)
+Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source)  
+Contact: osce@duck.com
 
 </div>
 
 ---
 
-##  Transform Your Growing Operation in 5 Minutes
+## Transform Your Growing Operation in 5 Minutes
 
-OSCE is a production-ready, modular platform that makes advanced Controlled Environment Agriculture (CEA) accessible to everyone—from hobbyists to commercial operations. Like WordPress revolutionized websites, OSCE revolutionizes IoT for agriculture.
+OSCE makes smart growing simple. Whether you're managing a windowsill herb garden or a commercial greenhouse, our platform helps you monitor and control your environment without the complexity of traditional IoT systems.
 
-###  Why OSCE?
+Think of it as WordPress for growing systems—easy to install, simple to use, endlessly customizable.
 
-| Traditional IoT | OSCE Platform |
-|-----------------|---------------|
-| Days to setup | **5 minutes** to operational |
-| Vendor lock-in | **100% open source** |
-| Limited hardware support | **Universal hardware** compatibility |
-| Complex programming | **Natural language** automation |
-| Isolated systems | **Federated network** ready |
-| Manual monitoring | **AI-powered** optimization |
+### Why OSCE?
 
-##  Quick Start
+| Traditional Smart Growing | With OSCE |
+|--------------------------|-----------|
+| Expensive proprietary systems | **Free and open source** |
+| Locked to one brand | **Works with any hardware** |
+| Complex programming required | **Plain English automation** |
+| Each system stands alone | **Connect and share with others** |
+| Manual everything | **Smart automation built-in** |
+
+## Get Started in Minutes
 
 ```bash
-# One-line installation (Linux/MacOS)
+# One-command installation (Linux/MacOS)
 curl -sSL https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/install.sh | bash -s -- --version 2.1
 
 # Your system is now running at https://localhost:8080
 ```
 
-**First-time setup? See our [5-minute quickstart guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)**
+## What Can OSCE Do?
 
-## OSCE v2.1 Updates Summary
+### For Everyone
 
-The 2025 release introduces OSCE v2.1 with expanded real-time harmony features. The unified installer now sets up PHAL v2.1, HiveMindFFT v2.1, and Quantum Planetary Awareness v2.1 automatically. The dashboard has been refreshed for live WebSocket data.
+- **Monitor from Anywhere** – Check temperature, humidity, and more from your phone
+- **Smart Automation** – Tell it what you want in plain English: *"Turn on fans when it's too hot"*
+- **Beautiful Dashboards** – See what's happening at a glance
+- **Instant Alerts** – Get notified before problems happen
+- **Share & Learn** – Connect with other growers and share what works
 
-Key highlights:
-- 3D FFT consensus engine with role-weighted voting
-- Real-time planetary state recognition with Schumann resonance monitoring
-- Predictive permissions and device health recovery
-- Live dashboard with harmony meter and spectrum toggle
-- AI copilot SDK for predictive orchestration
-- Federation ready with post-quantum encryption and blockchain audit trails
+### Your First Automation – It's This Easy!
 
-
-## Getting Started
-
-### Minimum Requirements
-- **Hardware**: Raspberry Pi 3+ or equivalent (2GB RAM, 10GB storage)
-- **Software**: Docker, Docker Compose
-- **Network**: Internet connection for initial setup
-
-### Installation Options
-
-#### Option 1: Quick Install (Recommended)
-```bash
-curl -sSL https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/install.sh | bash -s -- --version 2.1
-```
-
-#### Option 2: Manual Installation
-```bash
-git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
-cd OpenSourceControlledEnvironments
-./install.sh --interactive
-```
-
-#### Option 3: Docker Only
-```bash
-docker run -d -p 8080:8080 hydrofarmer/osce:latest
-```
-
-## Example: Your First Automation
 ```python
 # Add a temperature sensor
 await env.add_sensor("greenhouse_temp", type="DHT22", pin=4)
 
-# Create a natural language rule
+# Create a rule in plain English
 env.add_rule("if greenhouse_temp > 28°C then turn exhaust_fan on")
 
 # That's it! No complex programming required
 ```
 
-## Hive Mind Demonstration
-Experience multi-agent coordination with our FFT-based hive mind:
-```bash
-python osce-hivemind-fft.py
+## Works With Your Hardware
+
+OSCE supports whatever you have:
+- Raspberry Pi (all models)
+- Arduino boards
+- ESP32/ESP8266
+- Professional PLCs
+- And many more...
+
+## Extend with Plugins
+
+Add features as you grow:
+
+- **Weather Forecasts** – Adjust automatically for coming weather
+- **Plant Health Camera** – AI spots problems early
+- **Market Prices** – Know what to grow based on demand
+- **Solar Power** – Manage renewable energy
+- **Notifications** – Get alerts via SMS, Email, Slack, and more
+
+## Join Our Community
+
+Connect with thousands of growers and developers worldwide:
+
+- **Discord Chat** – Get help and share ideas
+- **Forum** – In-depth discussions
+- **Video Tutorials** – Learn by watching
+- **Newsletter** – Monthly tips and updates
+
+---
+
+## Documentation
+
+### By User Type
+- **New to Growing?** Start with [docs/BEGINNERS.md](docs/BEGINNERS.md)
+- **Experienced Growers** See [docs/AGENTS.md](docs/AGENTS.md)
+- **Developers** Check [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
+- **IT Teams** Read [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+
+### Quick References
+- [Installation Guide](docs/INSTALLATION.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
+- [Security Best Practices](docs/SECURITY.md)
+- [API Documentation](docs/API.md)
+
+## Advanced Features
+
+*For those who want to dive deeper:*
+
+### Version 2.1 Technical Highlights
+
+- **Unified System Architecture** – PHAL v2.1, HiveMindFFT v2.1, and Quantum Planetary Awareness v2.1
+- **Real-time Coordination** – 3D FFT consensus engine with role-weighted voting
+- **Advanced Monitoring** – Planetary state recognition with Schumann resonance monitoring
+- **Predictive AI** – Anticipates needs and prevents problems
+- **Enterprise Security** – Post-quantum encryption and blockchain audit trails
+- **Federation Ready** – Multi-site management with automatic failover
+
+### Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         User Interface Layer                   │
+│         Web Dashboard │ Mobile │ API │ Voice                   │
+├─────────────────────────────────────────────────────────────────┤
+│                         Application Layer                      │
+│     Environment Manager │ Plugin System │ AI Engine             │
+├─────────────────────────────────────────────────────────────────┤
+│              Hardware Abstraction Layer (HAL)                  │
+│        Universal drivers for any IoT hardware                  │
+├─────────────────────────────────────────────────────────────────┤
+│                         Hardware Layer                         │
+│     Raspberry Pi │ ESP32 │ Arduino │ Industrial PLC            │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## Example Scripts
-Explore advanced functionality using the scripts in the repository root:
+### For Developers
 
- - `osce-unified-setup-v2.py` – Primary v2 bootstrap with PHAL, HiveMind FFT, and Quantum Planetary Awareness.
- - `osce_unified_setup.py` – Original unified setup leveraging the IoT Abstract Resource Model.
- - `osce_hal_enhanced.py` – Enhanced hardware abstraction layer with monitoring and security.
- - `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
- - `osce.core.living_quantum_monitor` – Evidence-led monitoring for quantum CEA experiments.
-
-Run any script with `python <script>` to see it in action.
-##  Features
-
-###  Core Capabilities
-
-- **Universal Hardware Support**
-  - Raspberry Pi, ESP32, Arduino, and more
-  - Auto-discovery of sensors and actuators
-  - Hot-swappable components
-
-- **AI-Powered Automation**
-  - Natural language rule creation
-  - Predictive maintenance
-  - Growth optimization ML models
-
-- **Enterprise Security**
-  - Zero-trust architecture
-  - Blockchain audit trails
-  - Quantum-ready encryption
-
-- **Comprehensive Monitoring**
-  - Real-time dashboards
-  - Automated compliance reporting
-  - Mobile app support
-
-- **Federation & Scaling**
-  - Multi-site management
-  - Automatic failover
-  - Global collaboration network
-
-- **Unified Hive Mind**
-  - Frequency-domain agent coordination via FFT
-  - Bridges digital decisions with physical actions
-  - Demonstration: `osce-hivemind-fft.py`
-
-Run any script with `python <script>` to see it in action.
-
-##  Plugin Ecosystem
-
-Extend OSCE with our growing plugin marketplace:
-
-- **Weather Integration** - Proactive climate control
-- **AI Plant Health** - Disease detection via camera
-- **Market Prices** - Optimize growing based on demand
-- **Solar Management** - Integrate renewable energy
-- **Notifications** - SMS, Email, Slack, Teams
-
-[Browse all plugins →](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/plugins)
-
-##  Development
-
-### Building from Source
-
+#### Build from Source
 ```bash
-# Clone the repository
 git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
 cd OpenSourceControlledEnvironments
 
 # Setup development environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements-dev.txt
 
 # Run tests
@@ -180,8 +158,7 @@ pytest
 python -m osce.main --dev
 ```
 
-### Creating a Plugin
-
+#### Create Your Own Plugin
 ```python
 # my_plugin/plugin.yaml
 id: my-awesome-plugin
@@ -193,54 +170,86 @@ author: Your Name
 class Plugin:
     def __init__(self, osce):
         self.osce = osce
-        
+
     async def activate(self):
         # Your plugin logic here
         self.osce.log("My plugin is active!")
 ```
 
-##  Performance
+### Example Scripts
+Explore advanced functionality:
+- `osce-unified-setup-v2.py` – Bootstrap v2.1 with all modules
+- `osce-hivemind-fft.py` – Multi-agent coordination demo
+- `osce_hal_enhanced.py` – Enhanced hardware abstraction
+- `osce_complete_example.py` – Multi-site deployment example
 
-Benchmarked on Raspberry Pi 4 (4GB):
+### Performance Metrics
+*Tested on Raspberry Pi 4 (4GB):*
+- Startup: < 30 seconds
+- Sensor Response: < 100ms
+- Rule Execution: < 50ms
+- Concurrent Devices: 100+
+- Data Points/Day: 1M+
 
-- **Startup Time**: < 30 seconds
-- **Sensor Response**: < 100ms
-- **Rule Execution**: < 50ms
-- **Concurrent Devices**: 100+
-- **Data Points/Day**: 1M+
+## Installation Options
 
-##  Security
+### Option 1: Quick Install (Recommended)
+```bash
+curl -sSL https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/install.sh | bash -s -- --version 2.1
+```
 
-OSCE takes security seriously:
+### Option 2: Manual Installation
+```bash
+git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
+cd OpenSourceControlledEnvironments
+./install.sh --interactive
+```
 
--  Regular security audits
--  Automated vulnerability scanning
--  Responsible disclosure program
--  End-to-end encryption option
--  GDPR/CCPA compliant
+### Option 3: Docker Only
+```bash
+docker run -d -p 8080:8080 hydrofarmer/osce:latest
+```
 
-Report security issues to: security@osce.io
+### Minimum Requirements
+- **Hardware**: Raspberry Pi 3+ or equivalent (2GB RAM, 10GB storage)
+- **Software**: Docker, Docker Compose
+- **Network**: Internet connection for initial setup
 
-##  Contributing
+## Hive Mind Demonstration
+Experience multi-agent coordination with our FFT-based hive mind:
+```bash
+python osce-hivemind-fft.py
+```
 
-We love contributions! See our [Contributing Guide](CONTRIBUTING.md) for details.
+## Security & Privacy
 
-### Ways to Contribute
+Your data, your control:
+- Everything runs locally by default
+- Optional encryption for all data
+- Regular security updates
+- GDPR/CCPA compliant
+- Responsible disclosure program
 
-1. ** Report Bugs**: [Issue Tracker](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/issues)
-2. ** Suggest Features**: [Feature Requests](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions/categories/ideas)
-3. ** Improve Docs**: Always appreciated!
-4. ** Submit PRs**: Fork, code, test, PR
-5. ** Translate**: Help us go global
-6. ** Create Tutorials**: Share your knowledge
+Report security issues: security@osce.io
 
-##  License
+## Contributing
 
-OSCE is open source under the [MIT License](LICENSE). Use it freely in personal and commercial projects.
+We welcome contributions of all kinds!
 
-##  Acknowledgments
+1. **Report Bugs** – [Issue Tracker](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/issues)
+2. **Suggest Features** – [Discussions](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions)
+3. **Improve Docs** – Always appreciated!
+4. **Submit Code** – See [CONTRIBUTING.md](CONTRIBUTING.md)
+5. **Translate** – Help us go global
+6. **Create Tutorials** – Share your knowledge
 
-Built with  by the OSCE Community
+## License
+
+OSCE is open source under the [MIT License](LICENSE). Use it freely for personal or commercial projects.
+
+## Acknowledgments
+
+Built by the OSCE Community
 
 Special thanks to:
 - All our contributors and testers
@@ -251,8 +260,8 @@ Special thanks to:
 
 <div align="center">
 
-** Growing the future, together **
+**Growing the future, together**
 
-[Website](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) • [Documentation](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki) • [Community](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions) • [Donate](https://github.com/sponsors/HydroFarmerJason)
+[GitHub Repository](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) • [Issues](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/issues) • [Discussions](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions)
 
 </div>
