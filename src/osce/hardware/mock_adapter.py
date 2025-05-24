@@ -552,7 +552,7 @@ if __name__ == "__main__":
     edu_mock = InteractiveMockAdapter(scenario="classroom")
     edu_mock.initialize()
     
-    # Student predicts temperature
+    # Student/educator predicts temperature
     edu_mock.predict_reading("temperature", 23.5)
     result = edu_mock.check_prediction("temperature")
     print(f"Prediction result: {result}")

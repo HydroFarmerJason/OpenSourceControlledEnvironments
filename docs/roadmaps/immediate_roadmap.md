@@ -99,7 +99,7 @@ env.add_node('remote', 'esp32', '192.168.1.100')
 ## Success Metrics
 
 ### Week 1 Success
-- [ ] PhD consultant installs without help
+- [ ] New educator installs without help
 - [ ] Shows temperature on dashboard
 - [ ] Runs for 24 hours without crash
 
@@ -142,7 +142,7 @@ env.add_node('remote', 'esp32', '192.168.1.100')
 - Week 3: 50% coding, 50% community
 - Week 4: 30% coding, 70% polish/launch
 
-### PhD Consultant Time
+### Test Educator Time
 - Week 1: 2 hours testing install
 - Week 2: 4 hours testing features
 - Week 3: 2 hours plugin ideas
