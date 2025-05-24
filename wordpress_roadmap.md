@@ -167,7 +167,7 @@ Essential plugins maintained by core team:
 
 ### Week 11-12: Developer Tools
 ```bash
-# Plugin development CLI
+# Development tools
 osce create-plugin my-awesome-sensor
 cd my-awesome-sensor
 osce test
