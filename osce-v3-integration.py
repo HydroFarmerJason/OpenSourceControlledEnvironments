@@ -12,13 +12,13 @@ from datetime import datetime
 from typing import Dict, List, Any
 
 from osce_hal_enhanced import HALIntegratedEnvironment, SecurityLevel
-from modules.climate_adaptation.planetary_optimizer_v3 import PlanetaryOptimizerV3
+from osce.core.planetary_optimizer_v3 import PlanetaryOptimizerV3
 from modules.synbio.bioreactor_integration_v3 import SynBioControllerV3
-from modules.carbon_credits.blockchain_carbon_v3 import CarbonCreditEngineV3
-from modules.quantum_mesh.qkd_network_v3 import QuantumSecuredMeshV3
+from osce.modules.carbon_credits.blockchain_carbon_v3 import CarbonCreditEngineV3
+from osce.modules.quantum_mesh.qkd_network_v3 import QuantumSecuredMeshV3
 from modules.pbe.genomic_predictor_v3 import GenomicPredictorV3
-from modules.abil.plant_consciousness_interface_v3 import PlantConsciousnessInterfaceV3
-from modules.quantum_cea.living_quantum_monitor import LivingQuantumMonitor
+from osce.modules.abil.plant_consciousness_interface_v3 import PlantConsciousnessInterfaceV3
+from osce.core.living_quantum_monitor import LivingQuantumMonitor
 
 import structlog
 logger = structlog.get_logger()
