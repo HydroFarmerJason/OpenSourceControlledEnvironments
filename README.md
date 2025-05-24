@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![OSCE Logo](https://img.shields.io/badge/OSCE-4.0-green?style=for-the-badge)
+![OSCE Logo](https://img.shields.io/badge/OSCE-2.1-green?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.11+-yellow?style=for-the-badge)
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge)
@@ -38,23 +38,79 @@ OSCE is a production-ready, modular platform that makes advanced Controlled Envi
 
 ```bash
 # One-line installation (Linux/MacOS)
-curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlledEnvironments/main/install.sh | bash
+curl -sSL https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/install.sh | bash -s -- --version 2.1
 
 # Your system is now running at https://localhost:8080
 ```
 
 **First-time setup? See our [5-minute quickstart guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)**
 
-## OSCE v2.0 Updates Summary
+## OSCE v2.1 Updates Summary
 
-The 2025 release brings PHAL v2, HiveMind FFT v2, and Quantum Planetary Awareness v2 together in a unified stack. The new `osce-unified-setup-v2.py` bootstrap script wires these components automatically and serves the updated dashboard from `static/dashboard.html`.
+The 2025 release introduces OSCE v2.1 with expanded real-time harmony features. The unified installer now sets up PHAL v2.1, HiveMindFFT v2.1, and Quantum Planetary Awareness v2.1 automatically. The dashboard has been refreshed for live WebSocket data.
 
 Key highlights:
-- Cryptographic manifest validation and permission hardening
-- Frequency-domain consensus for resolving conflicts
-- Planetary context broadcasting with safety enforcement
-- Responsive web dashboard with live EM spectrum graph
+- 3D FFT consensus engine with role-weighted voting
+- Real-time planetary state recognition with Schumann resonance monitoring
+- Predictive permissions and device health recovery
+- Live dashboard with harmony meter and spectrum toggle
+- AI copilot SDK for predictive orchestration
+- Federation ready with post-quantum encryption and blockchain audit trails
 
+
+## Getting Started
+
+### Minimum Requirements
+- **Hardware**: Raspberry Pi 3+ or equivalent (2GB RAM, 10GB storage)
+- **Software**: Docker, Docker Compose
+- **Network**: Internet connection for initial setup
+
+### Installation Options
+
+#### Option 1: Quick Install (Recommended)
+```bash
+curl -sSL https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/raw/main/install.sh | bash -s -- --version 2.1
+```
+
+#### Option 2: Manual Installation
+```bash
+git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
+cd OpenSourceControlledEnvironments
+./install.sh --interactive
+```
+
+#### Option 3: Docker Only
+```bash
+docker run -d -p 8080:8080 hydrofarmer/osce:latest
+```
+
+## Example: Your First Automation
+```python
+# Add a temperature sensor
+await env.add_sensor("greenhouse_temp", type="DHT22", pin=4)
+
+# Create a natural language rule
+env.add_rule("if greenhouse_temp > 28°C then turn exhaust_fan on")
+
+# That's it! No complex programming required
+```
+
+## Hive Mind Demonstration
+Experience multi-agent coordination with our FFT-based hive mind:
+```bash
+python osce-hivemind-fft.py
+```
+
+## Example Scripts
+Explore advanced functionality using the scripts in the repository root:
+
+ - `osce-unified-setup-v2.py` – Primary v2 bootstrap with PHAL, HiveMind FFT, and Quantum Planetary Awareness.
+ - `osce_unified_setup.py` – Original unified setup leveraging the IoT Abstract Resource Model.
+ - `osce_hal_enhanced.py` – Enhanced hardware abstraction layer with monitoring and security.
+ - `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
+ - `osce.core.living_quantum_monitor` – Evidence-led monitoring for quantum CEA experiments.
+
+Run any script with `python <script>` to see it in action.
 ##  Features
 
 ###  Core Capabilities
@@ -88,128 +144,6 @@ Key highlights:
   - Frequency-domain agent coordination via FFT
   - Bridges digital decisions with physical actions
   - Demonstration: `osce-hivemind-fft.py`
- - Advanced modules: `osce.core.living_quantum_monitor`,
-   `osce.core.planetary_optimizer_v3`,
-   `osce.modules.carbon_credits.blockchain_carbon_v3`,
-   `osce.modules.abil.plant_consciousness_interface_v3`,
-   `osce.modules.quantum_mesh.qkd_network_v3`
-
-###  Interface Options
-
-1. **Web Dashboard** - Beautiful, responsive interface
-2. **Mobile Apps** - iOS/Android (coming soon)
-3. **API** - RESTful and GraphQL
-4. **CLI** - Full command-line control
-5. **Voice Control** - Alexa/Google Home integration
-
-##  Documentation
-
-### For Different Users
-
-- **Growers**: Start with [AGENTS.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Your complete operational guide
-- **Developers**: See [DEVELOPMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Architecture and plugin development
-- **IT Admins**: Check [DEPLOYMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Enterprise deployment guide
-- **AI Developers**: Read [AI_INTEGRATION.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Building AI copilots
-
-### Quick Links
-
-- [Hardware Compatibility List](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
-- [Plugin Development Guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
-- [Security Best Practices](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
-- [Troubleshooting Guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
-
-##  Architecture
-
-OSCE introduces revolutionary concepts to IoT:
-
-1. **IoT Abstract Resource Model (IARM)** - Write once, run on any hardware
-2. **Zero-Trust IoT Security Model (ZISM)** - Enterprise security for all
-3. **Federated Learning Network** - Shared intelligence, private data
-4. **Unified Hive Mind (UHM)** - Frequency-based agent orchestration bridging digital decisions with real actions
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    User Interface Layer                  │
-│         Web Dashboard │ Mobile │ API │ Voice            │
-├─────────────────────────────────────────────────────────┤
-│                    Application Layer                     │
-│     Environment Manager │ Plugin System │ AI Engine     │
-├─────────────────────────────────────────────────────────┤
-│              Hardware Abstraction Layer (HAL)            │
-│        Universal drivers for any IoT hardware           │
-├─────────────────────────────────────────────────────────┤
-│                    Hardware Layer                        │
-│     Raspberry Pi │ ESP32 │ Arduino │ Industrial PLC     │
-└─────────────────────────────────────────────────────────┘
-```
-
-Join our thriving community of growers, developers, and innovators:
-
-- **Discussions**: [GitHub Discussions](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions)
-- **Discord**: [Join our Discord](https://discord.gg/osce)
-- **Newsletter**: [Subscribe for updates](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/newsletter)
-- **YouTube**: [Video Tutorials](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/tutorials)
-
-##  Getting Started
-
-### Minimum Requirements
-
-- **Hardware**: Raspberry Pi 3+ or equivalent (2GB RAM, 10GB storage)
-- **Software**: Docker, Docker Compose
-- **Network**: Internet connection for initial setup
-
-### Installation Options
-
-#### Option 1: Quick Install (Recommended)
-```bash
-curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlledEnvironments/main/install.sh | bash
-```
-
-#### Option 2: Manual Installation
-```bash
-git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
-cd OpenSourceControlledEnvironments
-./install.sh --interactive
-```
-
-#### Option 3: Docker Only
-```bash
-docker run -d -p 8080:8080 hydrofarmer/osce:latest
-```
-
-##  Example: Your First Automation
-
-```python
-# Add a temperature sensor
-await env.add_sensor("greenhouse_temp", type="DHT22", pin=4)
-
-# Create a natural language rule
-env.add_rule("if greenhouse_temp > 28°C then turn exhaust_fan on")
-
-# That's it! No complex programming required
-```
-
-##  Hive Mind Demonstration
-
-Experience multi-agent coordination with our FFT-based hive mind:
-
-```bash
-python osce-hivemind-fft.py
-```
-
-##  Example Scripts
-
-Explore advanced functionality using the scripts in the repository root:
-
- - `osce-unified-setup-v2.py` – Primary v2 bootstrap with PHAL, HiveMind FFT, and Quantum Planetary Awareness.
- - `osce_unified_setup.py` – Original unified setup leveraging the IoT Abstract Resource Model.
-- `osce_hal_enhanced.py` – Enhanced hardware abstraction layer with monitoring and security.
-- `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
-- `osce.core.living_quantum_monitor` – Evidence-led monitoring for quantum CEA experiments.
-- `osce.core.planetary_optimizer_v3` – Distributed, hardware-aware planetary optimization.
-- `osce.modules.carbon_credits.blockchain_carbon_v3` – Automated carbon measurement and trading.
-- `osce.modules.abil.plant_consciousness_interface_v3` – Bioelectric plant interface with HAL.
-- `osce.modules.quantum_mesh.qkd_network_v3` – Quantum-secured mesh networking.
 
 Run any script with `python <script>` to see it in action.
 

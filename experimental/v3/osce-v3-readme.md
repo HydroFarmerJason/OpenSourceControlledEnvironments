@@ -4,7 +4,7 @@
 
 OSCE v3 is a comprehensive, open-source platform for controlled environment agriculture that prioritizes local control, data sovereignty, and ethical growing practices. Originally developed in response to proprietary system shutdowns, OSCE has evolved into a complete infrastructure for sustainable, intelligent farming.
 
-## 🌟 What's New in v3
+##  What's New in v3
 
 ### Hardware Abstraction Layer (HAL)
 - **Universal device support** - Swap sensors and actuators without changing code
@@ -19,7 +19,7 @@ OSCE v3 is a comprehensive, open-source platform for controlled environment agri
 - **Plant Consciousness Interface** - Bioelectric monitoring and plant democracy
 - **Living Quantum CEA** - Experimental ecosystem consciousness research
 
-## 🚀 Key Features
+##  Key Features
 
 ### Complete Environmental Control
 - Temperature, humidity, CO2, pH, and EC monitoring
@@ -170,7 +170,7 @@ modules:
     security_level: "enhanced"
 ```
 
-## 🌱 Advanced Modules
+##  Advanced Modules
 
 ### Planetary Optimizer
 Coordinate growing conditions with global climate adaptation:
@@ -276,7 +276,7 @@ Some OSCE v3 modules can significantly impact living systems. Please:
 - Start with basic modules and expand gradually
 - Join the community for support and best practices
 
-## 🌍 Vision
+##  Vision
 
 OSCE v3 represents a fundamental shift in agricultural technology - from extraction to collaboration, from control to partnership, from proprietary to sovereign. By providing open infrastructure for conscious agriculture, we enable communities worldwide to grow food sustainably while maintaining complete control over their systems and data.
 
