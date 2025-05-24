@@ -1,6 +1,6 @@
 # Your Next Steps - Making OSCE Real
 
-## 🚀 You're Ready to Launch!
+##  You're Ready to Launch!
 
 Here's your action plan to get OSCE live and working:
 
@@ -26,10 +26,10 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 ```
 
 Watch for:
-- ✅ Platform detected correctly
-- ✅ No red errors
-- ✅ Success message with URL
-- ✅ Dashboard loads in browser
+-  Platform detected correctly
+-  No red errors
+-  Success message with URL
+-  Dashboard loads in browser
 
 If something fails:
 ```bash
@@ -103,7 +103,7 @@ Create `docs/` folder with:
 - `HARDWARE.md` - Supported sensors
 - `PLUGINS.md` - How to add features
 
-## 📊 Success Milestones
+##  Success Milestones
 
 ### Day 1: It Works!
 - [ ] You can install it
@@ -129,7 +129,7 @@ Create `docs/` folder with:
 - [ ] Plugin system working
 - [ ] 100 stars
 
-## 🛠️ Technical Priorities
+##  Technical Priorities
 
 ### Must Have for v1.0 (This Week)
 1. **Installer works** - One command, no errors
@@ -149,7 +149,7 @@ Create `docs/` folder with:
 3. **Mobile app** - Progressive web app
 4. **Advanced features** - Via plugins
 
-## 💡 Remember
+##  Remember
 
 **The Goal**: Someone who knows nothing about programming can monitor their grow in 5 minutes.
 
@@ -157,7 +157,7 @@ Create `docs/` folder with:
 
 WordPress succeeded because v1.0 was simple but extensible. Same strategy here.
 
-## 🎯 Your Action Right Now
+##  Your Action Right Now
 
 1. Upload `install.sh` to GitHub
 2. Test the installer yourself
@@ -168,7 +168,7 @@ WordPress succeeded because v1.0 was simple but extensible. Same strategy here.
 7. Share with 5 more people
 8. Iterate based on feedback
 
-## 🌟 The Dream
+##  The Dream
 
 In 6 months, someone posts:
 
@@ -186,4 +186,4 @@ git commit -m "Launch OSCE - The WordPress of grow automation"
 git push
 ```
 
-Then run that beautiful one-liner and watch your dream become reality! 🌱
+Then run that beautiful one-liner and watch your dream become reality! 

@@ -107,13 +107,13 @@ env.start()  # Dashboard shows all sensors regardless of platform
 
 Featured Plugins:
 ┌─────────────────────────────────┐
-│ 📱 MQTT Communication           │
-│ ⭐⭐⭐⭐⭐ (142 reviews)         │
+│  MQTT Communication           │
+│  (142 reviews)         │
 │ Connect anything via MQTT       │
 │ [Install] [Details]             │
 ├─────────────────────────────────┤
-│ 📷 Plant Vision AI              │
-│ ⭐⭐⭐⭐☆ (89 reviews)          │
+│  Plant Vision AI              │
+│  (89 reviews)          │
 │ Monitor plant health with AI    │
 │ [Install] [Details]             │
 └─────────────────────────────────┘
@@ -229,10 +229,10 @@ fleet.add_site('Outdoor Tunnels', 'tunnels.mydomain.com')
 ## Updated Development Priorities
 
 ### Phase 1 (Weeks 1-4): Foundation
-1. ✅ Hardware Abstraction Layer
-2. ✅ Plugin System with marketplace
-3. ✅ Basic dashboard
-4. ✅ Multi-platform demo
+1.  Hardware Abstraction Layer
+2.  Plugin System with marketplace
+3.  Basic dashboard
+4.  Multi-platform demo
 
 ### Phase 2 (Weeks 5-8): Essential Plugins
 1. ESP32 Bridge

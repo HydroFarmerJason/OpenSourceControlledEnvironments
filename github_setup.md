@@ -48,12 +48,12 @@ OSCE is an open-source platform for monitoring and controlling growing environme
 
 ## Features
 
-- 🌡️ Auto-detects common sensors
-- 📊 Web dashboard for real-time monitoring
-- 🔌 Plugin system for infinite extensibility
-- 🌐 Works on any hardware platform
-- 📱 Mobile-friendly interface
-- 🔒 Privacy-first, runs locally
+-  Auto-detects common sensors
+-  Web dashboard for real-time monitoring
+-  Plugin system for infinite extensibility
+-  Works on any hardware platform
+-  Mobile-friendly interface
+-  Privacy-first, runs locally
 
 ## Supported Hardware
 
@@ -86,7 +86,7 @@ MIT License - see [LICENSE](https://github.com/HydroFarmerJason/OpenSourceContro
 
 ---
 
-*Happy Growing! 🌱*
+*Happy Growing! *
 ```
 
 ### 4. Create Basic .gitignore
@@ -210,7 +210,7 @@ Show:
 Tweet/Post:
 
 ```
-🌱 Just launched OSCE - Open Source Controlled Environments!
+ Just launched OSCE - Open Source Controlled Environments!
 
 Install in one line:
 curl -sSL https://get.osce.io | bash
@@ -253,7 +253,7 @@ fi
 
 ---
 
-## You're Ready! 🚀
+## You're Ready! 
 
 1. Upload `install.sh` to your GitHub repo
 2. Test the one-line installer

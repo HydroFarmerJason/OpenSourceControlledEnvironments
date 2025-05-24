@@ -54,18 +54,18 @@ def check_health():
         # Check database
         try:
             db.session.execute('SELECT 1')
-            click.echo('✓ Database connection: OK')
+            click.echo(' Database connection: OK')
         except Exception as e:
-            click.echo(f'✗ Database connection: {e}', err=True)
+            click.echo(f' Database connection: {e}', err=True)
         
         # Check sensors
         from farm.sensors import sensor_manager
         sensor_status = sensor_manager.check_all_sensors()
         for sensor_id, status in sensor_status.items():
             if status['healthy']:
-                click.echo(f'✓ Sensor {sensor_id}: OK')
+                click.echo(f' Sensor {sensor_id}: OK')
             else:
-                click.echo(f'✗ Sensor {sensor_id}: {status["error"]}', err=True)
+                click.echo(f' Sensor {sensor_id}: {status["error"]}', err=True)
 
 
 if __name__ == '__main__':

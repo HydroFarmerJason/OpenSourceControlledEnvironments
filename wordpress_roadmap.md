@@ -84,20 +84,20 @@ class OSCEPlugin:
 ```
 Welcome to OSCE Setup
 
-1. System Check ✓
+1. System Check 
    - Raspberry Pi 4 detected
    - Python 3.9 found
    - 8GB storage available
 
 2. What do you want to monitor?
-   [✓] Temperature & Humidity
+   [] Temperature & Humidity
    [ ] Soil Moisture  
    [ ] pH Levels
    [ ] Light Intensity
 
 3. What do you want to control?
-   [✓] Grow Lights
-   [✓] Water Pump
+   [] Grow Lights
+   [] Water Pump
    [ ] Fans
    [ ] Heater
 

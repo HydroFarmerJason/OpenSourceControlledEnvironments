@@ -2,7 +2,7 @@
 
 ## Setting Up Basic Monitoring
 
-### 🔴 Current Solutions (Arduino/Custom Code)
+###  Current Solutions (Arduino/Custom Code)
 ```cpp
 #include <DHT.h>
 #include <Wire.h>
@@ -41,7 +41,7 @@ void loop() {
 }
 ```
 
-### 🟢 OSCE Approach
+###  OSCE Approach
 ```python
 from osce import ControlledEnvironment
 
@@ -53,7 +53,7 @@ env.start()  # Done! Dashboard at http://your-pi:8080
 
 ## Adding Email Alerts
 
-### 🔴 Current Solutions
+###  Current Solutions
 1. Research SMTP libraries
 2. Write email configuration code
 3. Handle authentication
@@ -63,7 +63,7 @@ env.start()  # Done! Dashboard at http://your-pi:8080
 7. Test extensively
 8. **Time: 2-3 days**
 
-### 🟢 OSCE Approach
+###  OSCE Approach
 ```python
 env.install_plugin("email-alerts")
 # Configure in web interface
@@ -74,14 +74,14 @@ env.install_plugin("email-alerts")
 
 ## Multi-Sensor Support
 
-### 🔴 Current Solutions
+###  Current Solutions
 - Modify code for each sensor type
 - Handle different protocols (I2C, SPI, 1-Wire)
 - Calibration code for each sensor
 - Different libraries for each sensor
 - **Each sensor type: 4-8 hours of work**
 
-### 🟢 OSCE Approach
+###  OSCE Approach
 ```python
 env.add_sensor("temp1", pin=4)    # Auto-detects DHT22
 env.add_sensor("temp2", pin=5)    # Auto-detects DS18B20
@@ -93,17 +93,17 @@ env.add_sensor("ph", pin=A0)      # Auto-detects pH sensor
 
 ## Commercial Alternatives Comparison
 
-### 🔴 FarmBot
+###  FarmBot
 - **Cost**: $3,000 - $4,500
 - **Limitations**: Locked ecosystem, expensive parts
 - **Flexibility**: Limited to their hardware
 
-### 🔴 Growlink
+###  Growlink
 - **Cost**: $800+ controller + $200/year subscription
 - **Limitations**: Cloud dependent, subscription required
 - **Flexibility**: Proprietary sensors only
 
-### 🟢 OSCE
+###  OSCE
 - **Cost**: $35 (Raspberry Pi) + sensors
 - **Limitations**: None - fully open source
 - **Flexibility**: Any hardware, any feature via plugins

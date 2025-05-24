@@ -1,6 +1,6 @@
 # OpenSource Controlled Environments - Production Deployment Guide
 
-## 🚀 Quick Start Production Deployment
+##  Quick Start Production Deployment
 
 This guide covers deploying the production-ready components for OpenSourceControlledEnvironments.
 
@@ -12,7 +12,7 @@ This guide covers deploying the production-ready components for OpenSourceContro
 - 16GB+ SD card or storage
 - Internet connection for initial setup
 
-## 📦 What's Included
+##  What's Included
 
 ### Security & Authentication
 - **JWT-based authentication** with refresh tokens
@@ -43,7 +43,7 @@ This guide covers deploying the production-ready components for OpenSourceContro
 - **Automated dependency management**
 - **CI/CD pipeline** integration
 
-## 🛠️ Installation
+##  Installation
 
 ### Option 1: Docker Deployment (Recommended)
 
@@ -91,7 +91,7 @@ python -m farm.cli create-admin
 python run.py
 ```
 
-## 🔐 Security Configuration
+##  Security Configuration
 
 ### Initial Setup
 
@@ -142,7 +142,7 @@ curl -H "X-API-Key: osce_YOUR_API_KEY" \
   http://localhost:5000/api/v1/sensors
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 ### Hardware Configuration
 
@@ -198,7 +198,7 @@ Create automation rules via API:
 }
 ```
 
-## 📊 Monitoring
+##  Monitoring
 
 ### Prometheus Metrics
 
@@ -220,7 +220,7 @@ Key metrics:
    - Environmental Conditions
    - API Performance
 
-## 🔄 Backup & Recovery
+##  Backup & Recovery
 
 ### Automated Backups
 
@@ -263,7 +263,7 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/farm_backup
 ssh-copy-id -i ~/.ssh/farm_backup farmbackup@backup.example.com
 ```
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Check System Health
 
@@ -307,7 +307,7 @@ sudo usermod -a -G gpio,i2c $USER
 # Logout and login again
 ```
 
-## 🚀 Production Best Practices
+##  Production Best Practices
 
 ### 1. **Security**
 - Change all default passwords
@@ -333,7 +333,7 @@ sudo usermod -a -G gpio,i2c $USER
 - Rotate logs properly
 - Clean old backups
 
-## 📚 API Documentation
+##  API Documentation
 
 ### Interactive Documentation
 Access Swagger UI at: `http://localhost:5000/api/v1/docs`
@@ -358,11 +358,11 @@ Access Swagger UI at: `http://localhost:5000/api/v1/docs`
 - `GET /api/v1/system/logs` - System logs
 - `POST /api/v1/system/backup` - Trigger backup
 
-## 🤝 Contributing
+##  Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 

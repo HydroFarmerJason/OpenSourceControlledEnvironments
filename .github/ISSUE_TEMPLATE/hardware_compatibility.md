@@ -53,10 +53,10 @@ Please attach photos of:
 - [ ] Any custom mounting/enclosure
 
 **Recommendation**
-- [ ] ✅ Fully recommended - works perfectly
-- [ ] ⚠️ Recommended with notes - works but has limitations
-- [ ] 🔬 Experimental - basic functionality only
-- [ ] ❌ Not recommended - significant issues
+- [ ]  Fully recommended - works perfectly
+- [ ]  Recommended with notes - works but has limitations
+- [ ]  Experimental - basic functionality only
+- [ ]  Not recommended - significant issues
 
 **Additional Notes**
 Any other information that would help other users.

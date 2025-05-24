@@ -172,7 +172,7 @@ class LEDBinkPlugin:
                 }
             </style>
             
-            <h3>🔴 LED Control</h3>
+            <h3> LED Control</h3>
             <div class="led-indicator led-off" id="led-indicator"></div>
             
             <div class="led-controls">

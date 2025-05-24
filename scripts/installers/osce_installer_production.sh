@@ -58,7 +58,7 @@ log() {
 log_info() { log "${GREEN}INFO${RESET}" "$@"; }
 log_warn() { log "${YELLOW}WARN${RESET}" "$@"; }
 log_error() { log "${RED}ERROR${RESET}" "$@"; }
-log_success() { log "${GREEN}✓${RESET}" "$@"; }
+log_success() { log "${GREEN}${RESET}" "$@"; }
 log_debug() { [[ "${DEBUG:-0}" == "1" ]] && log "${MAGENTA}DEBUG${RESET}" "$@"; }
 
 # Trap for cleanup on exit
@@ -1625,7 +1625,7 @@ generate_installation_report() {
     <h1>OSCE Installation Complete</h1>
     
     <div class="success">
-        <h2>✓ Installation Successful</h2>
+        <h2> Installation Successful</h2>
         <p>OSCE has been successfully installed on $(hostname -f)</p>
     </div>
     
@@ -1674,14 +1674,14 @@ generate_installation_report() {
     
     <h2>Security Checklist</h2>
     <ul>
-        <li>☐ Change all default passwords</li>
-        <li>☐ Configure firewall rules</li>
-        <li>☐ Enable SELinux/AppArmor</li>
-        <li>☐ Set up fail2ban</li>
-        <li>☐ Configure backup encryption</li>
-        <li>☐ Enable audit logging</li>
-        <li>☐ Set up VPN access</li>
-        <li>☐ Configure SSL certificates (Let's Encrypt)</li>
+        <li> Change all default passwords</li>
+        <li> Configure firewall rules</li>
+        <li> Enable SELinux/AppArmor</li>
+        <li> Set up fail2ban</li>
+        <li> Configure backup encryption</li>
+        <li> Enable audit logging</li>
+        <li> Set up VPN access</li>
+        <li> Configure SSL certificates (Let's Encrypt)</li>
     </ul>
     
     <div class="info">
@@ -1795,7 +1795,7 @@ main() {
     # Display success message
     echo ""
     echo -e "${GREEN}════════════════════════════════════════════════════════════════${RESET}"
-    echo -e "${GREEN}✓ OSCE Enterprise Installation Complete!${RESET}"
+    echo -e "${GREEN} OSCE Enterprise Installation Complete!${RESET}"
     echo -e "${GREEN}════════════════════════════════════════════════════════════════${RESET}"
     echo ""
     echo "Access your installation at: https://$(hostname -f)"

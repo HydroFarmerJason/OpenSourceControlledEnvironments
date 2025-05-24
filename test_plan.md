@@ -198,20 +198,20 @@ git push
 ### Option 3: Add Notice
 Add to top of README:
 ```markdown
-⚠️ **Known Issue**: [Description]. Fix coming soon! For now, [workaround].
+ **Known Issue**: [Description]. Fix coming soon! For now, [workaround].
 ```
 
 ---
 
 ## Remember the Goal
 
-✅ Someone runs ONE command
-✅ They see a dashboard in their browser
-✅ Their sensors appear automatically
-✅ They think "Wow, that was easy!"
+ Someone runs ONE command
+ They see a dashboard in their browser
+ Their sensors appear automatically
+ They think "Wow, that was easy!"
 
 Everything else can wait for v1.1
 
 **The dream**: Your first test educator texts you: "Holy crap, it just worked!"
 
-Ready? Let's do this! 🚀
+Ready? Let's do this! 

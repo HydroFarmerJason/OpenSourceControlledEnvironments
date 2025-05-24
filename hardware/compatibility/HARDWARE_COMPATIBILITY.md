@@ -8,11 +8,11 @@ This guide provides detailed information about hardware components tested and ve
 
 | Symbol | Status | Description |
 |--------|--------|-------------|
-| ✅ | **Fully Tested** | Verified working with complete setup examples |
-| ⚠️ | **Community Tested** | Reported working by community members |
-| 🔬 | **Experimental** | Basic functionality confirmed, may need tweaking |
-| ❌ | **Not Compatible** | Known incompatibility issues |
-| 📝 | **Configuration Required** | Requires specific setup steps |
+|  | **Fully Tested** | Verified working with complete setup examples |
+|  | **Community Tested** | Reported working by community members |
+|  | **Experimental** | Basic functionality confirmed, may need tweaking |
+|  | **Not Compatible** | Known incompatibility issues |
+|  | **Configuration Required** | Requires specific setup steps |
 
 ---
 
@@ -20,11 +20,11 @@ This guide provides detailed information about hardware components tested and ve
 
 | Model | Status | RAM | Notes | Recommended Use |
 |-------|--------|-----|-------|----------------|
-| **Raspberry Pi 4B** | ✅ | 4GB+ | **Recommended** - Best performance | All configurations |
-| **Raspberry Pi 4B** | ✅ | 2GB | Good for basic monitoring | Basic/Educational |
-| **Raspberry Pi 3B+** | ⚠️ | 1GB | May struggle with complex dashboards | Basic monitoring only |
-| **Raspberry Pi Zero 2W** | 🔬 | 512MB | Limited to basic sensors | Minimal setups |
-| **Raspberry Pi 5** | 🔬 | 4GB+ | Early testing, GPIO compatibility pending | Future support |
+| **Raspberry Pi 4B** |  | 4GB+ | **Recommended** - Best performance | All configurations |
+| **Raspberry Pi 4B** |  | 2GB | Good for basic monitoring | Basic/Educational |
+| **Raspberry Pi 3B+** |  | 1GB | May struggle with complex dashboards | Basic monitoring only |
+| **Raspberry Pi Zero 2W** |  | 512MB | Limited to basic sensors | Minimal setups |
+| **Raspberry Pi 5** |  | 4GB+ | Early testing, GPIO compatibility pending | Future support |
 
 ### Storage Requirements
 - **Minimum:** 32GB microSD card (Class 10)
@@ -39,9 +39,9 @@ This guide provides detailed information about hardware components tested and ve
 
 | Part Number | Supplier | Status | Price Range | Notes |
 |-------------|----------|--------|-------------|-------|
-| DS18B20 | Adafruit #381 | ✅ | $9.95 | TO-92 package, most common |
-| DS18B20 Waterproof | Adafruit #381 | ✅ | $9.95 | 1m cable, food-safe coating |
-| DS18B20 High Temp | Maxim DS18B20+ | ✅ | $4-6 | -55°C to +125°C range |
+| DS18B20 | Adafruit #381 |  | $9.95 | TO-92 package, most common |
+| DS18B20 Waterproof | Adafruit #381 |  | $9.95 | 1m cable, food-safe coating |
+| DS18B20 High Temp | Maxim DS18B20+ |  | $4-6 | -55°C to +125°C range |
 
 **Wiring:**
 ```
@@ -61,9 +61,9 @@ GND (Black)  → Ground (Pin 6)
 
 | Part Number | Supplier | Status | Address | Features |
 |-------------|----------|--------|---------|----------|
-| BME280 | Adafruit #2652 | ✅ | 0x76/0x77 | Temp, Humidity, Pressure |
-| BME280 | SparkFun SEN-13676 | ✅ | 0x76/0x77 | Pre-soldered headers |
-| BME680 | Adafruit #3660 | ⚠️ | 0x76/0x77 | Adds gas sensor |
+| BME280 | Adafruit #2652 |  | 0x76/0x77 | Temp, Humidity, Pressure |
+| BME280 | SparkFun SEN-13676 |  | 0x76/0x77 | Pre-soldered headers |
+| BME680 | Adafruit #3660 |  | 0x76/0x77 | Adds gas sensor |
 
 **Wiring (I2C):**
 ```
@@ -82,9 +82,9 @@ SDA → GPIO 2/SDA (Pin 3)
 
 | Model | Status | Accuracy | Range | Price |
 |-------|--------|----------|-------|-------|
-| **DHT22** | ✅ | ±2% RH | 0-100% RH, -40-80°C | $5-10 |
-| DHT11 | ⚠️ | ±5% RH | 20-90% RH, 0-50°C | $2-5 |
-| DHT21 | ✅ | ±3% RH | 0-100% RH, -40-80°C | $8-12 |
+| **DHT22** |  | ±2% RH | 0-100% RH, -40-80°C | $5-10 |
+| DHT11 |  | ±5% RH | 20-90% RH, 0-50°C | $2-5 |
+| DHT21 |  | ±3% RH | 0-100% RH, -40-80°C | $8-12 |
 
 **Wiring:**
 ```
@@ -98,8 +98,8 @@ GND → Ground (Pin 9)
 
 | Model | Supplier | Status | Address | Accuracy |
 |-------|----------|--------|---------|----------|
-| SHT31-D | Adafruit #2857 | ✅ | 0x44/0x45 | ±2% RH, ±0.3°C |
-| SHT30 | Various | ⚠️ | 0x44/0x45 | ±3% RH, ±0.3°C |
+| SHT31-D | Adafruit #2857 |  | 0x44/0x45 | ±2% RH, ±0.3°C |
+| SHT30 | Various |  | 0x44/0x45 | ±3% RH, ±0.3°C |
 
 ---
 
@@ -109,9 +109,9 @@ GND → Ground (Pin 9)
 
 | Model | Status | Range | Interface | Price Range |
 |-------|--------|-------|-----------|-------------|
-| **MH-Z19B** | ✅ | 0-5000 ppm | UART/PWM | $15-25 |
-| MH-Z19C | ⚠️ | 0-5000 ppm | UART/PWM | $20-30 |
-| MH-Z14A | ✅ | 0-5000 ppm | UART/PWM | $25-35 |
+| **MH-Z19B** |  | 0-5000 ppm | UART/PWM | $15-25 |
+| MH-Z19C |  | 0-5000 ppm | UART/PWM | $20-30 |
+| MH-Z14A |  | 0-5000 ppm | UART/PWM | $25-35 |
 
 **UART Wiring:**
 ```
@@ -131,8 +131,8 @@ RX → GPIO 14/TX (Pin 8)
 
 | Part Number | Supplier | Status | Features |
 |-------------|----------|--------|----------|
-| SCD30 | Adafruit #4867 | ✅ | CO2, Temperature, Humidity |
-| SCD41 | Sensirion | 🔬 | Smaller footprint, lower power |
+| SCD30 | Adafruit #4867 |  | CO2, Temperature, Humidity |
+| SCD41 | Sensirion |  | Smaller footprint, lower power |
 
 ---
 
@@ -142,26 +142,26 @@ RX → GPIO 14/TX (Pin 8)
 
 | Sensor | Supplier | Status | Range | Interface |
 |--------|----------|--------|-------|-----------|
-| **DFRobot pH Kit** | DFRobot SEN0161 | ✅ | 0-14 pH | Analog via ADS1115 |
-| Atlas pH Kit | Atlas Scientific | ✅ | 0.001-14.000 pH | I2C/UART |
-| Gravity pH Sensor | DFRobot | ✅ | 0-14 pH | Analog |
+| **DFRobot pH Kit** | DFRobot SEN0161 |  | 0-14 pH | Analog via ADS1115 |
+| Atlas pH Kit | Atlas Scientific |  | 0.001-14.000 pH | I2C/UART |
+| Gravity pH Sensor | DFRobot |  | 0-14 pH | Analog |
 
 ### EC/TDS Sensors
 
 | Sensor | Supplier | Status | Range | Notes |
 |--------|----------|--------|-------|-------|
-| **DFRobot EC Kit** | DFRobot DFR0300 | ✅ | 0-20 mS/cm | Includes temperature compensation |
-| Atlas EC Kit | Atlas Scientific | ✅ | 0.07-500,000+ μS/cm | High precision |
-| TDS Meter Sensor | Various | ⚠️ | 0-1000 ppm | Basic TDS measurement |
+| **DFRobot EC Kit** | DFRobot DFR0300 |  | 0-20 mS/cm | Includes temperature compensation |
+| Atlas EC Kit | Atlas Scientific |  | 0.07-500,000+ μS/cm | High precision |
+| TDS Meter Sensor | Various |  | 0-1000 ppm | Basic TDS measurement |
 
 **ADC Requirements:**
 Both pH and EC sensors require analog-to-digital conversion:
 
 | ADC | Channels | Resolution | Status | Price |
 |-----|----------|------------|--------|-------|
-| **ADS1115** | 4 | 16-bit | ✅ | $10-15 |
-| ADS1015 | 4 | 12-bit | ✅ | $8-12 |
-| MCP3008 | 8 | 10-bit | ⚠️ | $3-5 |
+| **ADS1115** | 4 | 16-bit |  | $10-15 |
+| ADS1015 | 4 | 12-bit |  | $8-12 |
+| MCP3008 | 8 | 10-bit |  | $3-5 |
 
 ---
 
@@ -171,10 +171,10 @@ Both pH and EC sensors require analog-to-digital conversion:
 
 | Channels | Supplier | Status | Voltage | Current Rating |
 |----------|----------|--------|---------|----------------|
-| **8-Channel** | Various | ✅ | 5V/12V/24V | 10A @ 250VAC |
-| 4-Channel | Adafruit #2935 | ✅ | 5V | 10A @ 250VAC |
-| 2-Channel | Various | ✅ | 5V | 10A @ 250VAC |
-| 16-Channel | Various | ⚠️ | 5V | Requires I2C expander |
+| **8-Channel** | Various |  | 5V/12V/24V | 10A @ 250VAC |
+| 4-Channel | Adafruit #2935 |  | 5V | 10A @ 250VAC |
+| 2-Channel | Various |  | 5V | 10A @ 250VAC |
+| 16-Channel | Various |  | 5V | Requires I2C expander |
 
 **GPIO Pin Assignments (8-Channel):**
 ```
@@ -192,9 +192,9 @@ Relay 8 → GPIO 16 (Pin 36) - Nutrient B Pump
 
 | Type | Rating | Status | Use Case |
 |------|--------|--------|----------|
-| **Fotek SSR-25DA** | 25A | ✅ | Heating elements |
-| Random Turn-On SSR | 10-40A | ✅ | LED grow lights |
-| Zero-Cross SSR | 10-40A | ✅ | AC motors, fans |
+| **Fotek SSR-25DA** | 25A |  | Heating elements |
+| Random Turn-On SSR | 10-40A |  | LED grow lights |
+| Zero-Cross SSR | 10-40A |  | AC motors, fans |
 
 ---
 
@@ -204,18 +204,18 @@ Relay 8 → GPIO 16 (Pin 36) - Nutrient B Pump
 
 | Model | Status | Resolution | Features | Price |
 |-------|--------|------------|----------|-------|
-| **Pi Camera v2** | ✅ | 8MP | 1080p video, excellent software support | $25 |
-| Pi Camera v3 | ✅ | 12MP | 4K video, autofocus | $35 |
-| Pi HQ Camera | ✅ | 12MP | C/CS mount lenses, professional quality | $50 |
-| Pi Camera NoIR | ✅ | 8MP | Infrared capability for night monitoring | $25 |
+| **Pi Camera v2** |  | 8MP | 1080p video, excellent software support | $25 |
+| Pi Camera v3 |  | 12MP | 4K video, autofocus | $35 |
+| Pi HQ Camera |  | 12MP | C/CS mount lenses, professional quality | $50 |
+| Pi Camera NoIR |  | 8MP | Infrared capability for night monitoring | $25 |
 
 ### USB Cameras
 
 | Type | Status | Resolution | Notes |
 |------|--------|------------|-------|
-| Logitech C920 | ✅ | 1080p | Excellent compatibility |
-| Logitech C270 | ✅ | 720p | Budget option |
-| ELP USB Camera | ⚠️ | Various | Wide angle options available |
+| Logitech C920 |  | 1080p | Excellent compatibility |
+| Logitech C270 |  | 720p | Budget option |
+| ELP USB Camera |  | Various | Wide angle options available |
 
 ---
 
@@ -225,18 +225,18 @@ Relay 8 → GPIO 16 (Pin 36) - Nutrient B Pump
 
 | Rating | Type | Status | Recommended For |
 |--------|------|--------|----------------|
-| **5V 3A** | Official Pi PSU | ✅ | Pi 4 + basic sensors |
-| 5V 5A | Switched PSU | ✅ | Pi + relay board + sensors |
-| 12V 2A + 5V 3A | Dual rail | ✅ | Systems with 12V pumps/fans |
-| 24V 1A + 5V 3A | Dual rail | ✅ | Professional solenoid valves |
+| **5V 3A** | Official Pi PSU |  | Pi 4 + basic sensors |
+| 5V 5A | Switched PSU |  | Pi + relay board + sensors |
+| 12V 2A + 5V 3A | Dual rail |  | Systems with 12V pumps/fans |
+| 24V 1A + 5V 3A | Dual rail |  | Professional solenoid valves |
 
 ### Level Shifters & Buffers
 
 | Part | Purpose | Status | Notes |
 |------|---------|--------|-------|
-| **74AHCT125** | 3.3V to 5V logic | ✅ | For 5V relay boards |
-| TXS0108E | Bidirectional | ✅ | I2C level shifting |
-| BSS138 | Simple MOSFET | ✅ | Single signal conversion |
+| **74AHCT125** | 3.3V to 5V logic |  | For 5V relay boards |
+| TXS0108E | Bidirectional |  | I2C level shifting |
+| BSS138 | Simple MOSFET |  | Single signal conversion |
 
 ---
 
@@ -246,17 +246,17 @@ Relay 8 → GPIO 16 (Pin 36) - Nutrient B Pump
 
 | Type | Flow Rate | Voltage | Status | Use Case |
 |------|-----------|---------|--------|----------|
-| **Peristaltic Pump** | 0.1-2 L/min | 12V | ✅ | Precise nutrient dosing |
-| Submersible Pump | 2-10 L/min | 12V/24V | ✅ | Water circulation |
-| Diaphragm Pump | 1-5 L/min | 12V | ✅ | Self-priming applications |
+| **Peristaltic Pump** | 0.1-2 L/min | 12V |  | Precise nutrient dosing |
+| Submersible Pump | 2-10 L/min | 12V/24V |  | Water circulation |
+| Diaphragm Pump | 1-5 L/min | 12V |  | Self-priming applications |
 
 ### Solenoid Valves
 
 | Size | Pressure | Voltage | Status | Application |
 |------|----------|---------|--------|-------------|
-| **1/4" NPT** | 0-120 PSI | 12V/24V | ✅ | Irrigation control |
-| 1/2" NPT | 0-150 PSI | 24V | ✅ | Main water lines |
-| 3/8" Barb | 0-100 PSI | 12V | ✅ | Hydroponic systems |
+| **1/4" NPT** | 0-120 PSI | 12V/24V |  | Irrigation control |
+| 1/2" NPT | 0-150 PSI | 24V |  | Main water lines |
+| 3/8" Barb | 0-100 PSI | 12V |  | Hydroponic systems |
 
 ---
 
@@ -266,17 +266,17 @@ Relay 8 → GPIO 16 (Pin 36) - Nutrient B Pump
 
 | Type | Rating | Status | Dimming | Notes |
 |------|--------|--------|---------|-------|
-| **Mean Well LPV-60-12** | 60W 12V | ✅ | PWM | Reliable, cost-effective |
-| Mean Well HLG-80H-24A | 80W 24V | ✅ | 0-10V/PWM | Constant current |
-| DIY Buck Converter | Variable | ⚠️ | PWM | Budget option |
+| **Mean Well LPV-60-12** | 60W 12V |  | PWM | Reliable, cost-effective |
+| Mean Well HLG-80H-24A | 80W 24V |  | 0-10V/PWM | Constant current |
+| DIY Buck Converter | Variable |  | PWM | Budget option |
 
 ### Light Sensors
 
 | Sensor | Range | Interface | Status | Use Case |
 |--------|-------|-----------|--------|----------|
-| **TSL2591** | 188 μLux - 88k Lux | I2C | ✅ | Full spectrum, high dynamic range |
-| BH1750 | 1-65535 Lux | I2C | ✅ | Simple light measurement |
-| LDR + ADC | Variable | Analog | ⚠️ | Basic light detection |
+| **TSL2591** | 188 μLux - 88k Lux | I2C |  | Full spectrum, high dynamic range |
+| BH1750 | 1-65535 Lux | I2C |  | Simple light measurement |
+| LDR + ADC | Variable | Analog |  | Basic light detection |
 
 ---
 
@@ -286,16 +286,16 @@ Relay 8 → GPIO 16 (Pin 36) - Nutrient B Pump
 
 | Module | Protocol | Status | Range | Use Case |
 |--------|----------|--------|-------|----------|
-| **Built-in WiFi** | 802.11n | ✅ | 50m | Standard connectivity |
-| ESP32 | WiFi/Bluetooth | ⚠️ | 100m | Remote sensor nodes |
-| LoRa Module | 915MHz | 🔬 | 1-10km | Long-range communication |
+| **Built-in WiFi** | 802.11n |  | 50m | Standard connectivity |
+| ESP32 | WiFi/Bluetooth |  | 100m | Remote sensor nodes |
+| LoRa Module | 915MHz |  | 1-10km | Long-range communication |
 
 ### Ethernet Options
 
 | Type | Speed | Status | Notes |
 |------|-------|--------|-------|
-| **Built-in Ethernet** | 1Gbps | ✅ | Pi 4 only |
-| USB Ethernet | 100Mbps-1Gbps | ✅ | For Pi models without ethernet |
+| **Built-in Ethernet** | 1Gbps |  | Pi 4 only |
+| USB Ethernet | 100Mbps-1Gbps |  | For Pi models without ethernet |
 
 ---
 

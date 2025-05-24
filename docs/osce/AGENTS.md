@@ -8,7 +8,7 @@
 
 ---
 
-## 🗺️ OSCE User Journey - Find Your Starting Point
+##  OSCE User Journey - Find Your Starting Point
 
 | You Are... | Start Here | Key Sections | Next Steps |
 |------------|------------|--------------|------------|
@@ -19,7 +19,7 @@
 | **Compliance Officer** | [Compliance](#compliance) → [Reporting](#compliance) | Audit Trails, Standards | [Daily Operations](#daily-operations) |
 | **Researcher** | [Agent Roles](#agent-roles) → [Best Practices](#best-practices) | Data Collection, Analysis | [AI Integration](#ai-copilot) |
 
-### 🚀 Quick Decision Tree
+###  Quick Decision Tree
 
 ```mermaid
 graph TD
@@ -72,17 +72,17 @@ Welcome to OSCE—the WordPress of IoT for Controlled Environment Agriculture. W
 
 ### Key Conventions
 
-- 📋 **Checklist**: Step-by-step tasks
-- 🤖 **AI Note**: Special instructions for AI copilots
-- ⚠️ **Warning**: Critical safety or security information
-- 💡 **Tip**: Best practices and optimizations
-- 🔧 **Troubleshooting**: Common issues and solutions
+-  **Checklist**: Step-by-step tasks
+-  **AI Note**: Special instructions for AI copilots
+-  **Warning**: Critical safety or security information
+-  **Tip**: Best practices and optimizations
+-  **Troubleshooting**: Common issues and solutions
 
 ---
 
 ## 2. Quick Start: From Zero to Growing {#quick-start}
 
-### 📋 Installation Checklist
+###  Installation Checklist
 
 #### Pre-Installation
 - [ ] Verify system requirements (2GB RAM, 10GB storage)
@@ -108,14 +108,14 @@ chmod 600 ~/osce-credentials.secure
 
 #### Post-Installation
 - [ ] Access dashboard: https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments
-- [ ] Change default passwords ⚠️ **Critical: Do this immediately!**
+- [ ] Change default passwords  **Critical: Do this immediately!**
 - [ ] Configure first zone
 - [ ] Test sensor readings
 - [ ] Create first automation rule
 
-⚠️ **Common Pitfall**: Many users skip password changes thinking "I'll do it later" - this is the #1 security risk!
+ **Common Pitfall**: Many users skip password changes thinking "I'll do it later" - this is the #1 security risk!
 
-### 🤖 AI Copilot Quick Start
+###  AI Copilot Quick Start
 
 ```python
 # For AI agents managing OSCE
@@ -151,7 +151,7 @@ async def setup_osce_instance(config):
             return osce_client
 ```
 
-### 🍳 Quick Recipes - Common Tasks in 60 Seconds
+###  Quick Recipes - Common Tasks in 60 Seconds
 
 #### Recipe 1: Add a Temperature Sensor with Auto-Control
 ```bash
@@ -184,7 +184,7 @@ osce emergency --stop irrigation --all-zones --reason "Leak detected"
 osce report morning --email team@farm.com --include "alerts,metrics,predictions"
 ```
 
-#### ⚠️ Common First-Week Pitfalls
+####  Common First-Week Pitfalls
 
 1. **Forgot to change default passwords** → Run: `osce security rotate-passwords`
 2. **Sensors reading erratic** → Wait 24h for stabilization before calibrating
@@ -306,60 +306,60 @@ class ClimateController(Agent):
 
 ## 4. Agent Roles and Responsibilities {#agent-roles}
 
-### 🎭 Agent Persona Cards - Quick Reference
+###  Agent Persona Cards - Quick Reference
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1em;">
 
-#### 🧠 Environment Coordinator
+####  Environment Coordinator
 - **Type:** Core System Agent
 - **Inputs:** Hardware events, sensor data, user commands
 - **Outputs:** Resource allocation, event routing, state updates
 - **Decision Cycle:** Real-time (milliseconds)
 - **Escalation:** Alert Manager for issues
 
-#### 🔧 Hardware Manager  
+####  Hardware Manager  
 - **Type:** System Agent
 - **Inputs:** Device connections, health metrics
 - **Outputs:** Driver commands, failover actions
 - **Decision Cycle:** 100ms for commands, 30s for health
 - **Escalation:** Maintenance Tech for failures
 
-#### 🚨 Alert Manager
+####  Alert Manager
 - **Type:** System Agent  
 - **Inputs:** All system events, thresholds
 - **Outputs:** Notifications, reports, escalations
 - **Decision Cycle:** Real-time to 5 minutes
 - **Escalation:** Human operators by severity
 
-#### 📊 Compliance Tracker
+####  Compliance Tracker
 - **Type:** Monitoring Agent
 - **Inputs:** Operational data, regulations
 - **Outputs:** Compliance reports, violation alerts
 - **Decision Cycle:** Hourly to daily
 - **Escalation:** Compliance Officer immediately
 
-#### ⚡ Energy Optimizer
+####  Energy Optimizer
 - **Type:** Optimization Agent
 - **Inputs:** Power usage, rate schedules, weather
 - **Outputs:** Load scheduling, source switching
 - **Decision Cycle:** 15 minutes
 - **Escalation:** Facilities Manager
 
-#### 🤖 ML Optimizer
+####  ML Optimizer
 - **Type:** AI Agent
 - **Inputs:** Historical data, current state
 - **Outputs:** Predictions, recommendations
 - **Decision Cycle:** 5 minutes to daily
 - **Escalation:** Requires approval for changes
 
-#### 👤 System Administrator
+####  System Administrator
 - **Type:** Human Agent
 - **Inputs:** System alerts, performance metrics
 - **Outputs:** Configuration, updates, fixes
 - **Decision Cycle:** On-demand to daily
 - **Escalation:** Vendor support
 
-#### 🌱 Grower/Operator  
+####  Grower/Operator  
 - **Type:** Human Agent
 - **Inputs:** Crop observations, AI recommendations
 - **Outputs:** Approvals, adjustments, harvest decisions
@@ -532,7 +532,7 @@ class EmergencyResponseCopilot:
 
 ### Phase 1: Planning and Design
 
-#### 📋 Planning Checklist
+####  Planning Checklist
 - [ ] Define growing zones and crops
 - [ ] List required sensors per zone
 - [ ] Plan actuator placement
@@ -585,7 +585,7 @@ graph TD
     F --> G[Software Installation]
 ```
 
-#### 🔧 Hardware Setup Tips
+####  Hardware Setup Tips
 - **Controllers**: Place in weatherproof enclosures with ventilation
 - **Sensors**: Allow 24h stabilization before calibration
 - **Network**: Use wired connections for critical paths
@@ -601,11 +601,11 @@ async def calibrate_ph_sensor(sensor_id):
     
     print("=== pH Sensor Calibration ===")
     
-    # ⚠️ Common Pitfall: Calibrating immediately after installation
+    #  Common Pitfall: Calibrating immediately after installation
     # Sensors need 24h to stabilize! Check sensor age:
     sensor_age = await get_sensor_age(sensor_id)
     if sensor_age < timedelta(hours=24):
-        print("⚠️  WARNING: Sensor installed less than 24h ago")
+        print("  WARNING: Sensor installed less than 24h ago")
         print("   Calibration may be inaccurate. Continue anyway? (y/n)")
         if input().lower() != 'y':
             return
@@ -660,7 +660,7 @@ async def calibrate_ph_sensor(sensor_id):
 6. **Monitor**: Track improvements
 7. **Iterate**: Refine based on results
 
-#### 💡 Optimization Targets
+####  Optimization Targets
 - **Energy**: Reduce consumption by 20-30%
 - **Water**: Optimize irrigation timing and volume
 - **Yield**: Increase by 10-15% through environmental optimization
@@ -711,7 +711,7 @@ maintenance_schedule:
 
 ### Morning Routine (6:00 AM)
 
-#### 🤖 Automated Morning Tasks
+####  Automated Morning Tasks
 ```python
 async def morning_routine():
     """Automated morning system check and optimization"""
@@ -736,7 +736,7 @@ async def morning_routine():
     await notify_operators(report, schedule)
 ```
 
-#### 📋 Human Morning Checklist
+####  Human Morning Checklist
 - [ ] Review morning report on dashboard
 - [ ] Check plant health visually
 - [ ] Verify critical sensor readings
@@ -782,7 +782,7 @@ night_mode_settings:
 
 ### Night Operations (10:00 PM - 6:00 AM)
 
-#### 🤖 Automated Night Tasks
+####  Automated Night Tasks
 - Energy-saving mode activation
 - Predictive maintenance scans
 - Database optimization
@@ -831,7 +831,7 @@ rule: maintain_temperature
     - sensor: zone_a.temperature_avg
       below: 26°C
   
-  # ⚠️ Common Pitfall: No cooldown period!
+  #  Common Pitfall: No cooldown period!
   # This rule could cycle fans on/off rapidly
   # Better version includes cooldown:
   cooldown: 15 minutes  # Prevent rapid cycling
@@ -899,7 +899,7 @@ async def smart_irrigation_rule(zone):
 
 ### Crop-Specific Recipes
 
-#### 🍅 Tomato Growing Recipe
+####  Tomato Growing Recipe
 ```yaml
 tomato_recipe:
   name: "Indeterminate Tomatoes - Optimal Growth"
@@ -963,7 +963,7 @@ tomato_recipe:
       message: "Fungal disease risk!"
 ```
 
-#### 🥬 Lettuce NFT Recipe
+####  Lettuce NFT Recipe
 ```yaml
 lettuce_nft_recipe:
   name: "Buttercrunch Lettuce - 35 Day Cycle"
@@ -1081,7 +1081,7 @@ weather_adaptation:
 
 ### Common Issues and Solutions
 
-#### 🔧 Sensor Issues
+####  Sensor Issues
 
 **Problem**: Sensor reading stuck or erratic
 ```bash
@@ -1108,16 +1108,16 @@ async def diagnose_i2c():
     
     # 1. Check I2C is enabled
     if not os.path.exists('/dev/i2c-1'):
-        print("❌ I2C not enabled. Run: sudo raspi-config")
+        print(" I2C not enabled. Run: sudo raspi-config")
         return
         
     # 2. Scan for devices
     devices = await hw_manager.i2c_scan()
-    print(f"✓ Found {len(devices)} devices: {[hex(d) for d in devices]}")
+    print(f" Found {len(devices)} devices: {[hex(d) for d in devices]}")
     
     # 3. Check pull-up resistors
     if len(devices) == 0:
-        print("⚠️  No devices found. Check:")
+        print("  No devices found. Check:")
         print("   - Pull-up resistors (2.2kΩ - 10kΩ)")
         print("   - Power to sensors")
         print("   - SDA/SCL connections")
@@ -1127,12 +1127,12 @@ async def diagnose_i2c():
         try:
             # Attempt read
             await hw_manager.i2c_read(addr, 0x00)
-            print(f"✓ Device at {hex(addr)} responding")
+            print(f" Device at {hex(addr)} responding")
         except Exception as e:
-            print(f"❌ Device at {hex(addr)} error: {e}")
+            print(f" Device at {hex(addr)} error: {e}")
 ```
 
-#### 🔧 Actuator Issues
+####  Actuator Issues
 
 **Problem**: Actuator not responding
 ```yaml
@@ -1155,7 +1155,7 @@ actuator_diagnostic:
         action: "Adjust if too restrictive"
 ```
 
-#### 🔧 Network Issues
+####  Network Issues
 
 **Problem**: Remote node disconnected
 ```python
@@ -1189,7 +1189,7 @@ class NetworkRecovery:
 
 ### System Recovery Procedures
 
-#### 🚨 Emergency Recovery
+####  Emergency Recovery
 
 **Power Failure Recovery**
 ```bash
@@ -1215,7 +1215,7 @@ osce health-check --critical
 osce automation enable --staged
 ```
 
-### 🌐 Federation Troubleshooting Playbook
+###  Federation Troubleshooting Playbook
 
 #### Quick Reference - Federation Issues
 
@@ -1262,30 +1262,30 @@ fi
 async def diagnose_cert_issues():
     """Step-by-step certificate diagnosis"""
     
-    print("🔐 Certificate Diagnostic Tool")
+    print(" Certificate Diagnostic Tool")
     
     # 1. Check local certificates
     local_cert = await get_local_certificate()
-    print(f"✓ Local cert valid until: {local_cert.expiry}")
+    print(f" Local cert valid until: {local_cert.expiry}")
     
     # 2. Check peer certificates  
     for site in federation_sites:
         try:
             peer_cert = await get_peer_certificate(site)
             if verify_certificate(peer_cert):
-                print(f"✓ {site}: Valid")
+                print(f" {site}: Valid")
             else:
-                print(f"✗ {site}: Invalid - regenerate with:")
+                print(f" {site}: Invalid - regenerate with:")
                 print(f"  osce federation regenerate-cert --site {site}")
         except Exception as e:
-            print(f"✗ {site}: Unreachable - {e}")
+            print(f" {site}: Unreachable - {e}")
             
     # 3. Test secure communication
     for site in federation_sites:
         if await test_secure_channel(site):
-            print(f"✓ Secure channel to {site} working")
+            print(f" Secure channel to {site} working")
         else:
-            print(f"✗ Cannot establish secure channel to {site}")
+            print(f" Cannot establish secure channel to {site}")
             print("  Try: osce federation reset-channel --site {site}")
 ```
 
@@ -1353,7 +1353,7 @@ async def recover_database():
 
 ### Performance Optimization
 
-#### 🔧 Slow System Response
+####  Slow System Response
 
 **Diagnostic Checklist**
 - [ ] Check CPU usage: `osce metrics cpu`
@@ -1381,7 +1381,7 @@ docker update --memory 4g osce-core
 
 ## 9. Scaling and Federation {#scaling}
 
-### 🏆 Golden Paths for Scaling - From Classroom to Commercial
+###  Golden Paths for Scaling - From Classroom to Commercial
 
 #### Path 1: Educational Institution → Research Facility
 ```mermaid
@@ -2119,7 +2119,7 @@ class OSCEAICopilot:
 
 ### AI Learning and Improvement
 
-#### 📊 AI Learning Loop Template
+####  AI Learning Loop Template
 
 ```markdown
 ---
@@ -2135,9 +2135,9 @@ class OSCEAICopilot:
   - False alerts: 2 (Tuned sensor noise filtering)
   
 - Improvements Applied:
-  - ✓ Moisture thresholds adjusted based on plant stage
-  - ✓ Temperature PID tuning refined
-  - ✓ Alert confidence thresholds updated
+  -  Moisture thresholds adjusted based on plant stage
+  -  Temperature PID tuning refined
+  -  Alert confidence thresholds updated
   
 - Pending Improvements:
   - [ ] Integrate weather forecast for proactive adjustments
@@ -2197,7 +2197,7 @@ class AILearningLoop:
         return report
 ```
 
-### 💬 AI Communication Guidelines
+###  AI Communication Guidelines
 
 #### How AI Should Communicate with Humans
 
@@ -2208,7 +2208,7 @@ class AICommunicationTemplates:
     """Standard templates for AI-human communication"""
     
     ROUTINE_UPDATE = """
-    🤖 AI Update - {timestamp}
+     AI Update - {timestamp}
     Status: All systems operating normally
     
     Highlights:
@@ -2219,7 +2219,7 @@ class AICommunicationTemplates:
     """
     
     RECOMMENDATION = """
-    🤖 AI Recommendation - {timestamp}
+     AI Recommendation - {timestamp}
     
     Situation: {context}
     
@@ -2236,7 +2236,7 @@ class AICommunicationTemplates:
     """
     
     URGENT_ALERT = """
-    🚨 URGENT: AI Alert - {timestamp}
+     URGENT: AI Alert - {timestamp}
     
     Issue: {issue_description}
     Severity: {severity}
@@ -2252,7 +2252,7 @@ class AICommunicationTemplates:
     """
     
     LEARNING_REQUEST = """
-    🤖 AI Learning Request - {timestamp}
+     AI Learning Request - {timestamp}
     
     I encountered a situation I'm uncertain about:
     
@@ -2312,7 +2312,7 @@ async def communicate_with_operator(issue: Issue, operator_experience: str):
     if operator_experience == "beginner":
         # Simple, action-focused message
         message = f"""
-        🌱 Simple Alert: {issue.title}
+         Simple Alert: {issue.title}
         
         What happened: {issue.simple_description}
         
@@ -2324,7 +2324,7 @@ async def communicate_with_operator(issue: Issue, operator_experience: str):
     elif operator_experience == "intermediate":
         # Balanced detail
         message = f"""
-        ⚠️ System Alert: {issue.title}
+         System Alert: {issue.title}
         
         Issue: {issue.description}
         Cause: {issue.likely_cause}
@@ -2338,7 +2338,7 @@ async def communicate_with_operator(issue: Issue, operator_experience: str):
     elif operator_experience == "expert":
         # Full technical detail
         message = f"""
-        🔧 Technical Alert: {issue.title}
+         Technical Alert: {issue.title}
         
         Details: {issue.technical_description}
         
@@ -2592,7 +2592,7 @@ contribution:
 
 ### Community Recipes
 
-#### 🏆 Award-Winning Configurations
+####  Award-Winning Configurations
 
 **Best Energy Optimization (2024)**
 ```python
@@ -2779,13 +2779,13 @@ Success rate: 95% accuracy maintained in 90%+ RH
 This guide is a living document, growing with the community. Whether you're a human operator learning the ropes or an AI copilot managing a global network, remember:
 
 **The best CEA systems are built on:**
-- 🧩 **Modularity** - Adapt without rebuilding
-- 🌐 **Federation** - Stronger together
-- 🤝 **Collaboration** - Humans and AI working as one
-- 📚 **Continuous Learning** - Every day brings new insights
-- 🌱 **Shared Growth** - Your success helps others succeed
+-  **Modularity** - Adapt without rebuilding
+-  **Federation** - Stronger together
+-  **Collaboration** - Humans and AI working as one
+-  **Continuous Learning** - Every day brings new insights
+-  **Shared Growth** - Your success helps others succeed
 
-### 🎯 Success Metrics - Are You on Track?
+###  Success Metrics - Are You on Track?
 
 | Stage | Key Indicators | Target Values |
 |-------|---------------|---------------|
@@ -2795,7 +2795,7 @@ This guide is a living document, growing with the community. Whether you're a hu
 | **Month 6** | Yield improvement | 10% increase |
 | **Year 1** | Full optimization | 30% resource savings, 25% yield increase |
 
-### 🚀 Your Next Actions
+###  Your Next Actions
 
 **For New Users:**
 1. Complete installation
@@ -2815,7 +2815,7 @@ This guide is a living document, growing with the community. Whether you're a hu
 3. Measure decision accuracy
 4. Contribute improvements
 
-### 🤝 Join the Movement
+###  Join the Movement
 
 **Weekly Events:**
 - **Monday**: "Metrics Monday" - Share your numbers
@@ -2831,7 +2831,7 @@ This guide is a living document, growing with the community. Whether you're a hu
 - September: OSCE Global Conference
 - December: Year in Review & Awards
 
-### 📚 Additional Resources
+###  Additional Resources
 
 - **Video Tutorials**: [youtube.com/OSCEplatform](https://youtube.com/OSCEplatform)
 - **Research Papers**: [research.osce.io](https://research.osce.io)
@@ -2864,21 +2864,21 @@ Support:
 - Emergency: support@osce.io
 
 Common Pitfalls to Avoid:
-❌ Forgetting to change default passwords
-❌ Skipping sensor stabilization period
-❌ Creating rules without cooldowns
-❌ Ignoring backup verification
-❌ Scaling too fast without mastering basics
-✅ Take it slow, document everything
+ Forgetting to change default passwords
+ Skipping sensor stabilization period
+ Creating rules without cooldowns
+ Ignoring backup verification
+ Scaling too fast without mastering basics
+ Take it slow, document everything
 ```
 
-*May your plants thrive and your systems run smooth!* 🌱🤖✨
+*May your plants thrive and your systems run smooth!* 
 
 ---
 
 ## Appendix: Printable Checklists
 
-### 📋 Daily Operations Checklist
+###  Daily Operations Checklist
 ```
 □ Morning (6:00 AM)
   □ Check overnight alerts
@@ -2906,7 +2906,7 @@ Common Pitfalls to Avoid:
   □ Set emergency contacts
 ```
 
-### 📋 Weekly Maintenance Checklist
+###  Weekly Maintenance Checklist
 ```
 □ Monday
   □ Clean optical sensors

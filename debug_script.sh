@@ -50,22 +50,22 @@ echo -e "\n${YELLOW}OSCE Installation:${NC}"
 INSTALL_DIR="$HOME/osce"
 
 if [ -d "$INSTALL_DIR" ]; then
-    echo -e "${GREEN}✓${NC} OSCE directory found: $INSTALL_DIR"
+    echo -e "${GREEN}${NC} OSCE directory found: $INSTALL_DIR"
     
     # Check core files
     for file in "core.py" "start.sh" "venv"; do
         if [ -e "$INSTALL_DIR/$file" ]; then
-            echo -e "${GREEN}✓${NC} $file exists"
+            echo -e "${GREEN}${NC} $file exists"
         else
-            echo -e "${RED}✗${NC} $file missing"
+            echo -e "${RED}${NC} $file missing"
         fi
     done
     
     # Check if running
     if pgrep -f "python.*core.py" > /dev/null; then
-        echo -e "${GREEN}✓${NC} OSCE is running (PID: $(pgrep -f 'python.*core.py'))"
+        echo -e "${GREEN}${NC} OSCE is running (PID: $(pgrep -f 'python.*core.py'))"
     else
-        echo -e "${RED}✗${NC} OSCE is not running"
+        echo -e "${RED}${NC} OSCE is not running"
     fi
     
     # Check install info
@@ -74,7 +74,7 @@ if [ -d "$INSTALL_DIR" ]; then
         cat "$INSTALL_DIR/install_info.json" | python3 -m json.tool 2>/dev/null || cat "$INSTALL_DIR/install_info.json"
     fi
 else
-    echo -e "${RED}✗${NC} OSCE not installed at $INSTALL_DIR"
+    echo -e "${RED}${NC} OSCE not installed at $INSTALL_DIR"
 fi
 
 # Network Check
@@ -86,7 +86,7 @@ ip -4 addr show | grep inet | grep -v 127.0.0.1 | awk '{print "  " $2}'
 # Check if port 8080 is in use
 echo -e "\nPort 8080 Status:"
 if netstat -tuln 2>/dev/null | grep -q ":8080"; then
-    echo -e "${GREEN}✓${NC} Port 8080 is in use (good if OSCE is running)"
+    echo -e "${GREEN}${NC} Port 8080 is in use (good if OSCE is running)"
     netstat -tuln | grep ":8080"
 else
     echo -e "${YELLOW}!${NC} Port 8080 is not in use"
@@ -98,14 +98,14 @@ if [[ -d /sys/class/gpio ]]; then
     
     # Check GPIO access
     if groups | grep -q gpio; then
-        echo -e "${GREEN}✓${NC} User is in gpio group"
+        echo -e "${GREEN}${NC} User is in gpio group"
     else
         echo -e "${YELLOW}!${NC} User not in gpio group (run: sudo usermod -a -G gpio $USER)"
     fi
     
     # Check I2C
     if [ -e /dev/i2c-1 ]; then
-        echo -e "${GREEN}✓${NC} I2C enabled (/dev/i2c-1 exists)"
+        echo -e "${GREEN}${NC} I2C enabled (/dev/i2c-1 exists)"
         if command -v i2cdetect &> /dev/null; then
             echo "I2C devices detected:"
             i2cdetect -y 1 2>/dev/null || echo "  (requires sudo to scan)"
@@ -116,7 +116,7 @@ if [[ -d /sys/class/gpio ]]; then
     
     # Check 1-Wire
     if [ -d /sys/bus/w1/devices ]; then
-        echo -e "${GREEN}✓${NC} 1-Wire enabled"
+        echo -e "${GREEN}${NC} 1-Wire enabled"
         ONE_WIRE_COUNT=$(ls /sys/bus/w1/devices/ | grep -c "28-" || echo 0)
         echo "  DS18B20 sensors found: $ONE_WIRE_COUNT"
     else
@@ -137,11 +137,11 @@ fi
 # Connection Test
 echo -e "\n${YELLOW}Connection Test:${NC}"
 if curl -s http://localhost:8080/health > /dev/null 2>&1; then
-    echo -e "${GREEN}✓${NC} OSCE API responding on localhost:8080"
+    echo -e "${GREEN}${NC} OSCE API responding on localhost:8080"
     echo "API Response:"
     curl -s http://localhost:8080/health | python3 -m json.tool 2>/dev/null | sed 's/^/  /'
 else
-    echo -e "${RED}✗${NC} Cannot connect to OSCE on localhost:8080"
+    echo -e "${RED}${NC} Cannot connect to OSCE on localhost:8080"
 fi
 
 # Troubleshooting Suggestions
@@ -210,7 +210,7 @@ mkdir -p "$BUNDLE_DIR"
 tar -czf "$BUNDLE_DIR.tar.gz" -C /tmp "$(basename "$BUNDLE_DIR")"
 rm -rf "$BUNDLE_DIR"
 
-echo -e "${GREEN}✓${NC} Support bundle created: ${BLUE}$BUNDLE_DIR.tar.gz${NC}"
+echo -e "${GREEN}${NC} Support bundle created: ${BLUE}$BUNDLE_DIR.tar.gz${NC}"
 echo ""
 echo "If you need help:"
 echo "1. Share the output above in a GitHub issue"

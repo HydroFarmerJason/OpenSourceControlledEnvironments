@@ -1,4 +1,4 @@
-# 🌱 OSCE - Open Source Controlled Environments
+#  OSCE - Open Source Controlled Environments
 
 <div align="center">
 
@@ -16,11 +16,11 @@
 
 ---
 
-## 🚀 Transform Your Growing Operation in 5 Minutes
+##  Transform Your Growing Operation in 5 Minutes
 
 OSCE is a production-ready, modular platform that makes advanced Controlled Environment Agriculture (CEA) accessible to everyone—from hobbyists to commercial operations. Like WordPress revolutionized websites, OSCE revolutionizes IoT for agriculture.
 
-### ✨ Why OSCE?
+###  Why OSCE?
 
 | Traditional IoT | OSCE Platform |
 |-----------------|---------------|
@@ -31,7 +31,7 @@ OSCE is a production-ready, modular platform that makes advanced Controlled Envi
 | Isolated systems | **Federated network** ready |
 | Manual monitoring | **AI-powered** optimization |
 
-## 🎯 Quick Start
+##  Quick Start
 
 ```bash
 # One-line installation (Linux/MacOS)
@@ -42,36 +42,36 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 
 **First-time setup? See our [5-minute quickstart guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)**
 
-## 🌟 Features
+##  Features
 
-### 🔧 Core Capabilities
+###  Core Capabilities
 
-- **🔌 Universal Hardware Support**
+- ** Universal Hardware Support**
   - Raspberry Pi, ESP32, Arduino, and more
   - Auto-discovery of sensors and actuators
   - Hot-swappable components
 
-- **🤖 AI-Powered Automation**
+- ** AI-Powered Automation**
   - Natural language rule creation
   - Predictive maintenance
   - Growth optimization ML models
 
-- **🔐 Enterprise Security**
+- ** Enterprise Security**
   - Zero-trust architecture
   - Blockchain audit trails
   - Quantum-ready encryption
 
-- **📊 Comprehensive Monitoring**
+- ** Comprehensive Monitoring**
   - Real-time dashboards
   - Automated compliance reporting
   - Mobile app support
 
-- **🌐 Federation & Scaling**
+- ** Federation & Scaling**
   - Multi-site management
   - Automatic failover
   - Global collaboration network
 
-### 🎮 Interface Options
+###  Interface Options
 
 1. **Web Dashboard** - Beautiful, responsive interface
 2. **Mobile Apps** - iOS/Android (coming soon)
@@ -79,14 +79,14 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 4. **CLI** - Full command-line control
 5. **Voice Control** - Alexa/Google Home integration
 
-## 📚 Documentation
+##  Documentation
 
 ### For Different Users
 
-- **👨‍🌾 Growers**: Start with [AGENTS.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Your complete operational guide
-- **💻 Developers**: See [DEVELOPMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Architecture and plugin development
-- **🏢 IT Admins**: Check [DEPLOYMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Enterprise deployment guide
-- **🤖 AI Developers**: Read [AI_INTEGRATION.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Building AI copilots
+- ** Growers**: Start with [AGENTS.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Your complete operational guide
+- ** Developers**: See [DEVELOPMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Architecture and plugin development
+- ** IT Admins**: Check [DEPLOYMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Enterprise deployment guide
+- ** AI Developers**: Read [AI_INTEGRATION.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Building AI copilots
 
 ### Quick Links
 
@@ -95,7 +95,7 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 - [Security Best Practices](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
 - [Troubleshooting Guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
 
-## 🏗️ Architecture
+##  Architecture
 
 OSCE introduces revolutionary concepts to IoT:
 
@@ -119,33 +119,33 @@ OSCE introduces revolutionary concepts to IoT:
 └─────────────────────────────────────────────────────────┘
 ```
 
-## 🌍 Real-World Success Stories
+##  Real-World Success Stories
 
-### 🏫 Educational Institution
+###  Educational Institution
 > "OSCE transformed our biology program. Students went from struggling with Arduino code to running professional-grade experiments in minutes." - *Prof. Sarah Chen, UC Berkeley*
 
-### 🏭 Commercial Greenhouse
+###  Commercial Greenhouse
 > "30% reduction in water usage, 25% increase in yield, and our team actually enjoys using the system." - *GreenTech Farms, Netherlands*
 
-### 🏘️ Community Garden
+###  Community Garden
 > "We connected 12 community gardens across the city. Now we share knowledge and resources like never before." - *Urban Harvest Initiative, Detroit*
 
-## 🤝 Community
+##  Community
 
 Join our thriving community of growers, developers, and innovators:
 
-- **📣 Discussions**: [GitHub Discussions](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions)
-- **💬 Discord**: [Join our Discord](https://discord.gg/osce)
-- **📧 Newsletter**: [Subscribe for updates](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/newsletter)
-- **🎥 YouTube**: [Video Tutorials](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/tutorials)
+- ** Discussions**: [GitHub Discussions](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions)
+- ** Discord**: [Join our Discord](https://discord.gg/osce)
+- ** Newsletter**: [Subscribe for updates](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/newsletter)
+- ** YouTube**: [Video Tutorials](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/tutorials)
 
-### 📅 Community Events
+###  Community Events
 
 - **Weekly Office Hours**: Thursdays 2 PM UTC
 - **Monthly Show & Tell**: First Tuesday
 - **Annual Conference**: September (Virtual & In-Person)
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Minimum Requirements
 
@@ -172,7 +172,7 @@ cd OpenSourceControlledEnvironments
 docker run -d -p 8080:8080 hydrofarmer/osce:latest
 ```
 
-## 🧪 Example: Your First Automation
+##  Example: Your First Automation
 
 ```python
 # Add a temperature sensor
@@ -184,19 +184,19 @@ env.add_rule("if greenhouse_temp > 28°C then turn exhaust_fan on")
 # That's it! No complex programming required
 ```
 
-## 🔌 Plugin Ecosystem
+##  Plugin Ecosystem
 
 Extend OSCE with our growing plugin marketplace:
 
-- **🌤️ Weather Integration** - Proactive climate control
-- **📸 AI Plant Health** - Disease detection via camera
-- **💹 Market Prices** - Optimize growing based on demand
-- **🔋 Solar Management** - Integrate renewable energy
-- **📱 Notifications** - SMS, Email, Slack, Teams
+- ** Weather Integration** - Proactive climate control
+- ** AI Plant Health** - Disease detection via camera
+- ** Market Prices** - Optimize growing based on demand
+- ** Solar Management** - Integrate renewable energy
+- ** Notifications** - SMS, Email, Slack, Teams
 
 [Browse all plugins →](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/plugins)
 
-## 🛠️ Development
+##  Development
 
 ### Building from Source
 
@@ -236,7 +236,7 @@ class Plugin:
         self.osce.log("My plugin is active!")
 ```
 
-## 📊 Performance
+##  Performance
 
 Benchmarked on Raspberry Pi 4 (4GB):
 
@@ -246,38 +246,38 @@ Benchmarked on Raspberry Pi 4 (4GB):
 - **Concurrent Devices**: 100+
 - **Data Points/Day**: 1M+
 
-## 🔒 Security
+##  Security
 
 OSCE takes security seriously:
 
-- ✅ Regular security audits
-- ✅ Automated vulnerability scanning
-- ✅ Responsible disclosure program
-- ✅ End-to-end encryption option
-- ✅ GDPR/CCPA compliant
+-  Regular security audits
+-  Automated vulnerability scanning
+-  Responsible disclosure program
+-  End-to-end encryption option
+-  GDPR/CCPA compliant
 
 Report security issues to: security@osce.io
 
-## 🤲 Contributing
+##  Contributing
 
 We love contributions! See our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ### Ways to Contribute
 
-1. **🐛 Report Bugs**: [Issue Tracker](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/issues)
-2. **💡 Suggest Features**: [Feature Requests](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions/categories/ideas)
-3. **📖 Improve Docs**: Always appreciated!
-4. **🔧 Submit PRs**: Fork, code, test, PR
-5. **🌍 Translate**: Help us go global
-6. **📹 Create Tutorials**: Share your knowledge
+1. ** Report Bugs**: [Issue Tracker](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/issues)
+2. ** Suggest Features**: [Feature Requests](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions/categories/ideas)
+3. ** Improve Docs**: Always appreciated!
+4. ** Submit PRs**: Fork, code, test, PR
+5. ** Translate**: Help us go global
+6. ** Create Tutorials**: Share your knowledge
 
-## 📄 License
+##  License
 
 OSCE is open source under the [MIT License](LICENSE). Use it freely in personal and commercial projects.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
-Built with ❤️ by the OSCE Community
+Built with  by the OSCE Community
 
 Special thanks to:
 - All our contributors and testers
@@ -288,7 +288,7 @@ Special thanks to:
 
 <div align="center">
 
-**🌱 Growing the future, together 🌱**
+** Growing the future, together **
 
 [Website](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) • [Documentation](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki) • [Community](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/discussions) • [Donate](https://github.com/sponsors/HydroFarmerJason)
 
