@@ -10,7 +10,7 @@
 ## Reporting a Vulnerability
 
 ### Security Contact
-Report security vulnerabilities to: [security@your-project.com]
+Report security vulnerabilities to: OSCE
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
