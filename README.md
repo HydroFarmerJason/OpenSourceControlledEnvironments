@@ -45,6 +45,16 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 
 **First-time setup? See our [5-minute quickstart guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)**
 
+## OSCE v2.0 Updates Summary
+
+The 2025 release brings PHAL v2, HiveMind FFT v2, and Quantum Planetary Awareness v2 together in a unified stack. The new `osce-unified-setup-v2.py` bootstrap script wires these components automatically and serves the updated dashboard from `static/dashboard.html`.
+
+Key highlights:
+- Cryptographic manifest validation and permission hardening
+- Frequency-domain consensus for resolving conflicts
+- Planetary context broadcasting with safety enforcement
+- Responsive web dashboard with live EM spectrum graph
+
 ##  Features
 
 ###  Core Capabilities
@@ -191,7 +201,8 @@ python osce-hivemind-fft.py
 
 Explore advanced functionality using the scripts in the repository root:
 
-- `osce_unified_setup.py` – Production-ready setup leveraging the IoT Abstract Resource Model.
+ - `osce-unified-setup-v2.py` – Primary v2 bootstrap with PHAL, HiveMind FFT, and Quantum Planetary Awareness.
+ - `osce_unified_setup.py` – Original unified setup leveraging the IoT Abstract Resource Model.
 - `osce_hal_enhanced.py` – Enhanced hardware abstraction layer with monitoring and security.
 - `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
 - `osce.core.living_quantum_monitor` – Evidence-led monitoring for quantum CEA experiments.
