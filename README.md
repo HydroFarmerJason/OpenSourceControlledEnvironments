@@ -78,6 +78,7 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
   - Frequency-domain agent coordination via FFT
   - Bridges digital decisions with physical actions
   - Demonstration: `osce-hivemind-fft.py`
+ - Advanced modules: `osce.core.living_quantum_monitor` and `osce.core.planetary_optimizer_v3`
 
 ###  Interface Options
 
@@ -189,6 +190,8 @@ Explore advanced functionality using the scripts in the repository root:
 - `osce_unified_setup.py` – Production-ready setup leveraging the IoT Abstract Resource Model.
 - `osce_hal_enhanced.py` – Enhanced hardware abstraction layer with monitoring and security.
 - `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
+- `osce.core.living_quantum_monitor` – Evidence-led monitoring for quantum CEA experiments.
+- `osce.core.planetary_optimizer_v3` – Distributed, hardware-aware planetary optimization.
 
 Run any script with `python <script>` to see it in action.
 

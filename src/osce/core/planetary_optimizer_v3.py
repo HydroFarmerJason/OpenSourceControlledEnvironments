@@ -1,4 +1,5 @@
 # modules/climate_adaptation/planetary_optimizer_v3.py
+# Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source) osce@duck.com
 """
 OSCE Planetary Optimizer v3 - Enhanced with Production HAL Integration
 Distributed optimization with secure hardware abstraction

@@ -1,3 +1,4 @@
+// Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source) osce@duck.com
 import React, { useState, useEffect } from 'react';
 import { Heart, Brain, Leaf, Activity, Users, AlertCircle, TrendingUp } from 'lucide-react';
 
