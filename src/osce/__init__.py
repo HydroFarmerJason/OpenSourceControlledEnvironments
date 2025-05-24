@@ -2,6 +2,7 @@
 
 from . import hardware
 from .hardware import *
+from .core import LivingQuantumMonitor, PlanetaryOptimizerV3
 
 class Node:
     """Simple representation of a hardware node."""
@@ -63,4 +64,9 @@ class Environment:
             'plugins': self.plugins,
         }
 
-__all__ = ['Environment', 'Node'] + hardware.__all__
+__all__ = [
+    'Environment',
+    'Node',
+    'LivingQuantumMonitor',
+    'PlanetaryOptimizerV3',
+] + hardware.__all__

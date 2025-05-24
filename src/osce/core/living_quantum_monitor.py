@@ -1,4 +1,5 @@
 # modules/quantum_cea/living_quantum_monitor.py
+# Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source) osce@duck.com
 """
 Living Quantum CEA Monitor - Phase 1 Implementation
 Evidence-led monitoring and mapping for biological quantum computing
