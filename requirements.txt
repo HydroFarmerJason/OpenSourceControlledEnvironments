@@ -3,6 +3,8 @@ adafruit-blinka==8.58.1
 adafruit-circuitpython-ads1x15==2.2.21
 dependabot/pip/python-dateutil-2.9.0
 adafruit-circuitpython-bme280==2.6.15
+dependabot/pip/opencv-python-4.11.0.86
+=======
 =======
 adafruit-circuitpython-bme280==2.6.28
 adafruit-circuitpython-busdevice==5.2.12
@@ -51,6 +53,9 @@ markupsafe==3.0.2
 mccabe==0.7.0
 mypy-extensions==1.1.0
 numpy==1.24.4
+dependabot/pip/opencv-python-4.11.0.86
+opencv-python==4.11.0.86
+=======
 opencv-python==4.8.0.76
 packaging==25.0
 paho-mqtt==1.6.1
@@ -67,6 +72,8 @@ pyftdi==0.56.0
 pyserial==3.5
 pytest==7.4.2
 pytest-cov==4.1.0
+dependabot/pip/opencv-python-4.11.0.86
+=======
 dependabot/pip/python-dateutil-2.9.0
 python-dateutil==2.9.0
 =======
