@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCE Harmony Dashboard v2.1 - Enhanced Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background */
+        .background-pulse {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(139, 92, 246, 0.1) 0%, 
+                rgba(0, 0, 0, 0) 70%);
+            animation: schumannPulse 7.83s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes schumannPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        /* Layout */
+        .dashboard {
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, var(--secondary), var(--primary), #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+
+        /* Connection Status */
+        .connection-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--danger);
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        .status-dot.connected {
+            background: var(--success);
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .nav-tab:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .card h2 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Icons */
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            border-radius: 8px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .btn:hover {
+            background: rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn.primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .btn.success {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .btn.danger {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: white;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 0.95em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        /* Planetary State Indicator */
+        .planetary-state {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .state-indicator {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .state-calm {
+            background: radial-gradient(circle, #10b981, #059669);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .state-active {
+            background: radial-gradient(circle, #3b82f6, #2563eb);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+        }
+
+        .state-energized {
+            background: radial-gradient(circle, #f59e0b, #d97706);
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+            animation: energizedPulse 2s ease-in-out infinite;
+        }
+
+        .state-stormy {
+            background: radial-gradient(circle, #ef4444, #dc2626);
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
+            animation: stormyFlash 1s ease-in-out infinite;
+        }
+
+        .state-transforming {
+            background: radial-gradient(circle, #8b5cf6, #7c3aed);
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.8);
+            animation: transformingVortex 3s linear infinite;
+        }
+
+        @keyframes energizedPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes stormyFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes transformingVortex {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* Frequency Display */
+        .frequency-display {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .frequency-normal { color: var(--success); }
+        .frequency-shifted { color: var(--warning); }
+
+        /* Canvas */
+        canvas {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* Sensor/Actuator Lists */
+        .device-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .device-item {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .device-info {
+            flex: 1;
+        }
+
+        .device-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .device-value {
+            font-size: 1.8em;
+            color: var(--primary);
+        }
+
+        .device-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85em;
+            color: #a0a0a0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .status-healthy { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+        .status-degraded { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+        .status-unhealthy { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+
+        /* PHAL Permissions Grid */
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .permission-card {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .permission-card.active {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .permission-icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        /* HiveMind Decisions */
+        .decision-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .decision-item {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .decision-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .decision-type {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .decision-result {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+
+        .decision-grant { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+        .decision-deny { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        .decision-share { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+
+        /* Progress Bars */
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        .progress-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Rule Builder */
+        .rule-builder {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .rule-parts {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .rule-part {
+            padding: 8px 15px;
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Plugin List */
+        .plugin-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .plugin-card {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .plugin-card:hover {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .plugin-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .plugin-version {
+            color: #a0a0a0;
+            font-size: 0.85em;
+        }
+
+        /* Harmony Score Ring */
+        .harmony-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .harmony-ring {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .harmony-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                var(--secondary) 0deg,
+                var(--primary) 90deg,
+                #ec4899 180deg,
+                var(--warning) 270deg,
+                var(--secondary) 360deg
+            );
+            animation: harmonyRotate 20s linear infinite;
+            mask: radial-gradient(
+                circle,
+                transparent 65%,
+                black 65%,
+                black 85%,
+                transparent 85%
+            );
+            -webkit-mask: radial-gradient(
+                circle,
+                transparent 65%,
+                black 65%,
+                black 85%,
+                transparent 85%
+            );
+        }
+
+        @keyframes harmonyRotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .harmony-score {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            font-size: 1.5em;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .frequency-display {
+                font-size: 2em;
+            }
+        }
+
+        /* TRANSFORMING overlay */
+        .transforming-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: transformingFlash 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes transformingFlash {
+            0% { background: rgba(139, 92, 246, 0.2); }
+            100% { background: rgba(255, 0, 0, 0.3); }
+        }
+
+        .transforming-warning {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #ff0000;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .transforming-warning h2 {
+            color: #ff0000;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: warningPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes warningPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- TRANSFORMING state warning overlay -->
+    <div class="transforming-overlay" id="transforming-overlay">
+        <div class="transforming-warning">
+            <h2>⚠️ PLANETARY TRANSFORMATION IN PROGRESS ⚠️</h2>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">
+                Major electromagnetic shift detected. All non-essential operations suspended.
+            </p>
+            <p>DO NOT attempt manual overrides during this state.</p>
+            <p style="margin-top: 20px; color: #a0a0a0;">
+                Awaiting planetary stabilization...
+            </p>
+        </div>
+    </div>
+
+    <div class="background-pulse"></div>
+    
+    <div class="dashboard">
+        <header>
+            <h1>OSCE Harmony Dashboard v2.1</h1>
+            <p class="subtitle">The WordPress of IoT • Harmonizing with Earth's Electromagnetic Rhythms</p>
+            <div class="connection-status">
+                <span id="connection-text">Disconnected</span>
+                <div class="status-dot" id="status-dot"></div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="switchTab('overview')">🌍 Overview</div>
+            <div class="nav-tab" onclick="switchTab('sensors')">📊 Sensors</div>
+            <div class="nav-tab" onclick="switchTab('actuators')">⚙️ Actuators</div>
+            <div class="nav-tab" onclick="switchTab('rules')">🤖 Automation</div>
+            <div class="nav-tab" onclick="switchTab('phal')">🔐 PHAL</div>
+            <div class="nav-tab" onclick="switchTab('hivemind')">🧠 HiveMind</div>
+            <div class="nav-tab" onclick="switchTab('planetary')">🌎 Planetary</div>
+            <div class="nav-tab" onclick="switchTab('plugins')">🔌 Plugins</div>
+        </div>
+
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="tab-overview">
+            <div class="grid">
+                <!-- System Harmony -->
+                <div class="card">
+                    <h2>🎯 System Harmony</h2>
+                    <div class="harmony-container">
+                        <div class="harmony-ring">
+                            <div class="harmony-circle"></div>
+                            <div class="harmony-score" id="harmony-score">85%</div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p>PHAL Health: <span id="phal-health">98%</span></p>
+                        <p>HiveMind Coherence: <span id="hivemind-coherence">92%</span></p>
+                        <p>Planetary Alignment: <span id="planetary-alignment">87%</span></p>
+                    </div>
+                </div>
+
+                <!-- Planetary State -->
+                <div class="card">
+                    <h2>🌍 Planetary State</h2>
+                    <div class="planetary-state">
+                        <div class="state-indicator state-active" id="state-indicator">
+                            <span id="state-text">ACTIVE</span>
+                        </div>
+                        <p id="state-description">Normal electromagnetic variations detected</p>
+                        <div style="margin-top: 20px;">
+                            <p>Schumann Frequency</p>
+                            <div class="frequency-display frequency-normal" id="frequency">7.83 Hz</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="card">
+                    <h2>📈 System Status</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h3>Hardware</h3>
+                            <p>Sensors: <strong id="sensor-count">12</strong></p>
+                            <p>Actuators: <strong id="actuator-count">8</strong></p>
+                            <p>Devices: <strong id="device-count">5</strong></p>
+                        </div>
+                        <div>
+                            <h3>Software</h3>
+                            <p>Plugins: <strong id="plugin-count">7</strong></p>
+                            <p>Rules: <strong id="rule-count">15</strong></p>
+                            <p>Grants: <strong id="grant-count">23</strong></p>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn success" onclick="refreshAll()">🔄 Refresh</button>
+                        <button class="btn" onclick="downloadReports()">📊 Reports</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card" style="margin-top: 20px;">
+                <h2>📋 Recent Activity</h2>
+                <div id="activity-log" class="device-list">
+                    <div class="device-item">
+                        <div class="device-info">
+                            <div class="device-name">System Started</div>
+                            <div class="device-status">OSCE v2.1 initialized successfully</div>
+                        </div>
+                        <span class="status-badge status-healthy">OK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sensors Tab -->
+        <div class="tab-content" id="tab-sensors">
+            <div class="card">
+                <h2>📊 Active Sensors</h2>
+                <div class="btn-group">
+                    <button class="btn primary" onclick="showModal('add-sensor')">➕ Add Sensor</button>
+                    <button class="btn" onclick="calibrateSensors()">🎯 Calibrate All</button>
+                </div>
+                <div id="sensor-list" class="device-list" style="margin-top: 20px;">
+                    <!-- Sensors will be populated here -->
+                </div>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: 20px;">
+                <div class="card">
+                    <h2>📈 Temperature Trends</h2>
+                    <canvas id="temp-chart"></canvas>
+                </div>
+                <div class="card">
+                    <h2>💧 Humidity Trends</h2>
+                    <canvas id="humidity-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actuators Tab -->
+        <div class="tab-content" id="tab-actuators">
+            <div class="card">
+                <h2>⚙️ Active Actuators</h2>
+                <div class="btn-group">
+                    <button class="btn primary" onclick="showModal('add-actuator')">➕ Add Actuator</button>
+                    <button class="btn danger" onclick="emergencyStop()">🛑 Emergency Stop</button>
+                </div>
+                <div id="actuator-list" class="device-list" style="margin-top: 20px;">
+                    <!-- Actuators will be populated here -->
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h2>🎮 Manual Control</h2>
+                <div class="form-group">
+                    <label>Select Actuator</label>
+                    <select class="form-control" id="manual-actuator">
+                        <option>Select an actuator...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Command</label>
+                    <select class="form-control" id="manual-command">
+                        <option value="on">Turn On</option>
+                        <option value="off">Turn Off</option>
+                        <option value="toggle">Toggle</option>
+                        <option value="set">Set Value</option>
+                    </select>
+                </div>
+                <div class="form-group" id="manual-value-group" style="display: none;">
+                    <label>Value (0-100)</label>
+                    <input type="range" class="form-control" id="manual-value" min="0" max="100" value="50">
+                    <span id="manual-value-display">50</span>
+                </div>
+                <button class="btn primary" onclick="executeManualControl()">Execute</button>
+            </div>
+        </div>
+
+        <!-- Rules Tab -->
+        <div class="tab-content" id="tab-rules">
+            <div class="card">
+                <h2>🤖 Automation Rules</h2>
+                <div class="rule-builder">
+                    <h3>Create New Rule</h3>
+                    <div class="form-group">
+                        <label>Rule in Natural Language</label>
+                        <input type="text" class="form-control" id="rule-input" 
+                               placeholder="e.g., if temperature > 28 then turn fan on">
+                    </div>
+                    <button class="btn primary" onclick="addRule()">Add Rule</button>
+                </div>
+                <div id="rule-list" style="margin-top: 20px;">
+                    <!-- Rules will be populated here -->
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h2>📚 Rule Templates</h2>
+                <div class="grid">
+                    <div class="device-item" style="cursor: pointer;" 
+                         onclick="document.getElementById('rule-input').value = 'if temperature > 28 then turn fan on'">
+                        <div class="device-info">
+                            <div class="device-name">Temperature Control</div>
+                            <div class="device-status">Maintain optimal temperature</div>
+                        </div>
+                    </div>
+                    <div class="device-item" style="cursor: pointer;"
+                         onclick="document.getElementById('rule-input').value = 'if humidity < 60 then turn pump on'">
+                        <div class="device-info">
+                            <div class="device-name">Humidity Control</div>
+                            <div class="device-status">Maintain optimal humidity</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHAL Tab -->
+        <div class="tab-content" id="tab-phal">
+            <div class="grid">
+                <div class="card">
+                    <h2>🔐 PHAL Status</h2>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="phal-health-bar" style="width: 95%"></div>
+                        <div class="progress-label">Health: 95%</div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p>Active Plugins: <strong id="phal-plugins">8</strong></p>
+                        <p>Devices Registered: <strong id="phal-devices">5</strong></p>
+                        <p>Active Grants: <strong id="phal-grants">23</strong></p>
+                        <p>Conflict Strategy: <strong id="phal-strategy">Consensus</strong></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🛡️ Active Permissions</h2>
+                    <div class="permissions-grid">
+                        <div class="permission-card active">
+                            <div class="permission-icon">👁️</div>
+                            <div>READ</div>
+                            <div style="font-size: 0.8em; color: #a0a0a0;">12 grants</div>
+                        </div>
+                        <div class="permission-card active">
+                            <div class="permission-icon">✏️</div>
+                            <div>WRITE</div>
+                            <div style="font-size: 0.8em; color: #a0a0a0;">8 grants</div>
+                        </div>
+                        <div class="permission-card active">
+                            <div class="permission-icon">⚡</div>
+                            <div>ACTUATE</div>
+                            <div style="font-size: 0.8em; color: #a0a0a0;">5 grants</div>
+                        </div>
+                        <div class="permission-card">
+                            <div class="permission-icon">🎮</div>
+                            <div>CONTROL</div>
+                            <div style="font-size: 0.8em; color: #a0a0a0;">0 grants</div>
+                        </div>
+                        <div class="permission-card">
+                            <div class="permission-icon">🔒</div>
+                            <div>EXCLUSIVE</div>
+                            <div style="font-size: 0.8em; color: #a0a0a0;">0 grants</div>
+                        </div>
+                        <div class="permission-card">
+                            <div class="permission-icon">🌐</div>
+                            <div>FEDERATE</div>
+                            <div style="font-size: 0.8em; color: #a0a0a0;">0 grants</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h2>📋 Recent Grant Activity</h2>
+                <div id="grant-activity" class="device-list">
+                    <!-- Grant activity will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- HiveMind Tab -->
+        <div class="tab-content" id="tab-hivemind">
+            <div class="grid">
+                <div class="card">
+                    <h2>🧠 HiveMind Coherence</h2>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="coherence-bar" style="width: 85%"></div>
+                        <div class="progress-label">85% Coherent</div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p>Consensus Rate: <strong id="consensus-rate">92%</strong></p>
+                        <p>Total Decisions: <strong id="decision-count">156</strong></p>
+                        <p>Avg Participants: <strong id="avg-participants">4.2</strong></p>
+                    </div>
+                    <canvas id="coherence-chart" style="margin-top: 20px;"></canvas>
+                </div>
+
+                <div class="card">
+                    <h2>⚖️ Recent Decisions</h2>
+                    <div id="decision-list" class="decision-list">
+                        <!-- Decisions will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planetary Tab -->
+        <div class="tab-content" id="tab-planetary">
+            <div class="grid">
+                <div class="card">
+                    <h2>🌍 Planetary Awareness</h2>
+                    <div class="planetary-state">
+                        <div class="state-indicator state-active" id="planetary-indicator">
+                            <span id="planetary-state-text">ACTIVE</span>
+                        </div>
+                    </div>
+                    <canvas id="schumann-spectrum"></canvas>
+                </div>
+
+                <div class="card">
+                    <h2>⚡ Energy Harvesting</h2>
+                    <div style="margin-bottom: 20px;">
+                        <h3>Atmospheric</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="atmospheric-bar" style="width: 60%"></div>
+                            <div class="progress-label">12W</div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3>Telluric</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="telluric-bar" style="width: 30%"></div>
+                            <div class="progress-label">3W</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Bioelectric</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="bioelectric-bar" style="width: 10%"></div>
+                            <div class="progress-label">0.5W</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px;">Total Harvest: <strong id="total-harvest">15.5W</strong></p>
+                    <p>Sustainability: <span id="sustainability" style="color: var(--success);">92%</span></p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h2>📜 Planetary Messages</h2>
+                <div id="planetary-messages" class="device-list">
+                    <!-- Messages will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Plugins Tab -->
+        <div class="tab-content" id="tab-plugins">
+            <div class="card">
+                <h2>🔌 Installed Plugins</h2>
+                <div class="btn-group">
+                    <button class="btn primary" onclick="showModal('install-plugin')">📦 Install Plugin</button>
+                    <button class="btn" onclick="refreshPlugins()">🔄 Refresh</button>
+                </div>
+                <div id="plugin-list" class="plugin-list">
+                    <!-- Plugins will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="add-sensor-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Sensor</h2>
+                <span class="modal-close" onclick="hideModal('add-sensor')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Sensor Name</label>
+                <input type="text" class="form-control" id="new-sensor-name" placeholder="e.g., greenhouse_temp">
+            </div>
+            <div class="form-group">
+                <label>Sensor Type</label>
+                <select class="form-control" id="new-sensor-type">
+                    <option value="auto">Auto-detect</option>
+                    <option value="dht22">DHT22 (Temp/Humidity)</option>
+                    <option value="ds18b20">DS18B20 (Temperature)</option>
+                    <option value="bme280">BME280 (Temp/Humidity/Pressure)</option>
+                    <option value="soil_moisture">Soil Moisture</option>
+                    <option value="ph">pH Sensor</option>
+                    <option value="ec">EC Sensor</option>
+                    <option value="em_field">EM Field Sensor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Pin/Address</label>
+                <input type="text" class="form-control" id="new-sensor-pin" placeholder="e.g., 4 or 0x76">
+            </div>
+            <div class="btn-group">
+                <button class="btn primary" onclick="addSensor()">Add Sensor</button>
+                <button class="btn" onclick="hideModal('add-sensor')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="add-actuator-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Actuator</h2>
+                <span class="modal-close" onclick="hideModal('add-actuator')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Actuator Name</label>
+                <input type="text" class="form-control" id="new-actuator-name" placeholder="e.g., exhaust_fan">
+            </div>
+            <div class="form-group">
+                <label>Actuator Type</label>
+                <select class="form-control" id="new-actuator-type">
+                    <option value="auto">Auto-detect</option>
+                    <option value="relay">Relay (On/Off)</option>
+                    <option value="pwm">PWM Controller</option>
+                    <option value="servo">Servo Motor</option>
+                    <option value="stepper">Stepper Motor</option>
+                    <option value="pump">Water Pump</option>
+                    <option value="valve">Solenoid Valve</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Pin</label>
+                <input type="text" class="form-control" id="new-actuator-pin" placeholder="e.g., 17">
+            </div>
+            <div class="form-group">
+                <label>Safe Value</label>
+                <input type="number" class="form-control" id="new-actuator-safe" value="0" min="0" max="100">
+            </div>
+            <div class="btn-group">
+                <button class="btn primary" onclick="addActuator()">Add Actuator</button>
+                <button class="btn" onclick="hideModal('add-actuator')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="install-plugin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Install Plugin</h2>
+                <span class="modal-close" onclick="hideModal('install-plugin')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Plugin Registry</label>
+                <select class="form-control" id="plugin-source">
+                    <option value="official">Official OSCE Registry</option>
+                    <option value="community">Community Registry</option>
+                    <option value="url">From URL</option>
+                    <option value="upload">Upload File</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Search Plugins</label>
+                <input type="text" class="form-control" id="plugin-search" placeholder="Search...">
+            </div>
+            <div id="available-plugins" style="margin-top: 20px;">
+                <!-- Available plugins will be listed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = window.location.origin + '/api';
+        const WS_URL = `ws://${window.location.host}/ws`;
+        
+        // State
+        let ws = null;
+        let currentTab = 'overview';
+        let autoRefresh = true;
+        let telemetryData = {};
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            connectWebSocket();
+            refreshAll();
+            setupEventListeners();
+            startAutoRefresh();
+        });
+        
+        // Tab Switching
+        function switchTab(tabName) {
+            // Update nav tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            
+            currentTab = tabName;
+            
+            // Load tab-specific data
+            loadTabData(tabName);
+        }
+        
+        function loadTabData(tabName) {
+            switch(tabName) {
+                case 'sensors':
+                    loadSensors();
+                    break;
+                case 'actuators':
+                    loadActuators();
+                    break;
+                case 'rules':
+                    loadRules();
+                    break;
+                case 'phal':
+                    loadPHALStatus();
+                    break;
+                case 'hivemind':
+                    loadHiveMindData();
+                    break;
+                case 'planetary':
+                    loadPlanetaryData();
+                    break;
+                case 'plugins':
+                    loadPlugins();
+                    break;
+            }
+        }
+        
+        // WebSocket Connection
+        function connectWebSocket() {
+            if (ws) {
+                ws.close();
+            }
+            
+            try {
+                ws = new WebSocket(WS_URL);
+                
+                ws.onopen = () => {
+                    updateConnectionStatus(true);
+                    console.log('WebSocket connected');
+                };
+                
+                ws.onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        handleRealtimeUpdate(data);
+                    } catch (e) {
+                        console.error('WebSocket message error:', e);
+                    }
+                };
+                
+                ws.onerror = (error) => {
+                    console.error('WebSocket error:', error);
+                    updateConnectionStatus(false);
+                };
+                
+                ws.onclose = () => {
+                    updateConnectionStatus(false);
+                    // Reconnect after 5 seconds
+                    setTimeout(connectWebSocket, 5000);
+                };
+            } catch (e) {
+                console.error('WebSocket connection failed:', e);
+                updateConnectionStatus(false);
+            }
+        }
+        
+        function updateConnectionStatus(connected) {
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('connection-text');
+            
+            if (connected) {
+                dot.classList.add('connected');
+                text.textContent = 'Connected';
+            } else {
+                dot.classList.remove('connected');
+                text.textContent = 'Disconnected';
+            }
+        }
+        
+        // Handle real-time updates
+        function handleRealtimeUpdate(data) {
+            switch(data.type) {
+                case 'sensor_update':
+                    updateSensorDisplay(data.sensor);
+                    break;
+                case 'actuator_update':
+                    updateActuatorDisplay(data.actuator);
+                    break;
+                case 'planetary_state':
+                    updatePlanetaryState(data.state, data.description);
+                    break;
+                case 'schumann_update':
+                    updateSchumann(data.frequency, data.amplitude);
+                    break;
+                case 'hivemind_decision':
+                    addDecisionToList(data.decision);
+                    break;
+                case 'activity':
+                    addActivityLog(data.message);
+                    break;
+            }
+        }
+        
+        // Data refresh
+        async function refreshAll() {
+            try {
+                const [status, phal, hivemind, planetary, harmony] = await Promise.all([
+                    fetch(`${API_BASE}/status`).then(r => r.json()),
+                    fetch(`${API_BASE}/phal/metrics`).then(r => r.json()),
+                    fetch(`${API_BASE}/hivemind/metrics`).then(r => r.json()),
+                    fetch(`${API_BASE}/planetary/context`).then(r => r.json()),
+                    fetch(`${API_BASE}/harmony/score`).then(r => r.json())
+                ]);
+                
+                updateOverview(status, phal, hivemind, planetary, harmony);
+                
+                // Store for export
+                telemetryData = {
+                    timestamp: new Date().toISOString(),
+                    status, phal, hivemind, planetary, harmony
+                };
+                
+            } catch (e) {
+                console.error('Data refresh error:', e);
+            }
+        }
+        
+        function updateOverview(status, phal, hivemind, planetary, harmony) {
+            // Update counts
+            document.getElementById('sensor-count').textContent = status.sensors || 0;
+            document.getElementById('actuator-count').textContent = status.actuators || 0;
+            document.getElementById('plugin-count').textContent = status.plugins || 0;
+            document.getElementById('device-count').textContent = phal.devices || 0;
+            document.getElementById('grant-count').textContent = phal.active_grants || 0;
+            document.getElementById('rule-count').textContent = status.rules || 0;
+            
+            // Update harmony score
+            const harmonyScore = Math.round((harmony.harmony_score || 0) * 100);
+            document.getElementById('harmony-score').textContent = harmonyScore + '%';
+            
+            // Update components
+            if (harmony.components) {
+                document.getElementById('phal-health').textContent = 
+                    Math.round(harmony.components.phal_health * 100) + '%';
+                document.getElementById('hivemind-coherence').textContent = 
+                    Math.round(harmony.components.hivemind_coherence * 100) + '%';
+                document.getElementById('planetary-alignment').textContent = 
+                    Math.round(harmony.components.planetary_alignment * 100) + '%';
+            }
+            
+            // Update planetary state
+            if (planetary.state) {
+                updatePlanetaryState(planetary.state, 
+                    planetary.recommendations ? planetary.recommendations[0] : '');
+                
+                if (planetary.schumann) {
+                    updateSchumann(planetary.schumann.frequency, planetary.schumann.amplitude);
+                }
+            }
+        }
+        
+        function updatePlanetaryState(state, description) {
+            const states = ['calm', 'active', 'energized', 'stormy', 'transforming'];
+            const stateUpper = state.toUpperCase();
+            
+            const indicator = document.getElementById('state-indicator');
+            const stateText = document.getElementById('state-text');
+            const desc = document.getElementById('state-description');
+            
+            // Remove all state classes
+            states.forEach(s => indicator.classList.remove('state-' + s));
+            
+            // Add current state class
+            indicator.classList.add('state-' + state);
+            stateText.textContent = stateUpper;
+            desc.textContent = description || 'Monitoring planetary field...';
+            
+            // Update planetary tab indicator too
+            const planetaryIndicator = document.getElementById('planetary-indicator');
+            if (planetaryIndicator) {
+                states.forEach(s => planetaryIndicator.classList.remove('state-' + s));
+                planetaryIndicator.classList.add('state-' + state);
+                document.getElementById('planetary-state-text').textContent = stateUpper;
+            }
+            
+            // Handle TRANSFORMING state
+            if (state === 'transforming') {
+                document.getElementById('transforming-overlay').style.display = 'flex';
+            } else {
+                document.getElementById('transforming-overlay').style.display = 'none';
+            }
+        }
+        
+        function updateSchumann(frequency, amplitude) {
+            const freq = document.getElementById('frequency');
+            const baseFreq = 7.83;
+            const freqValue = frequency || baseFreq;
+            
+            freq.textContent = freqValue.toFixed(2) + ' Hz';
+            freq.className = Math.abs(freqValue - baseFreq) > 0.1 ? 
+                'frequency-display frequency-shifted' : 'frequency-display frequency-normal';
+                
+            // Draw spectrum
+            drawSchumannSpectrum(freqValue, amplitude);
+        }
+        
+        function drawSchumannSpectrum(centerFreq = 7.83, amplitude = 1.0) {
+            const canvas = document.getElementById('schumann-spectrum');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw frequency spectrum
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 2;
+            
+            ctx.beginPath();
+            for (let x = 0; x < canvas.width; x++) {
+                const freq = (x / canvas.width) * 60; // 0-60 Hz range
+                let y = canvas.height - 20;
+                
+                // Schumann resonance peaks
+                const resonances = [7.83, 14.3, 20.8, 27.3, 33.8];
+                resonances.forEach((resFreq, idx) => {
+                    const distance = Math.abs(freq - resFreq);
+                    if (distance < 1) {
+                        const peakHeight = (60 - idx * 10) * amplitude;
+                        const gaussian = Math.exp(-(distance * distance) / 0.1);
+                        y -= peakHeight * gaussian;
+                    }
+                });
+                
+                // Add noise
+                y += (Math.random() - 0.5) * 5;
+                
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
+        
+        // Sensor Management
+        async function loadSensors() {
+            try {
+                const response = await fetch(`${API_BASE}/sensors`);
+                const sensors = await response.json();
+                
+                const sensorList = document.getElementById('sensor-list');
+                sensorList.innerHTML = '';
+                
+                Object.entries(sensors).forEach(([name, sensor]) => {
+                    const item = document.createElement('div');
+                    item.className = 'device-item';
+                    item.innerHTML = `
+                        <div class="device-info">
+                            <div class="device-name">${name}</div>
+                            <div class="device-value">${sensor.value}${sensor.unit}</div>
+                            <div class="device-status">
+                                Type: ${sensor.type} | Last update: ${new Date(sensor.last_reading).toLocaleTimeString()}
+                            </div>
+                        </div>
+                        <span class="status-badge status-${sensor.health.status}">${sensor.health.status}</span>
+                    `;
+                    sensorList.appendChild(item);
+                });
+                
+                // Draw charts
+                drawSensorCharts();
+                
+            } catch (e) {
+                console.error('Failed to load sensors:', e);
+            }
+        }
+        
+        function drawSensorCharts() {
+            // Simplified chart drawing - in production use Chart.js
+            const tempCanvas = document.getElementById('temp-chart');
+            const humidityCanvas = document.getElementById('humidity-chart');
+            
+            if (tempCanvas) {
+                const ctx = tempCanvas.getContext('2d');
+                tempCanvas.width = tempCanvas.offsetWidth;
+                tempCanvas.height = tempCanvas.offsetHeight;
+                
+                // Draw simple line chart
+                ctx.strokeStyle = '#3b82f6';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                
+                for (let i = 0; i < 50; i++) {
+                    const x = (i / 50) * tempCanvas.width;
+                    const y = tempCanvas.height / 2 + Math.sin(i / 5) * 30 + (Math.random() - 0.5) * 10;
+                    
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+        }
+        
+        // Actuator Management
+        async function loadActuators() {
+            try {
+                const response = await fetch(`${API_BASE}/actuators`);
+                const actuators = await response.json();
+                
+                const actuatorList = document.getElementById('actuator-list');
+                const manualSelect = document.getElementById('manual-actuator');
+                
+                actuatorList.innerHTML = '';
+                manualSelect.innerHTML = '<option>Select an actuator...</option>';
+                
+                Object.entries(actuators).forEach(([name, actuator]) => {
+                    // Add to list
+                    const item = document.createElement('div');
+                    item.className = 'device-item';
+                    item.innerHTML = `
+                        <div class="device-info">
+                            <div class="device-name">${name}</div>
+                            <div class="device-value">${actuator.state}</div>
+                            <div class="device-status">
+                                Type: ${actuator.type} | Safe mode: ${actuator.safe_mode ? 'ON' : 'OFF'}
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn" onclick="toggleActuator('${name}')">Toggle</button>
+                        </div>
+                    `;
+                    actuatorList.appendChild(item);
+                    
+                    // Add to manual control
+                    const option = document.createElement('option');
+                    option.value = name;
+                    option.textContent = name;
+                    manualSelect.appendChild(option);
+                });
+                
+            } catch (e) {
+                console.error('Failed to load actuators:', e);
+            }
+        }
+        
+        async function toggleActuator(name) {
+            try {
+                await fetch(`${API_BASE}/control`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        actuator: name,
+                        command: { action: 'toggle' }
+                    })
+                });
+                
+                loadActuators();
+                addActivityLog(`Toggled actuator: ${name}`);
+                
+            } catch (e) {
+                console.error('Failed to toggle actuator:', e);
+            }
+        }
+        
+        // Rule Management
+        async function loadRules() {
+            try {
+                const response = await fetch(`${API_BASE}/rules`);
+                const rules = await response.json();
+                
+                const ruleList = document.getElementById('rule-list');
+                ruleList.innerHTML = '';
+                
+                rules.forEach((rule, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'device-item';
+                    item.innerHTML = `
+                        <div class="device-info">
+                            <div class="device-name">Rule ${index + 1}</div>
+                            <div class="device-status">${rule.description || rule.condition}</div>
+                        </div>
+                        <div>
+                            <button class="btn" onclick="toggleRule(${index})">
+                                ${rule.enabled ? 'Disable' : 'Enable'}
+                            </button>
+                            <button class="btn danger" onclick="deleteRule(${index})">Delete</button>
+                        </div>
+                    `;
+                    ruleList.appendChild(item);
+                });
+                
+            } catch (e) {
+                console.error('Failed to load rules:', e);
+            }
+        }
+        
+        async function addRule() {
+            const ruleInput = document.getElementById('rule-input').value;
+            if (!ruleInput) return;
+            
+            try {
+                await fetch(`${API_BASE}/rules`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ rule: ruleInput })
+                });
+                
+                document.getElementById('rule-input').value = '';
+                loadRules();
+                addActivityLog(`Added new rule: ${ruleInput}`);
+                
+            } catch (e) {
+                console.error('Failed to add rule:', e);
+            }
+        }
+        
+        // PHAL Status
+        async function loadPHALStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/phal/metrics`);
+                const phal = await response.json();
+                
+                // Update metrics
+                document.getElementById('phal-plugins').textContent = phal.active_plugins || 0;
+                document.getElementById('phal-devices').textContent = phal.devices || 0;
+                document.getElementById('phal-grants').textContent = phal.active_grants || 0;
+                document.getElementById('phal-strategy').textContent = phal.conflict_strategy || 'Priority';
+                
+                // Update health bar
+                const health = (phal.health_score || 0) * 100;
+                document.getElementById('phal-health-bar').style.width = health + '%';
+                document.querySelector('#phal-health-bar + .progress-label').textContent = `Health: ${Math.round(health)}%`;
+                
+                // Load grant activity
+                const activityList = document.getElementById('grant-activity');
+                activityList.innerHTML = '';
+                
+                if (phal.recent_grants) {
+                    phal.recent_grants.forEach(grant => {
+                        const item = document.createElement('div');
+                        item.className = 'device-item';
+                        item.innerHTML = `
+                            <div class="device-info">
+                                <div class="device-name">${grant.plugin_id}</div>
+                                <div class="device-status">
+                                    ${grant.capability_type} - ${grant.permission}
+                                </div>
+                            </div>
+                            <span class="status-badge status-healthy">Active</span>
+                        `;
+                        activityList.appendChild(item);
+                    });
+                }
+                
+            } catch (e) {
+                console.error('Failed to load PHAL status:', e);
+            }
+        }
+        
+        // HiveMind Data
+        async function loadHiveMindData() {
+            try {
+                const response = await fetch(`${API_BASE}/hivemind/metrics`);
+                const hivemind = await response.json();
+                
+                if (hivemind.status === 'no_data') {
+                    document.getElementById('coherence-bar').style.width = '0%';
+                    document.getElementById('consensus-rate').textContent = '0%';
+                    document.getElementById('decision-count').textContent = '0';
+                    document.getElementById('avg-participants').textContent = '0';
+                    return;
+                }
+                
+                // Update metrics
+                const coherence = (hivemind.recent_coherence || 0) * 100;
+                document.getElementById('coherence-bar').style.width = coherence + '%';
+                document.querySelector('#coherence-bar + .progress-label').textContent = `${Math.round(coherence)}% Coherent`;
+                
+                document.getElementById('consensus-rate').textContent = 
+                    Math.round((hivemind.consensus_rate || 0) * 100) + '%';
+                document.getElementById('decision-count').textContent = hivemind.total_decisions || 0;
+                document.getElementById('avg-participants').textContent = 
+                    (hivemind.avg_participants || 0).toFixed(1);
+                
+                // Draw coherence chart
+                drawCoherenceChart();
+                
+                // Load recent decisions
+                if (hivemind.recent_decisions) {
+                    const decisionList = document.getElementById('decision-list');
+                    decisionList.innerHTML = '';
+                    
+                    hivemind.recent_decisions.forEach(decision => {
+                        addDecisionToList(decision);
+                    });
+                }
+                
+            } catch (e) {
+                console.error('Failed to load HiveMind data:', e);
+            }
+        }
+        
+        function drawCoherenceChart() {
+            const canvas = document.getElementById('coherence-chart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Draw simple coherence visualization
+            ctx.fillStyle = '#8b5cf6';
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 2;
+            
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 20;
+            
+            // Draw agents as dots
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw connections (coherence)
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+        }
+        
+        function addDecisionToList(decision) {
+            const decisionList = document.getElementById('decision-list');
+            
+            const item = document.createElement('div');
+            item.className = 'decision-item';
+            item.innerHTML = `
+                <div class="decision-header">
+                    <div class="decision-type">${decision.type || 'Resource Conflict'}</div>
+                    <div class="decision-result decision-${decision.result}">${decision.result}</div>
+                </div>
+                <div>
+                    Confidence: ${Math.round((decision.confidence || 0) * 100)}% | 
+                    Participants: ${decision.participants || 0}
+                </div>
+            `;
+            
+            decisionList.insertBefore(item, decisionList.firstChild);
+            
+            // Limit to 10 decisions
+            while (decisionList.children.length > 10) {
+                decisionList.removeChild(decisionList.lastChild);
+            }
+        }
+        
+        // Planetary Data
+        async function loadPlanetaryData() {
+            try {
+                const response = await fetch(`${API_BASE}/planetary/context`);
+                const planetary = await response.json();
+                
+                if (planetary.energy_available) {
+                    // Update energy bars
+                    const sources = {
+                        atmospheric: { max: 20 },
+                        telluric: { max: 10 },
+                        bioelectric: { max: 5 }
+                    };
+                    
+                    let total = 0;
+                    Object.entries(sources).forEach(([key, config]) => {
+                        const watts = planetary.energy_available[key] || 0;
+                        total += watts;
+                        
+                        const bar = document.getElementById(`${key}-bar`);
+                        if (bar) {
+                            bar.style.width = (watts / config.max * 100) + '%';
+                            bar.parentElement.querySelector('.progress-label').textContent = watts.toFixed(1) + 'W';
+                        }
+                    });
+                    
+                    document.getElementById('total-harvest').textContent = total.toFixed(1) + 'W';
+                }
+                
+                // Update messages
+                if (planetary.messages) {
+                    const messageList = document.getElementById('planetary-messages');
+                    messageList.innerHTML = '';
+                    
+                    planetary.messages.forEach(msg => {
+                        const item = document.createElement('div');
+                        item.className = 'device-item';
+                        item.innerHTML = `
+                            <div class="device-info">
+                                <div class="device-name">${msg.pattern_type}</div>
+                                <div class="device-status">${msg.meaning}</div>
+                            </div>
+                            <span class="status-badge">
+                                ${Math.round((msg.confidence || 0) * 100)}%
+                            </span>
+                        `;
+                        messageList.appendChild(item);
+                    });
+                }
+                
+            } catch (e) {
+                console.error('Failed to load planetary data:', e);
+            }
+        }
+        
+        // Plugin Management
+        async function loadPlugins() {
+            try {
+                const response = await fetch(`${API_BASE}/plugins`);
+                const plugins = await response.json();
+                
+                const pluginList = document.getElementById('plugin-list');
+                pluginList.innerHTML = '';
+                
+                Object.entries(plugins).forEach(([id, plugin]) => {
+                    const card = document.createElement('div');
+                    card.className = 'plugin-card';
+                    card.innerHTML = `
+                        <div class="plugin-name">${plugin.name}</div>
+                        <div class="plugin-version">v${plugin.version}</div>
+                        <div style="margin-top: 10px;">
+                            <small>Permissions: ${plugin.permissions.join(', ')}</small>
+                        </div>
+                        <div class="btn-group" style="margin-top: 15px;">
+                            <button class="btn" onclick="configurePlugin('${id}')">Configure</button>
+                            <button class="btn danger" onclick="disablePlugin('${id}')">Disable</button>
+                        </div>
+                    `;
+                    pluginList.appendChild(card);
+                });
+                
+            } catch (e) {
+                console.error('Failed to load plugins:', e);
+            }
+        }
+        
+        // Activity Log
+        function addActivityLog(message) {
+            const activityLog = document.getElementById('activity-log');
+            
+            const item = document.createElement('div');
+            item.className = 'device-item';
+            item.innerHTML = `
+                <div class="device-info">
+                    <div class="device-name">${new Date().toLocaleTimeString()}</div>
+                    <div class="device-status">${message}</div>
+                </div>
+                <span class="status-badge status-healthy">OK</span>
+            `;
+            
+            activityLog.insertBefore(item, activityLog.firstChild);
+            
+            // Limit to 20 items
+            while (activityLog.children.length > 20) {
+                activityLog.removeChild(activityLog.lastChild);
+            }
+        }
+        
+        // Modal Management
+        function showModal(modalName) {
+            document.getElementById(`${modalName}-modal`).classList.add('active');
+        }
+        
+        function hideModal(modalName) {
+            document.getElementById(`${modalName}-modal`).classList.remove('active');
+        }
+        
+        // Manual Control
+        function executeManualControl() {
+            const actuator = document.getElementById('manual-actuator').value;
+            const command = document.getElementById('manual-command').value;
+            const value = document.getElementById('manual-value').value;
+            
+            console.log('Manual control:', actuator, command, value);
+            // Implement API call
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Manual command change
+            document.getElementById('manual-command').addEventListener('change', (e) => {
+                const valueGroup = document.getElementById('manual-value-group');
+                valueGroup.style.display = e.target.value === 'set' ? 'block' : 'none';
+            });
+            
+            // Value slider
+            document.getElementById('manual-value').addEventListener('input', (e) => {
+                document.getElementById('manual-value-display').textContent = e.target.value;
+            });
+            
+            // Modal clicks
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+        }
+        
+        // Auto refresh
+        function startAutoRefresh() {
+            setInterval(() => {
+                if (autoRefresh) {
+                    refreshAll();
+                    loadTabData(currentTab);
+                }
+            }, 5000); // Every 5 seconds
+        }
+        
+        // Emergency Stop
+        async function emergencyStop() {
+            if (confirm('Are you sure? This will stop all actuators!')) {
+                try {
+                    await fetch(`${API_BASE}/emergency-stop`, { method: 'POST' });
+                    addActivityLog('EMERGENCY STOP activated');
+                    loadActuators();
+                } catch (e) {
+                    console.error('Emergency stop failed:', e);
+                }
+            }
+        }
+        
+        // Download Reports
+        function downloadReports() {
+            const report = {
+                generated: new Date().toISOString(),
+                environment: 'OSCE v2.1 - Harmony Dashboard',
+                telemetry: telemetryData,
+                systemState: {
+                    autoRefresh: autoRefresh,
+                    currentTab: currentTab
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(report, null, 2)], 
+                                 { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `osce-report-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e);
+        });
+        
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e);
+        });
+    </script>
+</body>
+</html>
