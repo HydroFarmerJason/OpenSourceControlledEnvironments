@@ -40,7 +40,7 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 # Your system is now running at https://localhost:8080
 ```
 
-**First-time setup? See our [5-minute quickstart guide](docs/QUICKSTART.md)**
+**First-time setup? See our [5-minute quickstart guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)**
 
 ## 🌟 Features
 
@@ -83,17 +83,17 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
 
 ### For Different Users
 
-- **👨‍🌾 Growers**: Start with [AGENTS.md](docs/AGENTS.md) - Your complete operational guide
-- **💻 Developers**: See [DEVELOPMENT.md](docs/DEVELOPMENT.md) - Architecture and plugin development
-- **🏢 IT Admins**: Check [DEPLOYMENT.md](docs/DEPLOYMENT.md) - Enterprise deployment guide
-- **🤖 AI Developers**: Read [AI_INTEGRATION.md](docs/AI_INTEGRATION.md) - Building AI copilots
+- **👨‍🌾 Growers**: Start with [AGENTS.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Your complete operational guide
+- **💻 Developers**: See [DEVELOPMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Architecture and plugin development
+- **🏢 IT Admins**: Check [DEPLOYMENT.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Enterprise deployment guide
+- **🤖 AI Developers**: Read [AI_INTEGRATION.md](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments) - Building AI copilots
 
 ### Quick Links
 
-- [Hardware Compatibility List](docs/HARDWARE.md)
-- [Plugin Development Guide](docs/PLUGINS.md)
-- [Security Best Practices](docs/SECURITY.md)
-- [Troubleshooting Guide](docs/TROUBLESHOOTING.md)
+- [Hardware Compatibility List](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
+- [Plugin Development Guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
+- [Security Best Practices](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
+- [Troubleshooting Guide](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments)
 
 ## 🏗️ Architecture
 
