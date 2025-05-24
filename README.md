@@ -78,7 +78,11 @@ curl -sSL https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlle
   - Frequency-domain agent coordination via FFT
   - Bridges digital decisions with physical actions
   - Demonstration: `osce-hivemind-fft.py`
- - Advanced modules: `osce.core.living_quantum_monitor` and `osce.core.planetary_optimizer_v3`
+ - Advanced modules: `osce.core.living_quantum_monitor`,
+   `osce.core.planetary_optimizer_v3`,
+   `osce.modules.carbon_credits.blockchain_carbon_v3`,
+   `osce.modules.abil.plant_consciousness_interface_v3`,
+   `osce.modules.quantum_mesh.qkd_network_v3`
 
 ###  Interface Options
 
@@ -192,6 +196,9 @@ Explore advanced functionality using the scripts in the repository root:
 - `osce_complete_example.py` – Comprehensive demonstration of a multi-site deployment.
 - `osce.core.living_quantum_monitor` – Evidence-led monitoring for quantum CEA experiments.
 - `osce.core.planetary_optimizer_v3` – Distributed, hardware-aware planetary optimization.
+- `osce.modules.carbon_credits.blockchain_carbon_v3` – Automated carbon measurement and trading.
+- `osce.modules.abil.plant_consciousness_interface_v3` – Bioelectric plant interface with HAL.
+- `osce.modules.quantum_mesh.qkd_network_v3` – Quantum-secured mesh networking.
 
 Run any script with `python <script>` to see it in action.
 
