@@ -83,9 +83,9 @@ class TemperatureController:
         # Setup temperature sensor
         try:
             self.sensor = W1ThermSensor()
-            print(f"✓ Temperature sensor found: {self.sensor.id}")
+            print(f" Temperature sensor found: {self.sensor.id}")
         except:
-            print("✗ No temperature sensor found!")
+            print(" No temperature sensor found!")
             print("Check wiring and ensure 1-Wire is enabled")
             exit(1)
         
@@ -108,7 +108,7 @@ class TemperatureController:
         ''')
         conn.commit()
         conn.close()
-        print("✓ Database initialized")
+        print(" Database initialized")
     
     def read_temperature(self):
         """Read temperature from sensor"""
@@ -126,11 +126,11 @@ class TemperatureController:
         if should_heat and not self.light_on:
             GPIO.output(LIGHT_GPIO, GPIO.HIGH)
             self.light_on = True
-            print(f"🔥 Light ON - Temperature: {temperature:.1f}°C")
+            print(f" Light ON - Temperature: {temperature:.1f}°C")
         elif not should_heat and self.light_on:
             GPIO.output(LIGHT_GPIO, GPIO.LOW)
             self.light_on = False
-            print(f"❄️  Light OFF - Temperature: {temperature:.1f}°C")
+            print(f"  Light OFF - Temperature: {temperature:.1f}°C")
     
     def log_data(self, temperature):
         """Log data to database"""
@@ -145,8 +145,8 @@ class TemperatureController:
     
     def run(self):
         """Main control loop"""
-        print("🌱 Container Farm Temperature Controller Started")
-        print(f"📊 Target: {TEMP_TARGET}°C ± {TEMP_TOLERANCE}°C")
+        print(" Container Farm Temperature Controller Started")
+        print(f" Target: {TEMP_TARGET}°C ± {TEMP_TOLERANCE}°C")
         print("Press Ctrl+C to stop\n")
         
         try:
@@ -170,10 +170,10 @@ class TemperatureController:
                 time.sleep(30)
                 
         except KeyboardInterrupt:
-            print("\n🛑 Shutting down...")
+            print("\n Shutting down...")
             GPIO.output(LIGHT_GPIO, GPIO.LOW)
             GPIO.cleanup()
-            print("✓ Cleanup complete")
+            print(" Cleanup complete")
 
 if __name__ == "__main__":
     controller = TemperatureController()
@@ -321,7 +321,7 @@ if __name__ == '__main__':
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌱 Container Farm Monitor</h1>
+            <h1> Container Farm Monitor</h1>
             <p>Basic Temperature Monitoring System</p>
         </div>
         
@@ -362,10 +362,10 @@ if __name__ == '__main__':
                         // Update light status
                         const lightElement = document.getElementById('light-status');
                         if (data.light_on) {
-                            lightElement.textContent = '🔥 ON';
+                            lightElement.textContent = ' ON';
                             lightElement.className = 'light-status light-on';
                         } else {
-                            lightElement.textContent = '❄️ OFF';
+                            lightElement.textContent = ' OFF';
                             lightElement.className = 'light-status light-off';
                         }
                         
