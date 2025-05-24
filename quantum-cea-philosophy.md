@@ -1,4 +1,3 @@
-Created by Jason DeLooze for Locally Sovereign Sustainability (Open Source) osce@duck.com
 # Living Quantum CEA - Philosophy & Implementation Guide
 
 ## Vision Statement
