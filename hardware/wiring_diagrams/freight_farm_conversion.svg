@@ -48,7 +48,7 @@
   <!-- High Voltage Section -->
   <rect x="400" y="100" width="350" height="300" fill="#fff3e0" stroke="#FF5722" stroke-width="2"/>
   <text x="575" y="120" text-anchor="middle" font-size="16" font-weight="bold">High Voltage Equipment</text>
-  <text x="575" y="135" text-anchor="middle" font-size="12" fill="#d32f2f">⚠️ 120V/240V - Licensed Electrician Required</text>
+  <text x="575" y="135" text-anchor="middle" font-size="12" fill="#d32f2f"> 120V/240V - Licensed Electrician Required</text>
   
   <!-- Main Electrical Panel -->
   <rect x="420" y="150" width="80" height="100" fill="#424242" stroke="#333"/>
@@ -170,7 +170,7 @@
   
   <!-- Safety Section -->
   <rect x="80" y="450" width="500" height="120" fill="#ffebee" stroke="#d32f2f" stroke-width="2"/>
-  <text x="330" y="470" text-anchor="middle" font-size="16" font-weight="bold" fill="#d32f2f">⚠️ SAFETY REQUIREMENTS</text>
+  <text x="330" y="470" text-anchor="middle" font-size="16" font-weight="bold" fill="#d32f2f"> SAFETY REQUIREMENTS</text>
   
   <text x="100" y="490" font-size="12" fill="#333">• Install emergency stop button (accessible from both ends)</text>
   <text x="100" y="505" font-size="12" fill="#333">• Use GFCI protection for all 120V circuits</text>
@@ -180,7 +180,7 @@
   
   <!-- Network Section -->
   <rect x="600" y="450" width="520" height="120" fill="#f3e5f5" stroke="#7B1FA2" stroke-width="2"/>
-  <text x="860" y="470" text-anchor="middle" font-size="16" font-weight="bold" fill="#7B1FA2">📡 NETWORKING & MONITORING</text>
+  <text x="860" y="470" text-anchor="middle" font-size="16" font-weight="bold" fill="#7B1FA2"> NETWORKING & MONITORING</text>
   
   <!-- WiFi Router -->
   <rect x="620" y="480" width="60" height="30" fill="#3F51B5" stroke="#333"/>

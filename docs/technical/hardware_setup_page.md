@@ -200,7 +200,7 @@ We've created a sensor testing script that can help verify your hardware connect
 
 ```bash
 # Download the script
-wget https://raw.githubusercontent.com/example-user/container-farm-control-system/main/scripts/setup_sensors.sh
+wget https://raw.githubusercontent.com/HydroFarmerJason/OpenSourceControlledEnvironments/main/scripts/setup_sensors.sh
 
 # Make it executable
 chmod +x setup_sensors.sh

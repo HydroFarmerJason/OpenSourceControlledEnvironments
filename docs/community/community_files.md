@@ -111,35 +111,35 @@ Thank you for your interest in contributing! This project serves diverse communi
 
 ## Types of Contributions
 
-### 🐛 Bug Fixes
+###  Bug Fixes
 - Test the fix on actual hardware
 - Include before/after photos if relevant
 - Update documentation if the bug affected setup procedures
 
-### ✨ New Features
+###  New Features
 - Discuss major features in an issue first
 - Ensure compatibility with educational and therapeutic use cases
 - Provide complete documentation and examples
 
-### 🔧 Hardware Compatibility
+###  Hardware Compatibility
 - Test new hardware for at least 24 hours
 - Provide wiring diagrams and photos
 - Include supplier information and pricing
 - Update the hardware compatibility database
 
-### 📚 Documentation
+###  Documentation
 - Ensure content is appropriate for all user types
 - Include safety warnings where applicable
 - Provide examples for different skill levels
 - Consider accessibility in educational contexts
 
-### 🎓 Educational Content
+###  Educational Content
 - Align with common educational standards
 - Include age-appropriate safety considerations
 - Provide assessment and evaluation tools
 - Consider diverse learning needs
 
-### 🏥 Therapeutic Applications
+###  Therapeutic Applications
 - Respect privacy and dignity requirements
 - Include accessibility considerations
 - Provide clear safety guidelines
@@ -154,7 +154,7 @@ Thank you for your interest in contributing! This project serves diverse communi
 
 ### Installation
 ```bash
-git clone https://github.com/yourusername/OpenSourceControlledEnvironments.git
+git clone https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments.git
 cd OpenSourceControlledEnvironments
 sudo ./setup/setup.sh
 ```

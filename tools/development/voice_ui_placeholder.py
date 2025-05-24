@@ -292,7 +292,7 @@ def simulate_voice_activation(text_input=None):
     Returns:
         None
     """
-    print("\n🎙️  Container Farm Voice Control Simulator 🎙️")
+    print("\n  Container Farm Voice Control Simulator ")
     print("=" * 50)
     print("This is a placeholder for future voice control capabilities.")
     print("You can test how voice commands will work in the future.")
@@ -304,21 +304,21 @@ def simulate_voice_activation(text_input=None):
         result = process_command(text_input)
         if result.get("success", False):
             if "message" in result:
-                print(f"\n✅ {result['message']}")
+                print(f"\n {result['message']}")
             
             # Print any additional details
             for key, value in result.items():
                 if key not in ["success", "message"]:
                     print(f"  {key}: {value}")
         else:
-            print(f"\n❌ {result.get('message', 'Command failed')}")
+            print(f"\n {result.get('message', 'Command failed')}")
         
         return
     
     # Interactive mode
     while True:
         try:
-            command = input("\n🎙️ Say a command: ")
+            command = input("\n Say a command: ")
             
             if not command.strip():
                 continue
@@ -331,20 +331,20 @@ def simulate_voice_activation(text_input=None):
                 
             if result.get("success", False):
                 if "message" in result:
-                    print(f"\n✅ {result['message']}")
+                    print(f"\n {result['message']}")
                 
                 # Print any additional details
                 for key, value in result.items():
                     if key not in ["success", "message"]:
                         print(f"  {key}: {value}")
             else:
-                print(f"\n❌ {result.get('message', 'Command failed')}")
+                print(f"\n {result.get('message', 'Command failed')}")
                 
         except KeyboardInterrupt:
             print("\nVoice control deactivated. Goodbye!")
             break
         except Exception as e:
-            print(f"\n⚠️ Error: {str(e)}")
+            print(f"\n Error: {str(e)}")
 
 def try_listen():
     """
@@ -358,7 +358,7 @@ def try_listen():
         r = sr.Recognizer()
         
         with sr.Microphone() as source:
-            print("\n🎙️  Container Farm Voice Control - Listening Mode 🎙️")
+            print("\n  Container Farm Voice Control - Listening Mode ")
             print("=" * 50)
             print("Adjusting for ambient noise... please wait")
             r.adjust_for_ambient_noise(source, duration=1)
@@ -382,30 +382,30 @@ def try_listen():
                     
                     if result.get("success", False):
                         if "message" in result:
-                            print(f"\n✅ {result['message']}")
+                            print(f"\n {result['message']}")
                         
                         # Print any additional details
                         for key, value in result.items():
                             if key not in ["success", "message"]:
                                 print(f"  {key}: {value}")
                     else:
-                        print(f"\n❌ {result.get('message', 'Command failed')}")
+                        print(f"\n {result.get('message', 'Command failed')}")
                         
                 except sr.WaitTimeoutError:
                     print("\nNo speech detected. Listening again...")
                 except sr.UnknownValueError:
                     print("\nCould not understand audio. Please try again.")
                 except sr.RequestError as e:
-                    print(f"\n⚠️ Speech recognition service error: {e}")
+                    print(f"\n Speech recognition service error: {e}")
                     break
                 except KeyboardInterrupt:
                     print("\nVoice control deactivated. Goodbye!")
                     break
                 except Exception as e:
-                    print(f"\n⚠️ Error: {str(e)}")
+                    print(f"\n Error: {str(e)}")
                     
     except ImportError:
-        print("\n❌ Speech recognition module not installed.")
+        print("\n Speech recognition module not installed.")
         print("To enable listening mode, install the required dependencies:")
         print("  pip3 install SpeechRecognition pyaudio")
         print("\nUsing text input mode instead.")

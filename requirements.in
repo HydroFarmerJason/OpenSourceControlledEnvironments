@@ -1,34 +1,46 @@
-Flask
-Flask-SQLAlchemy
-Flask-Login
-Flask-WTF
-WTForms
-RPi.GPIO
-gpiozero
-spidev
-smbus2
-w1thermsensor
-adafruit-circuitpython-ads1x15
-adafruit-circuitpython-bme280
-adafruit-circuitpython-dht
-pandas
-numpy
-influxdb-client
-redis
-requests
-gunicorn
-eventlet
-APScheduler
-celery
-Pillow
-opencv-python
-pyserial
-paho-mqtt
-python-dateutil
-pytz
-psutil
-configparser
-pytest
-pytest-cov
-black
-flake8
+# Core Framework
+Flask==2.3.3
+flask-cors==4.0.0
+flask-limiter==3.5.0
+flask-bcrypt==1.0.1
+flask-restx==1.2.0
+
+# Authentication & Security
+PyJWT==2.8.0
+python-dotenv==1.0.0
+cryptography==41.0.4
+
+# Database
+SQLAlchemy==2.0.21
+alembic==1.12.0
+redis==5.0.0
+
+# Hardware Interface (Raspberry Pi)
+RPi.GPIO==0.7.1
+adafruit-circuitpython-dht==4.0.2
+w1thermsensor==2.0.0
+smbus2==0.4.3
+
+# Monitoring & Logging
+prometheus-client==0.17.1
+python-json-logger==2.0.7
+
+# Task Queue
+celery==5.3.4
+celery[redis]==5.3.4
+
+# Data Processing
+pandas==2.1.1
+numpy==1.25.2
+
+# Testing
+pytest==7.4.2
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+factory-boy==3.3.0
+
+# Development
+black==23.9.1
+flake8==6.1.0
+mypy==1.5.1
+pre-commit==3.4.0
