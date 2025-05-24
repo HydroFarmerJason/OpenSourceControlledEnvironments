@@ -36,12 +36,10 @@ from scipy import signal
 from scipy.fft import fft, fftfreq
 
 from osce.core.base import OSCEModule
-from osce_phal_v2 import (
-    PHALCore, PluginPermission, PluginAccessRequest, 
+from osce.plugins.core.phal_v2 import (
+    PHALCore, PluginPermission, PluginAccessRequest,
     PluginManifest, ConflictResolutionStrategy
 )
-from osce.utils.logging import get_logger
-
 logger = get_logger(__name__)
 
 # Schumann resonance frequencies (Hz)

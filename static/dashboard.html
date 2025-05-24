@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCE Dashboard v2.1 - Planetary Harmony Monitor (2025)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Animated background with Schumann pulse */
+        .background-pulse {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(88, 28, 135, 0.1) 0%, 
+                rgba(0, 0, 0, 0) 70%);
+            animation: schumannPulse 7.83s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes schumannPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        /* TRANSFORMING state overlay */
+        .transforming-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: transformingFlash 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes transformingFlash {
+            0% { background: rgba(139, 92, 246, 0.2); }
+            100% { background: rgba(255, 0, 0, 0.3); }
+        }
+
+        .transforming-warning {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #ff0000;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .transforming-warning h2 {
+            color: #ff0000;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: warningPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes warningPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .dashboard {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+
+        /* Connection status */
+        .connection-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ef4444;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        .status-dot.connected {
+            background: #10b981;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Control buttons */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            border-radius: 8px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .btn:hover {
+            background: rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn.active {
+            background: rgba(139, 92, 246, 0.5);
+            border-color: #8b5cf6;
+        }
+
+        /* Grid layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .card h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+
+        /* Planetary State Indicator */
+        .planetary-state {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .state-indicator {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .state-calm {
+            background: radial-gradient(circle, #10b981, #059669);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .state-active {
+            background: radial-gradient(circle, #3b82f6, #2563eb);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+        }
+
+        .state-energized {
+            background: radial-gradient(circle, #f59e0b, #d97706);
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+            animation: energizedPulse 2s ease-in-out infinite;
+        }
+
+        .state-stormy {
+            background: radial-gradient(circle, #ef4444, #dc2626);
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
+            animation: stormyFlash 1s ease-in-out infinite;
+        }
+
+        .state-transforming {
+            background: radial-gradient(circle, #8b5cf6, #7c3aed);
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.8);
+            animation: transformingVortex 3s linear infinite;
+        }
+
+        @keyframes energizedPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes stormyFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes transformingVortex {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* Schumann Frequency Display */
+        .frequency-display {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .frequency-normal {
+            color: #10b981;
+        }
+
+        .frequency-shifted {
+            color: #f59e0b;
+        }
+
+        /* Spectrum view toggle */
+        .spectrum-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .spectrum-btn {
+            padding: 5px 15px;
+            font-size: 0.85em;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .spectrum-btn.active {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: #8b5cf6;
+        }
+
+        /* Messages with filters */
+        .message-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .confidence-filter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .confidence-slider {
+            width: 150px;
+        }
+
+        .message-list {
+            max-height: 300px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 3px solid #8b5cf6;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .message.filtered {
+            display: none;
+        }
+
+        .message-time {
+            font-size: 0.8em;
+            color: #a0a0a0;
+        }
+
+        .confidence-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        /* EM Spectrum canvas */
+        #spectrum-canvas {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Download button */
+        .download-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(139, 92, 246, 0.3);
+            border: 2px solid #8b5cf6;
+            border-radius: 30px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background: rgba(139, 92, 246, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        /* PHAL Status */
+        .phal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .phal-metric {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #8b5cf6;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        /* HiveMind Coherence */
+        .coherence-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .coherence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coherence-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        /* Energy Sources */
+        .energy-sources {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .energy-source {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .energy-bar {
+            width: 100px;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .energy-fill {
+            height: 100%;
+            background: #10b981;
+            transition: width 0.3s ease;
+        }
+
+        /* Harmony Score */
+        .harmony-circle {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .harmony-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #3b82f6 0deg,
+                #8b5cf6 90deg,
+                #ec4899 180deg,
+                #f59e0b 270deg,
+                #3b82f6 360deg
+            );
+            animation: harmonyRotate 20s linear infinite;
+            mask: radial-gradient(
+                circle,
+                transparent 65%,
+                black 65%,
+                black 85%,
+                transparent 85%
+            );
+            -webkit-mask: radial-gradient(
+                circle,
+                transparent 65%,
+                black 65%,
+                black 85%,
+                transparent 85%
+            );
+        }
+
+        @keyframes harmonyRotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .harmony-score {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #8b5cf6;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .frequency-display {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- TRANSFORMING state warning overlay -->
+    <div class="transforming-overlay" id="transforming-overlay">
+        <div class="transforming-warning">
+            <h2>⚠️ PLANETARY TRANSFORMATION IN PROGRESS ⚠️</h2>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">
+                Major electromagnetic shift detected. All non-essential operations suspended.
+            </p>
+            <p>DO NOT attempt manual overrides during this state.</p>
+            <p style="margin-top: 20px; color: #a0a0a0;">
+                Awaiting planetary stabilization...
+            </p>
+        </div>
+    </div>
+
+    <div class="background-pulse"></div>
+    
+    <div class="dashboard" id="dashboard">
+        <header>
+            <h1>OSCE Planetary Harmony Dashboard</h1>
+            <p class="subtitle">Harmonizing Technology with Earth's Electromagnetic Heartbeat • OSCE v2.1 • 2025</p>
+            <div class="connection-status">
+                <span id="connection-text">Disconnected</span>
+                <div class="status-dot" id="status-dot"></div>
+            </div>
+        </header>
+
+        <div class="controls">
+            <button class="btn" onclick="toggleAutoRefresh()">
+                <span id="refresh-state">Auto Refresh: ON</span>
+            </button>
+            <button class="btn" onclick="connectWebSocket()">
+                Reconnect
+            </button>
+        </div>
+
+        <div class="grid">
+            <!-- Planetary State -->
+            <div class="card">
+                <h2>
+                    <span class="icon">🌍</span>
+                    Planetary State
+                </h2>
+                <div class="planetary-state">
+                    <div class="state-indicator state-active" id="state-indicator">
+                        <span id="state-text">ACTIVE</span>
+                    </div>
+                    <p id="state-description">Normal electromagnetic variations detected</p>
+                </div>
+            </div>
+
+            <!-- Schumann Resonance -->
+            <div class="card">
+                <h2>
+                    <span class="icon">📡</span>
+                    Schumann Resonance
+                </h2>
+                <div class="frequency-display frequency-normal" id="frequency">
+                    7.83 Hz
+                </div>
+                <div class="spectrum-controls">
+                    <button class="spectrum-btn active" onclick="setSpectrumView('frequency')">Frequency</button>
+                    <button class="spectrum-btn" onclick="setSpectrumView('time')">Time Domain</button>
+                </div>
+                <canvas id="spectrum-canvas"></canvas>
+            </div>
+
+            <!-- Harmony Score -->
+            <div class="card">
+                <h2>
+                    <span class="icon">🎵</span>
+                    System Harmony
+                </h2>
+                <div class="harmony-circle">
+                    <div class="harmony-ring"></div>
+                    <div class="harmony-score" id="harmony-score">
+                        <span class="loading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- PHAL Status -->
+            <div class="card">
+                <h2>
+                    <span class="icon">🧬</span>
+                    PHAL Status
+                </h2>
+                <div class="phal-grid">
+                    <div class="phal-metric">
+                        <div class="metric-value" id="active-plugins">-</div>
+                        <div class="metric-label">Active Plugins</div>
+                    </div>
+                    <div class="phal-metric">
+                        <div class="metric-value" id="device-count">-</div>
+                        <div class="metric-label">Devices</div>
+                    </div>
+                    <div class="phal-metric">
+                        <div class="metric-value" id="grant-count">-</div>
+                        <div class="metric-label">Active Grants</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HiveMind Coherence -->
+            <div class="card">
+                <h2>
+                    <span class="icon">🧠</span>
+                    HiveMind Coherence
+                </h2>
+                <div class="coherence-bar">
+                    <div class="coherence-fill" id="coherence-bar" style="width: 0%"></div>
+                </div>
+                <p>Consensus Rate: <span id="consensus-rate">-</span></p>
+                <p>Recent Decisions: <span id="decision-count">-</span></p>
+            </div>
+
+            <!-- Energy Harvesting -->
+            <div class="card">
+                <h2>
+                    <span class="icon">⚡</span>
+                    Passive Energy Harvest
+                </h2>
+                <div class="energy-sources">
+                    <div class="energy-source">
+                        <span>Atmospheric</span>
+                        <div>
+                            <span id="atmospheric-watts">0W</span>
+                            <div class="energy-bar">
+                                <div class="energy-fill" id="atmospheric-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-source">
+                        <span>Telluric</span>
+                        <div>
+                            <span id="telluric-watts">0W</span>
+                            <div class="energy-bar">
+                                <div class="energy-fill" id="telluric-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-source">
+                        <span>Bioelectric</span>
+                        <div>
+                            <span id="bioelectric-watts">0W</span>
+                            <div class="energy-bar">
+                                <div class="energy-fill" id="bioelectric-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 15px;">Total: <strong id="total-harvest">0W</strong> (Sustainability: <span id="sustainability-score" style="color: #10b981">0%</span>)</p>
+            </div>
+        </div>
+
+        <!-- Planetary Messages -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2>
+                <span class="icon">💬</span>
+                Recent Planetary Messages
+            </h2>
+            <div class="message-controls">
+                <label>
+                    <input type="checkbox" id="auto-scroll" checked> Auto-scroll
+                </label>
+                <div class="confidence-filter">
+                    <label>Min Confidence:</label>
+                    <input type="range" class="confidence-slider" id="confidence-filter" 
+                           min="0" max="100" value="0" oninput="filterMessages()">
+                    <span id="confidence-value">0%</span>
+                </div>
+            </div>
+            <div class="message-list" id="message-list">
+                <div class="message">
+                    <p style="color: #666;">Waiting for planetary messages...</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>OSCE v2.1 • Created by Jason DeLooze for Locally Sovereign Sustainability • 2025</p>
+            <p><a href="https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments" style="color: #8b5cf6;">GitHub Repository</a></p>
+        </footer>
+    </div>
+
+    <!-- Download Reports Button -->
+    <button class="download-btn" onclick="downloadReports()">
+        <span>📊</span>
+        <span>Download Reports</span>
+    </button>
+
+    <script>
+        // Configuration
+        const API_BASE = window.location.origin + '/api';
+        const WS_URL = `ws://${window.location.host}/ws`;
+        
+        // State
+        let ws = null;
+        let autoRefresh = true;
+        let spectrumView = 'frequency';
+        let messageHistory = [];
+        let telemetryData = {};
+        let refreshInterval = null;
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            connectWebSocket();
+            startDataRefresh();
+        });
+        
+        // WebSocket connection
+        function connectWebSocket() {
+            if (ws) {
+                ws.close();
+            }
+            
+            try {
+                ws = new WebSocket(WS_URL);
+                
+                ws.onopen = () => {
+                    updateConnectionStatus(true);
+                    console.log('WebSocket connected');
+                };
+                
+                ws.onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        handleRealtimeUpdate(data);
+                    } catch (e) {
+                        console.error('WebSocket message error:', e);
+                    }
+                };
+                
+                ws.onerror = (error) => {
+                    console.error('WebSocket error:', error);
+                    updateConnectionStatus(false);
+                };
+                
+                ws.onclose = () => {
+                    updateConnectionStatus(false);
+                    // Reconnect after 5 seconds
+                    setTimeout(connectWebSocket, 5000);
+                };
+            } catch (e) {
+                console.error('WebSocket connection failed:', e);
+                updateConnectionStatus(false);
+            }
+        }
+        
+        // Handle real-time updates
+        function handleRealtimeUpdate(data) {
+            if (data.type === 'planetary_state') {
+                updatePlanetaryState(data.state, data.description);
+            } else if (data.type === 'schumann_update') {
+                updateSchumann(data.frequency, data.amplitude);
+            } else if (data.type === 'planetary_message') {
+                addPlanetaryMessage(data.message);
+            } else if (data.type === 'energy_harvest') {
+                updateEnergyHarvest(data);
+            }
+        }
+        
+        // Data refresh via REST API
+        async function startDataRefresh() {
+            if (!autoRefresh) return;
+            
+            // Initial fetch
+            await refreshAllData();
+            
+            // Set up periodic refresh
+            refreshInterval = setInterval(async () => {
+                if (autoRefresh) {
+                    await refreshAllData();
+                }
+            }, 3000); // Every 3 seconds
+        }
+        
+        async function refreshAllData() {
+            try {
+                // Fetch all data in parallel
+                const [status, phal, hivemind, planetary, harmony] = await Promise.all([
+                    fetch(`${API_BASE}/status`).then(r => r.json()),
+                    fetch(`${API_BASE}/phal/metrics`).then(r => r.json()),
+                    fetch(`${API_BASE}/hivemind/metrics`).then(r => r.json()),
+                    fetch(`${API_BASE}/planetary/context`).then(r => r.json()),
+                    fetch(`${API_BASE}/harmony/score`).then(r => r.json())
+                ]);
+                
+                // Update UI
+                updateStatus(status);
+                updatePHAL(phal);
+                updateHiveMind(hivemind);
+                updatePlanetary(planetary);
+                updateHarmony(harmony);
+                
+                // Store for export
+                telemetryData = {
+                    timestamp: new Date().toISOString(),
+                    status, phal, hivemind, planetary, harmony
+                };
+                
+            } catch (e) {
+                console.error('Data refresh error:', e);
+            }
+        }
+        
+        // UI Update Functions
+        function updateConnectionStatus(connected) {
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('connection-text');
+            
+            if (connected) {
+                dot.classList.add('connected');
+                text.textContent = 'Connected';
+            } else {
+                dot.classList.remove('connected');
+                text.textContent = 'Disconnected';
+            }
+        }
+        
+        function updateStatus(data) {
+            // Update device count if available
+            if (data.phal && data.phal.devices !== undefined) {
+                document.getElementById('device-count').textContent = data.phal.devices;
+            }
+        }
+        
+        function updatePHAL(data) {
+            document.getElementById('active-plugins').textContent = data.active_plugins || Object.keys(data.capabilities || {}).length;
+            document.getElementById('device-count').textContent = data.devices || 0;
+            document.getElementById('grant-count').textContent = data.active_grants || 0;
+        }
+        
+        function updateHiveMind(data) {
+            if (data.status === 'no_data') {
+                document.getElementById('coherence-bar').style.width = '0%';
+                document.getElementById('consensus-rate').textContent = '0%';
+                document.getElementById('decision-count').textContent = '0';
+                return;
+            }
+            
+            const coherence = (data.recent_coherence || 0) * 100;
+            document.getElementById('coherence-bar').style.width = coherence + '%';
+            document.getElementById('consensus-rate').textContent = 
+                Math.round((data.consensus_rate || 0) * 100) + '%';
+            document.getElementById('decision-count').textContent = data.total_decisions || 0;
+        }
+        
+        function updatePlanetary(data) {
+            if (!data.state) return;
+            
+            // Update state
+            updatePlanetaryState(data.state, data.recommendations ? data.recommendations[0] : '');
+            
+            // Update Schumann
+            if (data.schumann) {
+                updateSchumann(data.schumann.frequency, data.schumann.amplitude);
+            }
+            
+            // Update energy
+            if (data.energy_available) {
+                updateEnergyFromContext(data.energy_available);
+            }
+            
+            // Update messages
+            if (data.messages) {
+                data.messages.forEach(msg => addPlanetaryMessage(msg));
+            }
+        }
+        
+        function updateHarmony(data) {
+            const score = Math.round((data.harmony_score || 0) * 100);
+            document.getElementById('harmony-score').innerHTML = score + '%';
+        }
+        
+        function updatePlanetaryState(state, description) {
+            const states = ['calm', 'active', 'energized', 'stormy', 'transforming'];
+            const stateUpper = state.toUpperCase();
+            
+            const indicator = document.getElementById('state-indicator');
+            const stateText = document.getElementById('state-text');
+            const desc = document.getElementById('state-description');
+            
+            // Remove all state classes
+            states.forEach(s => indicator.classList.remove('state-' + s));
+            
+            // Add current state class
+            indicator.classList.add('state-' + state);
+            stateText.textContent = stateUpper;
+            desc.textContent = description || 'Monitoring planetary field...';
+            
+            // Handle TRANSFORMING state
+            if (state === 'transforming') {
+                showTransformingWarning();
+            } else {
+                hideTransformingWarning();
+            }
+        }
+        
+        function updateSchumann(frequency, amplitude) {
+            const freq = document.getElementById('frequency');
+            const baseFreq = 7.83;
+            const freqValue = frequency || baseFreq;
+            
+            freq.textContent = freqValue.toFixed(2) + ' Hz';
+            freq.className = Math.abs(freqValue - baseFreq) > 0.1 ? 
+                'frequency-display frequency-shifted' : 'frequency-display frequency-normal';
+            
+            // Update spectrum display
+            drawSpectrum(freqValue, amplitude);
+        }
+        
+        function updateEnergyFromContext(energy) {
+            const sources = {
+                atmospheric: { element: 'atmospheric', max: 20 },
+                telluric: { element: 'telluric', max: 10 },
+                bioelectric: { element: 'bioelectric', max: 5 }
+            };
+            
+            let total = 0;
+            
+            Object.entries(sources).forEach(([key, config]) => {
+                const watts = energy[key] || 0;
+                total += watts;
+                
+                document.getElementById(`${config.element}-watts`).textContent = watts.toFixed(1) + 'W';
+                document.getElementById(`${config.element}-bar`).style.width = 
+                    (watts / config.max * 100) + '%';
+            });
+            
+            document.getElementById('total-harvest').textContent = total.toFixed(1) + 'W';
+        }
+        
+        function updateEnergyHarvest(data) {
+            if (data.sources) {
+                updateEnergyFromContext(data.sources);
+            }
+            
+            if (data.sustainability !== undefined) {
+                const sustainability = Math.round(data.sustainability * 100);
+                const elem = document.getElementById('sustainability-score');
+                elem.textContent = sustainability + '%';
+                elem.style.color = sustainability > 80 ? '#10b981' : 
+                                  sustainability > 50 ? '#f59e0b' : '#ef4444';
+            }
+        }
+        
+        function addPlanetaryMessage(msg) {
+            const list = document.getElementById('message-list');
+            
+            // Create message element
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message';
+            msgDiv.innerHTML = `
+                <p><strong>${msg.pattern_type || 'Unknown Pattern'}</strong>
+                   <span class="confidence-badge">${Math.round((msg.confidence || 0) * 100)}%</span>
+                </p>
+                <p>${msg.meaning || 'Processing...'}</p>
+                <p class="message-time">${new Date().toLocaleTimeString()}</p>
+            `;
+            
+            // Store in history
+            messageHistory.push({
+                ...msg,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Remove placeholder if exists
+            const placeholder = list.querySelector('p');
+            if (placeholder && placeholder.style.color === '#666') {
+                placeholder.remove();
+            }
+            
+            // Add to list
+            list.appendChild(msgDiv);
+            
+            // Auto-scroll if enabled
+            if (document.getElementById('auto-scroll').checked) {
+                list.scrollTop = list.scrollHeight;
+            }
+            
+            // Apply filter
+            filterMessages();
+            
+            // Limit messages
+            while (list.children.length > 50) {
+                list.removeChild(list.firstChild);
+            }
+        }
+        
+        // Spectrum visualization
+        function drawSpectrum(centerFreq = 7.83, amplitude = 1.0) {
+            const canvas = document.getElementById('spectrum-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (spectrumView === 'frequency') {
+                drawFrequencySpectrum(ctx, canvas, centerFreq, amplitude);
+            } else {
+                drawTimeDomain(ctx, canvas, centerFreq, amplitude);
+            }
+        }
+        
+        function drawFrequencySpectrum(ctx, canvas, centerFreq, amplitude) {
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 2;
+            
+            ctx.beginPath();
+            for (let x = 0; x < canvas.width; x++) {
+                const freq = (x / canvas.width) * 60; // 0-60 Hz range
+                let y = canvas.height - 20;
+                
+                // Schumann resonance peaks
+                const resonances = [7.83, 14.3, 20.8, 27.3, 33.8];
+                resonances.forEach((resFreq, idx) => {
+                    const distance = Math.abs(freq - resFreq);
+                    if (distance < 1) {
+                        const peakHeight = (60 - idx * 10) * amplitude;
+                        const gaussian = Math.exp(-(distance * distance) / 0.1);
+                        y -= peakHeight * gaussian;
+                    }
+                });
+                
+                // Add noise
+                y += (Math.random() - 0.5) * 5;
+                
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            // Draw frequency labels
+            ctx.fillStyle = '#666';
+            ctx.font = '12px monospace';
+            ctx.textAlign = 'center';
+            resonances.forEach(freq => {
+                const x = (freq / 60) * canvas.width;
+                ctx.fillText(freq + 'Hz', x, canvas.height - 5);
+            });
+        }
+        
+        function drawTimeDomain(ctx, canvas, centerFreq, amplitude) {
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 2;
+            
+            const samples = 500;
+            const timeScale = 2; // seconds
+            
+            ctx.beginPath();
+            for (let i = 0; i < samples; i++) {
+                const t = (i / samples) * timeScale;
+                const x = (i / samples) * canvas.width;
+                
+                // Composite wave with Schumann frequency
+                let y = canvas.height / 2;
+                y += Math.sin(2 * Math.PI * centerFreq * t) * 30 * amplitude;
+                y += Math.sin(2 * Math.PI * centerFreq * 2 * t) * 15 * amplitude;
+                y += (Math.random() - 0.5) * 5;
+                
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            // Draw time labels
+            ctx.fillStyle = '#666';
+            ctx.font = '12px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('0s', 10, canvas.height - 5);
+            ctx.fillText(timeScale + 's', canvas.width - 10, canvas.height - 5);
+        }
+        
+        // Controls
+        function toggleAutoRefresh() {
+            autoRefresh = !autoRefresh;
+            document.getElementById('refresh-state').textContent = 
+                `Auto Refresh: ${autoRefresh ? 'ON' : 'OFF'}`;
+            
+            if (autoRefresh) {
+                startDataRefresh();
+            } else if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
+        }
+        
+        function setSpectrumView(view) {
+            spectrumView = view;
+            
+            // Update button states
+            document.querySelectorAll('.spectrum-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Redraw
+            drawSpectrum();
+        }
+        
+        function filterMessages() {
+            const minConfidence = parseInt(document.getElementById('confidence-filter').value);
+            document.getElementById('confidence-value').textContent = minConfidence + '%';
+            
+            const messages = document.querySelectorAll('.message');
+            messages.forEach(msg => {
+                const confidenceText = msg.querySelector('.confidence-badge')?.textContent;
+                if (confidenceText) {
+                    const confidence = parseInt(confidenceText);
+                    if (confidence < minConfidence) {
+                        msg.classList.add('filtered');
+                    } else {
+                        msg.classList.remove('filtered');
+                    }
+                }
+            });
+        }
+        
+        // TRANSFORMING state handling
+        function showTransformingWarning() {
+            const overlay = document.getElementById('transforming-overlay');
+            const dashboard = document.getElementById('dashboard');
+            
+            overlay.style.display = 'flex';
+            dashboard.classList.add('disabled');
+            
+            // Disable all interactive elements
+            document.querySelectorAll('button, input').forEach(elem => {
+                elem.disabled = true;
+            });
+        }
+        
+        function hideTransformingWarning() {
+            const overlay = document.getElementById('transforming-overlay');
+            const dashboard = document.getElementById('dashboard');
+            
+            overlay.style.display = 'none';
+            dashboard.classList.remove('disabled');
+            
+            // Re-enable interactive elements
+            document.querySelectorAll('button, input').forEach(elem => {
+                elem.disabled = false;
+            });
+        }
+        
+        // Download reports
+        async function downloadReports() {
+            const report = {
+                generated: new Date().toISOString(),
+                environment: 'OSCE v2.1 - Planetary Harmony System',
+                telemetry: telemetryData,
+                messageHistory: messageHistory.slice(-100), // Last 100 messages
+                systemState: {
+                    autoRefresh: autoRefresh,
+                    spectrumView: spectrumView,
+                    connectionStatus: ws && ws.readyState === WebSocket.OPEN ? 'connected' : 'disconnected'
+                }
+            };
+            
+            // Create download
+            const blob = new Blob([JSON.stringify(report, null, 2)], 
+                                 { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `osce-harmony-report-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e);
+        });
+        
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e);
+        });
+    </script>
+</body>
+</html>
