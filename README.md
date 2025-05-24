@@ -126,12 +126,6 @@ Join our thriving community of growers, developers, and innovators:
 - **📧 Newsletter**: [Subscribe for updates](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/newsletter)
 - **🎥 YouTube**: [Video Tutorials](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/wiki/tutorials)
 
-### 📅 Community Events
-
-- **Weekly Office Hours**: Thursdays 2 PM UTC
-- **Monthly Show & Tell**: First Tuesday
-- **Annual Conference**: September (Virtual & In-Person)
-
 ## 🚀 Getting Started
 
 ### Minimum Requirements
