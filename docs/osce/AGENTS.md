@@ -107,7 +107,7 @@ chmod 600 ~/osce-credentials.secure
 ```
 
 #### Post-Installation
-- [ ] Access dashboard: https://your-server
+- [ ] Access dashboard: https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments
 - [ ] Change default passwords ⚠️ **Critical: Do this immediately!**
 - [ ] Configure first zone
 - [ ] Test sensor readings
@@ -1898,7 +1898,7 @@ class AICopilotConfig:
     """Configuration for AI copilot integration"""
     
     # API endpoints
-    api_base_url = "https://your-osce-instance.com/api/v1"
+    api_base_url = "https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments"
     
     # Authentication
     api_key = os.getenv("OSCE_API_KEY")
