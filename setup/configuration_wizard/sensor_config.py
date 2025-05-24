@@ -555,19 +555,19 @@ echo "$i2c_devices" > "${CONFIG_DIR}/i2c_devices.txt"
 
 # Look for known sensor addresses
 if echo "$i2c_devices" | grep -q "48"; then
-  echo -e "${GREEN}✓ Found ADS1115 ADC at address 0x48${NC}"
+  echo -e "${GREEN} Found ADS1115 ADC at address 0x48${NC}"
   echo "ads1115,0x48" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 if echo "$i2c_devices" | grep -q "39"; then
-  echo -e "${GREEN}✓ Found TSL2561 Light Sensor at address 0x39${NC}"
+  echo -e "${GREEN} Found TSL2561 Light Sensor at address 0x39${NC}"
   echo "tsl2561,0x39" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 if echo "$i2c_devices" | grep -q "76"; then
-  echo -e "${GREEN}✓ Found BME280 Temperature/Humidity/Pressure at address 0x76${NC}"
+  echo -e "${GREEN} Found BME280 Temperature/Humidity/Pressure at address 0x76${NC}"
   echo "bme280,0x76" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 if echo "$i2c_devices" | grep -q "44"; then
-  echo -e "${GREEN}✓ Found SHT31 Temperature/Humidity at address 0x44${NC}"
+  echo -e "${GREEN} Found SHT31 Temperature/Humidity at address 0x44${NC}"
   echo "sht31,0x44" >> "${CONFIG_DIR}/detected_sensors.txt"
 fi
 
@@ -576,9 +576,9 @@ echo -e "\n${CYAN}1-Wire Temperature Sensors:${NC}"
 if [ -d /sys/bus/w1/devices ]; then
   ds18b20_devices=$(ls /sys/bus/w1/devices/ | grep -v "w1_bus_master")
   if [ -z "$ds18b20_devices" ]; then
-    echo -e "${RED}✗ No DS18B20 temperature sensors detected${NC}"
+    echo -e "${RED} No DS18B20 temperature sensors detected${NC}"
   else
-    echo -e "${GREEN}✓ Found DS18B20 temperature sensors:${NC}"
+    echo -e "${GREEN} Found DS18B20 temperature sensors:${NC}"
     for device in $ds18b20_devices; do
       echo "  - $device"
       # Save device ID for later use in configuration
@@ -586,7 +586,7 @@ if [ -d /sys/bus/w1/devices ]; then
     fi
   fi
 else
-  echo -e "${RED}✗ 1-Wire bus not detected${NC}"
+  echo -e "${RED} 1-Wire bus not detected${NC}"
 fi
 
 # Check for USB devices
@@ -607,16 +607,16 @@ fi
 # Check for cameras
 echo -e "\n${CYAN}Camera Detection:${NC}"
 if [ -e /dev/video0 ]; then
-  echo -e "${GREEN}✓ USB Camera detected at /dev/video0${NC}"
+  echo -e "${GREEN} USB Camera detected at /dev/video0${NC}"
   echo "usb_camera,/dev/video0" >> "${CONFIG_DIR}/detected_sensors.txt"
 elif [ -e /dev/video1 ]; then
-  echo -e "${GREEN}✓ USB Camera detected at /dev/video1${NC}"
+  echo -e "${GREEN} USB Camera detected at /dev/video1${NC}"
   echo "usb_camera,/dev/video1" >> "${CONFIG_DIR}/detected_sensors.txt"
 elif vcgencmd get_camera | grep -q "detected=1"; then
-  echo -e "${GREEN}✓ Raspberry Pi Camera Module detected${NC}"
+  echo -e "${GREEN} Raspberry Pi Camera Module detected${NC}"
   echo "picamera,/dev/vchiq" >> "${CONFIG_DIR}/detected_sensors.txt"
 else
-  echo -e "${RED}✗ No cameras detected${NC}"
+  echo -e "${RED} No cameras detected${NC}"
   if [[ "$photo_log" == "y" || "$photo_log" == "Y" ]]; then
     echo -e "${YELLOW}Warning: Photo journaling is enabled but no camera detected.${NC}"
     echo -e "${YELLOW}Please connect a camera and restart the setup.${NC}"
@@ -1471,9 +1471,9 @@ echo "Hostname: $(hostname)" >> $LOG_FILE
 # Check if Mycodo services are running
 echo "Checking Mycodo services..." >> $LOG_FILE
 if systemctl is-active --quiet mycodoflask && systemctl is-active --quiet mycododaemon; then
-  echo "✓ Mycodo services running" >> $LOG_FILE
+  echo " Mycodo services running" >> $LOG_FILE
 else
-  echo "✗ Mycodo services not running properly" >> $LOG_FILE
+  echo " Mycodo services not running properly" >> $LOG_FILE
   # Try to restart services
   systemctl restart mycodoflask
   systemctl restart mycododaemon
@@ -1482,24 +1482,24 @@ fi
 # Check network connection
 echo "Checking network connection..." >> $LOG_FILE
 if ping -c 1 8.8.8.8 &> /dev/null; then
-  echo "✓ Network connection active" >> $LOG_FILE
+  echo " Network connection active" >> $LOG_FILE
 else
-  echo "✗ Network connection issue" >> $LOG_FILE
+  echo " Network connection issue" >> $LOG_FILE
 fi
 
 # Check sensor connections by reading I2C bus
 echo "Checking I2C sensors..." >> $LOG_FILE
 if i2cdetect -y 1 &> /dev/null; then
-  echo "✓ I2C bus accessible" >> $LOG_FILE
+  echo " I2C bus accessible" >> $LOG_FILE
   # Count I2C devices
   i2c_devices=$(i2cdetect -y 1 | grep -v "\-\-" | grep -v "00:" | tr -d ' ' | tr -d ':' | tr -d 'UU' | wc -c)
   if [ $i2c_devices -gt 0 ]; then
-    echo "✓ Found I2C devices" >> $LOG_FILE
+    echo " Found I2C devices" >> $LOG_FILE
   else
-    echo "✗ No I2C devices found" >> $LOG_FILE
+    echo " No I2C devices found" >> $LOG_FILE
   fi
 else
-  echo "✗ I2C bus not accessible" >> $LOG_FILE
+  echo " I2C bus not accessible" >> $LOG_FILE
 fi
 
 # Check 1-Wire sensors
@@ -1507,22 +1507,22 @@ echo "Checking 1-Wire sensors..." >> $LOG_FILE
 if [ -d /sys/bus/w1/devices ]; then
   w1_devices=$(ls /sys/bus/w1/devices/ | grep -v "w1_bus_master" | wc -l)
   if [ $w1_devices -gt 0 ]; then
-    echo "✓ Found $w1_devices 1-Wire temperature sensors" >> $LOG_FILE
+    echo " Found $w1_devices 1-Wire temperature sensors" >> $LOG_FILE
   else
-    echo "✗ No 1-Wire sensors found" >> $LOG_FILE
+    echo " No 1-Wire sensors found" >> $LOG_FILE
   fi
 else
-  echo "✗ 1-Wire bus not accessible" >> $LOG_FILE
+  echo " 1-Wire bus not accessible" >> $LOG_FILE
 fi
 
 # Check cameras
 echo "Checking cameras..." >> $LOG_FILE
 if [ -e /dev/video0 ]; then
-  echo "✓ USB Camera detected" >> $LOG_FILE
+  echo " USB Camera detected" >> $LOG_FILE
 elif vcgencmd get_camera | grep -q "detected=1"; then
-  echo "✓ Raspberry Pi Camera Module detected" >> $LOG_FILE
+  echo " Raspberry Pi Camera Module detected" >> $LOG_FILE
 else
-  echo "✗ No cameras detected" >> $LOG_FILE
+  echo " No cameras detected" >> $LOG_FILE
 fi
 
 # Send notification (if notification system is configured)

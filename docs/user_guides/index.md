@@ -51,7 +51,7 @@ This control system provides a local, open-source alternative to the cloud-based
 
 ## Getting Started
 
-Ready to build your own system? Start with our [installation guide](pages/installation.html) or download the [master setup script](https://github.com/example-user/container-farm-control-system/blob/main/scripts/master_setup.sh) to automate the process.
+Ready to build your own system? Start with our [installation guide](pages/installation.html) or download the [master setup script](https://github.com/HydroFarmerJason/OpenSourceControlledEnvironments/blob/main/scripts/master_setup.sh) to automate the process.
 
 ## Contributing
 

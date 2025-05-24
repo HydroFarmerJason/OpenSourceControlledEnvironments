@@ -139,7 +139,7 @@ Therapeutic Garden Setup - Accessibility Focused:
 │  │  └─────────────┘  └─────────────┘  └─────────────┘  │   │
 │  │                                                     │   │
 │  │  Audio Feedback:                                    │   │
-│  │  🔊 "Great job watering!" / "Plants look healthy!"  │   │
+│  │   "Great job watering!" / "Plants look healthy!"  │   │
 │  │                                                     │   │
 │  │  Visual Progress Display:                           │   │
 │  │  ████████░░ Tasks Complete Today: 8/10              │   │
@@ -148,27 +148,27 @@ Therapeutic Garden Setup - Accessibility Focused:
 │  Growing Area:                                              │
 │  ┌─────────────────────────────────────────────────────┐   │
 │  │                                                     │   │
-│  │  🌱    🌱    🌱    🌱      (Accessible Height)      │   │
+│  │                    (Accessible Height)      │   │
 │  │ Plant  Plant Plant Plant                            │   │
 │  │   1     2     3     4                               │   │
 │  │                                                     │   │
 │  │ Soil Moisture Sensors (Visual Indicators):         │   │
-│  │ 💧🟢  💧🟡  💧🟢  💧🟡                              │   │
+│  │                                     │   │
 │  │ Good  Water Good  Water                             │   │
 │  │       Soon        Soon                              │   │
 │  │                                                     │   │
 │  │ Water Reservoir (Clear, Visible Level):             │   │
 │  │ ┌─────────────────────────────────────────────┐     │   │
 │  │ │ Water Level: ████████░░ 80% Full            │     │   │
-│  │ │ 💧 Gentle pump (nearly silent)              │     │   │
+│  │ │  Gentle pump (nearly silent)              │     │   │
 │  │ └─────────────────────────────────────────────┘     │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 │  Safety Features:                                           │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │ 🛡️ Pressure Mat (detects participant presence)      │   │
-│  │ 🔊 Audio cues: "Please water the yellow plant"     │   │
-│  │ 📊 Progress tracking for therapy goals              │   │
+│  │  Pressure Mat (detects participant presence)      │   │
+│  │  Audio cues: "Please water the yellow plant"     │   │
+│  │  Progress tracking for therapy goals              │   │
 │  └─────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────┘
 
@@ -210,7 +210,7 @@ try:
     AUDIO_AVAILABLE = True
 except ImportError:
     AUDIO_AVAILABLE = False
-    print("⚠️ Audio not available - running without sound feedback")
+    print(" Audio not available - running without sound feedback")
 
 # Sensor libraries
 try:
@@ -220,7 +220,7 @@ try:
     I2C_AVAILABLE = True
 except ImportError:
     I2C_AVAILABLE = False
-    print("⚠️ I2C libraries not available - running in simulation mode")
+    print(" I2C libraries not available - running in simulation mode")
 
 @dataclass
 class TherapySession:
@@ -264,9 +264,9 @@ class TherapeuticGardenController:
         self.large_text_mode = True
         self.high_contrast_mode = True
         
-        print("🌱 Therapeutic Garden System Initialized")
-        print("♿ Accessibility features enabled")
-        print("🎯 Ready for therapeutic sessions")
+        print(" Therapeutic Garden System Initialized")
+        print(" Accessibility features enabled")
+        print(" Ready for therapeutic sessions")
         
     def load_therapeutic_config(self):
         """Load therapeutic-specific configuration"""
@@ -347,7 +347,7 @@ class TherapeuticGardenController:
         for pin in self.moisture_pins:
             GPIO.setup(pin, GPIO.IN)
         
-        print("✅ GPIO configured for therapeutic accessibility")
+        print(" GPIO configured for therapeutic accessibility")
     
     def setup_sensors(self):
         """Initialize sensors with error handling"""
@@ -359,9 +359,9 @@ class TherapeuticGardenController:
                 i2c = busio.I2C(board.SCL, board.SDA)
                 self.bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
                 self.sensors["environment"] = self.bme280
-                print("✅ Environmental sensor ready")
+                print(" Environmental sensor ready")
             except Exception as e:
-                print(f"⚠️ Environmental sensor setup failed: {e}")
+                print(f" Environmental sensor setup failed: {e}")
         
         # Initialize plant status
         for i in range(4):  # 4 plants
@@ -373,7 +373,7 @@ class TherapeuticGardenController:
                 participant_interactions=0
             )
         
-        print("✅ Therapeutic sensors initialized")
+        print(" Therapeutic sensors initialized")
     
     def setup_database(self):
         """Create therapeutic database with therapy-specific tables"""
@@ -462,7 +462,7 @@ class TherapeuticGardenController:
         
         conn.commit()
         conn.close()
-        print("✅ Therapeutic database initialized")
+        print(" Therapeutic database initialized")
     
     def setup_audio(self):
         """Setup audio feedback system"""
@@ -478,9 +478,9 @@ class TherapeuticGardenController:
                     "need_help": "audio/need_help.wav",
                     "session_complete": "audio/session_complete.wav"
                 }
-                print("✅ Audio feedback system ready")
+                print(" Audio feedback system ready")
             except Exception as e:
-                print(f"⚠️ Audio setup failed: {e}")
+                print(f" Audio setup failed: {e}")
                 self.audio_enabled = False
         else:
             self.audio_enabled = False
@@ -497,12 +497,12 @@ class TherapeuticGardenController:
                 self.emergency_stop_active = True
                 self.safe_shutdown()
                 self.play_audio("emergency_stop")
-                print("🚨 EMERGENCY STOP - All systems halted")
+                print(" EMERGENCY STOP - All systems halted")
             return False
         else:
             if self.emergency_stop_active:
                 self.emergency_stop_active = False
-                print("✅ Emergency stop reset")
+                print(" Emergency stop reset")
         
         # Manual override by therapist
         self.manual_override = GPIO.input(self.config["safety"]["manual_override_gpio"]) == GPIO.LOW
@@ -520,7 +520,7 @@ class TherapeuticGardenController:
         if self.current_session:
             self.end_therapy_session("emergency_stop")
         
-        print("🛡️ Therapeutic systems safely shut down")
+        print(" Therapeutic systems safely shut down")
     
     def handle_button_press(self, button_name):
         """Handle accessibility button presses with feedback"""
@@ -532,7 +532,7 @@ class TherapeuticGardenController:
             if not self.participant_present:
                 return
         
-        print(f"🖲️ Button pressed: {button_name}")
+        print(f" Button pressed: {button_name}")
         
         # Provide immediate tactile/audio feedback
         self.provide_button_feedback(button_name)
@@ -562,10 +562,10 @@ class TherapeuticGardenController:
                 "help_needed": "Help is on the way..."
             }
             # In real implementation, use text-to-speech or pre-recorded audio
-            print(f"🔊 Audio: {feedback_messages.get(button_name, 'Action started')}")
+            print(f" Audio: {feedback_messages.get(button_name, 'Action started')}")
         
         # Visual feedback (would be on display)
-        print(f"💡 Visual: {button_name.replace('_', ' ').title()} activated")
+        print(f" Visual: {button_name.replace('_', ' ').title()} activated")
         
         # Tactile feedback (brief LED flash or vibration)
         GPIO.output(self.output_pins["lights"], GPIO.HIGH)
@@ -579,12 +579,12 @@ class TherapeuticGardenController:
         
         if not plants_needing_water:
             self.play_audio("plants_happy")
-            print("💧 All plants have enough water! Great job caring for them.")
+            print(" All plants have enough water! Great job caring for them.")
             return
         
         # Guide participant to water specific plants
         for plant_id in plants_needing_water[:2]:  # Limit to 2 plants per session
-            print(f"💧 Watering plant {plant_id + 1}...")
+            print(f" Watering plant {plant_id + 1}...")
             
             # Gentle watering with participant involvement
             self.gentle_watering(plant_id, participant_assisted=True)
@@ -598,13 +598,13 @@ class TherapeuticGardenController:
             self.log_plant_care_activity(plant_id, "watering", success_rating=8)
             
         self.play_audio("good_job")
-        print("🎉 Excellent watering! The plants are happy and healthy.")
+        print(" Excellent watering! The plants are happy and healthy.")
     
     def gentle_watering(self, plant_id, participant_assisted=True):
         """Perform gentle watering suitable for therapy"""
         duration = self.config["plant_care"]["watering_duration"]
         
-        print(f"💧 Gently watering plant {plant_id + 1} for {duration} seconds...")
+        print(f" Gently watering plant {plant_id + 1} for {duration} seconds...")
         
         # Start pump at gentle speed
         GPIO.output(self.output_pins["pump"], GPIO.HIGH)
@@ -614,7 +614,7 @@ class TherapeuticGardenController:
         if participant_assisted:
             for i in range(duration, 0, -1):
                 if i % 2 == 0:  # Every 2 seconds
-                    print(f"   💧 Watering... {i} seconds remaining")
+                    print(f"    Watering... {i} seconds remaining")
                 time.sleep(1)
         else:
             time.sleep(duration)
@@ -623,7 +623,7 @@ class TherapeuticGardenController:
         GPIO.output(self.output_pins["pump"], GPIO.LOW)
         self.pump_running = False
         
-        print(f"   ✅ Plant {plant_id + 1} watered successfully!")
+        print(f"    Plant {plant_id + 1} watered successfully!")
     
     def participant_toggle_lights(self):
         """Allow participant to control lighting"""
@@ -633,11 +633,11 @@ class TherapeuticGardenController:
         self.lights_on = new_state
         
         action = "on" if new_state else "off"
-        print(f"💡 Lights turned {action} by participant")
+        print(f" Lights turned {action} by participant")
         
         # Audio feedback
         if self.audio_enabled:
-            print(f"🔊 'Great job turning the lights {action}! Plants need light to grow.'")
+            print(f" 'Great job turning the lights {action}! Plants need light to grow.'")
         
         # Log therapeutic interaction
         if self.current_session:
@@ -645,7 +645,7 @@ class TherapeuticGardenController:
     
     def participant_check_plants(self):
         """Guide participant through plant observation"""
-        print("🔍 Let's check on our plants together!")
+        print(" Let's check on our plants together!")
         
         for plant_id, status in self.plant_status.items():
             # Read current moisture
@@ -655,14 +655,14 @@ class TherapeuticGardenController:
             # Provide educational feedback
             if moisture > 60:
                 condition = "very happy - nice and moist!"
-                print(f"🌱 Plant {plant_id + 1}: {condition}")
+                print(f" Plant {plant_id + 1}: {condition}")
             elif moisture > 40:
                 condition = "doing well - has enough water"
-                print(f"🌱 Plant {plant_id + 1}: {condition}")
+                print(f" Plant {plant_id + 1}: {condition}")
             else:
                 condition = "thirsty - needs water soon"
                 self.plant_status[plant_id].needs_water = True
-                print(f"🌱 Plant {plant_id + 1}: {condition}")
+                print(f" Plant {plant_id + 1}: {condition}")
                 
             # Brief pause for observation
             time.sleep(2)
@@ -671,7 +671,7 @@ class TherapeuticGardenController:
         self.log_plant_care_activity(None, "observation", success_rating=9)
         
         self.play_audio("good_job")
-        print("🎉 Excellent plant checking! You're a wonderful plant caretaker.")
+        print(" Excellent plant checking! You're a wonderful plant caretaker.")
     
     def participant_request_help(self):
         """Handle participant request for assistance"""
@@ -679,14 +679,14 @@ class TherapeuticGardenController:
         
         # Audio feedback
         if self.audio_enabled:
-            print("🔊 'Help is on the way! You're doing great!'")
+            print(" 'Help is on the way! You're doing great!'")
         
         # Log interaction
         if self.current_session:
             self.log_participant_interaction("help_request", "communication")
         
         # In real implementation, this would notify therapist
-        print("📞 Therapist notified of assistance request")
+        print(" Therapist notified of assistance request")
     
     def read_soil_moisture(self, plant_id):
         """Read soil moisture for specific plant"""
@@ -706,7 +706,7 @@ class TherapeuticGardenController:
             return round(moisture, 1)
         
         except Exception as e:
-            print(f"⚠️ Error reading soil moisture for plant {plant_id}: {e}")
+            print(f" Error reading soil moisture for plant {plant_id}: {e}")
             return 50.0  # Safe default
     
     def start_therapy_session(self, participant_id, therapist_notes=""):
@@ -724,8 +724,8 @@ class TherapeuticGardenController:
         
         # Welcome participant
         self.play_audio("welcome")
-        print(f"🌱 Welcome to the therapeutic garden, {participant_id}!")
-        print("🎯 Today's activities: check plants, water them, and watch them grow!")
+        print(f" Welcome to the therapeutic garden, {participant_id}!")
+        print(" Today's activities: check plants, water them, and watch them grow!")
         
         # Log session start
         conn = sqlite3.connect(self.db_path)
@@ -740,7 +740,7 @@ class TherapeuticGardenController:
         conn.commit()
         conn.close()
         
-        print(f"📝 Therapy session {self.current_session.session_id} started")
+        print(f" Therapy session {self.current_session.session_id} started")
     
     def end_therapy_session(self, reason="normal_completion"):
         """End current therapy session with summary"""
@@ -771,10 +771,10 @@ class TherapeuticGardenController:
         conn.close()
         
         # Session summary
-        print(f"\n🎉 Therapy session complete!")
-        print(f"⏱️ Duration: {duration:.1f} minutes")
-        print(f"✅ Activities completed: {len(session.activities_completed)}")
-        print(f"🎯 Goals achieved: {len(session.goals_met)}")
+        print(f"\n Therapy session complete!")
+        print(f"⏱ Duration: {duration:.1f} minutes")
+        print(f" Activities completed: {len(session.activities_completed)}")
+        print(f" Goals achieved: {len(session.goals_met)}")
         
         self.play_audio("session_complete")
         
@@ -837,16 +837,16 @@ class TherapeuticGardenController:
             }
             
             message = messages.get(message_type, "Great job!")
-            print(f"🔊 Audio: {message}")
+            print(f" Audio: {message}")
             
         except Exception as e:
-            print(f"⚠️ Audio playback failed: {e}")
+            print(f" Audio playback failed: {e}")
     
     def run_therapy_monitoring(self):
         """Main therapeutic monitoring loop"""
-        print("🌱 Therapeutic Garden System Active")
-        print("♿ All accessibility features enabled")
-        print("🎯 Ready for therapy sessions")
+        print(" Therapeutic Garden System Active")
+        print(" All accessibility features enabled")
+        print(" Ready for therapy sessions")
         print("Press Ctrl+C to stop\n")
         
         try:
@@ -860,7 +860,7 @@ class TherapeuticGardenController:
                 self.participant_present = self.check_participant_presence()
                 
                 if self.participant_present and not self.current_session:
-                    print("👋 Participant detected - ready to start session")
+                    print(" Participant detected - ready to start session")
                     # In real implementation, therapist would start session
                     # For demo, auto-start after 3 seconds
                     time.sleep(3)
@@ -869,7 +869,7 @@ class TherapeuticGardenController:
                 
                 elif not self.participant_present and self.current_session:
                     # Participant left - pause or end session
-                    print("⏸️ Participant not detected - session paused")
+                    print("⏸ Participant not detected - session paused")
                     time.sleep(10)  # Wait 10 seconds before ending
                     if not self.check_participant_presence():
                         self.end_therapy_session("participant_left")
@@ -899,7 +899,7 @@ class TherapeuticGardenController:
                 time.sleep(1)  # Short loop for responsiveness
                 
         except KeyboardInterrupt:
-            print("\n🌱 Therapeutic Garden System Shutting Down")
+            print("\n Therapeutic Garden System Shutting Down")
             if self.current_session:
                 self.end_therapy_session("system_shutdown")
             self.safe_shutdown()
@@ -907,21 +907,21 @@ class TherapeuticGardenController:
     
     def display_system_status(self):
         """Display current system status for monitoring"""
-        print(f"\n📊 System Status - {datetime.now().strftime('%H:%M:%S')}")
-        print(f"👤 Participant present: {'Yes' if self.participant_present else 'No'}")
+        print(f"\n System Status - {datetime.now().strftime('%H:%M:%S')}")
+        print(f" Participant present: {'Yes' if self.participant_present else 'No'}")
         
         if self.current_session:
             duration = (datetime.now() - self.current_session.start_time).total_seconds() / 60
-            print(f"🎯 Session active: {duration:.1f} minutes")
-            print(f"✅ Activities: {len(self.current_session.activities_completed)}")
+            print(f" Session active: {duration:.1f} minutes")
+            print(f" Activities: {len(self.current_session.activities_completed)}")
         
-        print("🌱 Plant Status:")
+        print(" Plant Status:")
         for plant_id, status in self.plant_status.items():
             moisture = status.moisture_level
-            water_icon = "💧" if status.needs_water else "✅"
+            water_icon = "" if status.needs_water else ""
             print(f"   Plant {plant_id + 1}: {moisture:.1f}% {water_icon}")
         
-        print(f"💡 Lights: {'ON' if self.lights_on else 'OFF'}")
+        print(f" Lights: {'ON' if self.lights_on else 'OFF'}")
         print()
 
 if __name__ == "__main__":

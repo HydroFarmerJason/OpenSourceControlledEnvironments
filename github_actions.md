@@ -43,7 +43,7 @@ jobs:
       run: |
         python -c "import sys; print('Python version:', sys.version)"
         # Test basic imports (skip hardware-specific ones)
-        python -c "import flask, sqlite3, datetime; print('✓ Core dependencies OK')"
+        python -c "import flask, sqlite3, datetime; print(' Core dependencies OK')"
 
   documentation:
     runs-on: ubuntu-latest
@@ -53,10 +53,10 @@ jobs:
     - name: Check README exists
       run: |
         if [ ! -f README.md ]; then
-          echo "❌ README.md not found"
+          echo " README.md not found"
           exit 1
         fi
-        echo "✅ README.md exists"
+        echo " README.md exists"
     
     - name: Check required documentation
       run: |
@@ -69,9 +69,9 @@ jobs:
         
         for file in "${required_files[@]}"; do
           if [ -f "$file" ]; then
-            echo "✅ $file exists"
+            echo " $file exists"
           else
-            echo "⚠️ $file missing (recommended)"
+            echo " $file missing (recommended)"
           fi
         done
     
@@ -80,9 +80,9 @@ jobs:
         # Check if JSON files are valid
         for file in $(find config/ -name "*.json" 2>/dev/null); do
           if python -m json.tool "$file" > /dev/null 2>&1; then
-            echo "✅ $file is valid JSON"
+            echo " $file is valid JSON"
           else
-            echo "❌ $file is invalid JSON"
+            echo " $file is invalid JSON"
             exit 1
           fi
         done || echo "No JSON config files found"
@@ -96,18 +96,18 @@ jobs:
       run: |
         if [ -f setup/setup.sh ]; then
           bash -n setup/setup.sh
-          echo "✅ setup.sh syntax is valid"
+          echo " setup.sh syntax is valid"
         else
-          echo "⚠️ setup/setup.sh not found"
+          echo " setup/setup.sh not found"
         fi
     
     - name: Check file permissions
       run: |
         if [ -f setup/setup.sh ]; then
           if [ -x setup/setup.sh ]; then
-            echo "✅ setup.sh is executable"
+            echo " setup.sh is executable"
           else
-            echo "⚠️ setup.sh is not executable (should be chmod +x)"
+            echo " setup.sh is not executable (should be chmod +x)"
           fi
         fi
 
@@ -130,27 +130,27 @@ jobs:
         found_sensitive=false
         for pattern in "${sensitive_patterns[@]}"; do
           if find . -name "$pattern" -type f | grep -v .git | head -1; then
-            echo "⚠️ Found potentially sensitive file: $pattern"
+            echo " Found potentially sensitive file: $pattern"
             found_sensitive=true
           fi
         done
         
         if [ "$found_sensitive" = false ]; then
-          echo "✅ No sensitive files found in repository"
+          echo " No sensitive files found in repository"
         fi
     
     - name: Check .gitignore exists
       run: |
         if [ -f .gitignore ]; then
-          echo "✅ .gitignore exists"
+          echo " .gitignore exists"
           # Check if it includes common sensitive patterns
           if grep -q "\.env" .gitignore && grep -q "\.key" .gitignore; then
-            echo "✅ .gitignore includes sensitive file patterns"
+            echo " .gitignore includes sensitive file patterns"
           else
-            echo "⚠️ .gitignore should include .env, *.key patterns"
+            echo " .gitignore should include .env, *.key patterns"
           fi
         else
-          echo "❌ .gitignore missing"
+          echo " .gitignore missing"
           exit 1
         fi
 ```
@@ -210,16 +210,16 @@ jobs:
             mock_sensor.return_value.get_temperature.return_value = 22.5
             temp = mock_sensor().get_temperature()
             assert temp == 22.5
-            print(f'✅ Temperature simulation: {temp}°C')
+            print(f' Temperature simulation: {temp}°C')
         
         # Test GPIO simulation  
         with mock.patch('RPi.GPIO') as mock_gpio:
             mock_gpio.setmode.return_value = None
             mock_gpio.setup.return_value = None
             mock_gpio.output.return_value = None
-            print('✅ GPIO simulation working')
+            print(' GPIO simulation working')
         
-        print('✅ All hardware simulations passed')
+        print(' All hardware simulations passed')
         "
     
     - name: Test example configurations
@@ -239,15 +239,15 @@ jobs:
             if os.path.exists(config_file):
                 with open(config_file) as f:
                     config = json.load(f)
-                    print(f'✅ {config_file} is valid JSON')
+                    print(f' {config_file} is valid JSON')
                     
                     # Basic validation
                     if 'profile_name' in config or 'crop_category' in config or 'system_name' in config:
-                        print(f'✅ {config_file} has required fields')
+                        print(f' {config_file} has required fields')
                     else:
-                        print(f'⚠️ {config_file} missing identification fields')
+                        print(f' {config_file} missing identification fields')
             else:
-                print(f'⚠️ {config_file} not found')
+                print(f' {config_file} not found')
         "
 ```
 
@@ -283,9 +283,9 @@ jobs:
           # Extract internal links
           grep -o "](docs/[^)]*)" "$file" | sed 's/](//;s/)$//' | while read link; do
             if [ -f "$link" ]; then
-              echo "✅ $link exists"
+              echo " $link exists"
             else
-              echo "❌ $link not found (referenced in $file)"
+              echo " $link not found (referenced in $file)"
             fi
           done
         done
@@ -295,10 +295,10 @@ jobs:
         # Find TODO markers in documentation
         todo_count=$(find docs/ -name "*.md" -exec grep -l "TODO\|FIXME\|XXX" {} \; 2>/dev/null | wc -l)
         if [ "$todo_count" -gt 0 ]; then
-          echo "⚠️ Found $todo_count files with TODO markers"
+          echo " Found $todo_count files with TODO markers"
           find docs/ -name "*.md" -exec grep -H "TODO\|FIXME\|XXX" {} \; 2>/dev/null || true
         else
-          echo "✅ No TODO markers found in documentation"
+          echo " No TODO markers found in documentation"
         fi
     
     - name: Validate markdown structure
@@ -307,9 +307,9 @@ jobs:
         for file in $(find . -name "*.md"); do
           # Check for title (# heading)
           if head -10 "$file" | grep -q "^# "; then
-            echo "✅ $file has title"
+            echo " $file has title"
           else
-            echo "⚠️ $file missing title (# heading)"
+            echo " $file missing title (# heading)"
           fi
         done
 
@@ -363,10 +363,10 @@ jobs:
         find . -name "*.md" -exec aspell --personal=.aspell.en.pws --mode=markdown list {} \; | sort | uniq > spelling_errors.txt
         
         if [ -s spelling_errors.txt ]; then
-          echo "⚠️ Potential spelling errors found:"
+          echo " Potential spelling errors found:"
           cat spelling_errors.txt
           # Don't fail the build for spelling, just warn
         else
-          echo "✅ No spelling errors detected"
+          echo " No spelling errors detected"
         fi
 ```
