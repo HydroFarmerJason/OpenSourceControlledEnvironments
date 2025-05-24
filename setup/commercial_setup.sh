@@ -455,10 +455,10 @@ def test_i2c():
     try:
         import smbus
         bus = smbus.SMBus(1)
-        print("✓ I2C bus accessible")
+        print(" I2C bus accessible")
         return True
     except Exception as e:
-        print(f"✗ I2C test failed: {e}")
+        print(f" I2C test failed: {e}")
         return False
 
 def test_gpio():
@@ -466,11 +466,11 @@ def test_gpio():
     try:
         import RPi.GPIO as GPIO
         GPIO.setmode(GPIO.BCM)
-        print("✓ GPIO accessible")
+        print(" GPIO accessible")
         GPIO.cleanup()
         return True
     except Exception as e:
-        print(f"✗ GPIO test failed: {e}")
+        print(f" GPIO test failed: {e}")
         return False
 
 def test_1wire():
@@ -479,12 +479,12 @@ def test_1wire():
         import glob
         devices = glob.glob('/sys/bus/w1/devices/28*')
         if devices:
-            print(f"✓ Found {len(devices)} 1-Wire temperature sensor(s)")
+            print(f" Found {len(devices)} 1-Wire temperature sensor(s)")
         else:
             print("○ No 1-Wire sensors detected (normal if not connected)")
         return True
     except Exception as e:
-        print(f"✗ 1-Wire test failed: {e}")
+        print(f" 1-Wire test failed: {e}")
         return False
 
 def test_libraries():
@@ -498,9 +498,9 @@ def test_libraries():
     for lib in libraries:
         try:
             __import__(lib)
-            print(f"✓ {lib} imported successfully")
+            print(f" {lib} imported successfully")
         except ImportError as e:
-            print(f"✗ {lib} import failed: {e}")
+            print(f" {lib} import failed: {e}")
             success = False
     
     return success
@@ -529,10 +529,10 @@ if __name__ == "__main__":
     print(f"Passed: {passed}/{total}")
     
     if passed == total:
-        print("✓ All tests passed! System ready.")
+        print(" All tests passed! System ready.")
         sys.exit(0)
     else:
-        print("⚠ Some tests failed. Check hardware connections.")
+        print(" Some tests failed. Check hardware connections.")
         sys.exit(1)
 EOF
 
@@ -550,33 +550,33 @@ echo "===================================="
 services=("influxdb" "redis-server" "nginx")
 for service in "${services[@]}"; do
     if systemctl is-active --quiet "$service"; then
-        echo "✓ $service: Running"
+        echo " $service: Running"
     else
-        echo "✗ $service: Stopped"
+        echo " $service: Stopped"
     fi
 done
 
 # Check database
 if influx -execute "SHOW DATABASES" | grep -q "mycodo_db"; then
-    echo "✓ InfluxDB: mycodo_db exists"
+    echo " InfluxDB: mycodo_db exists"
 else
-    echo "✗ InfluxDB: mycodo_db missing"
+    echo " InfluxDB: mycodo_db missing"
 fi
 
 # Check disk space
 disk_usage=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
 if [ "$disk_usage" -lt 90 ]; then
-    echo "✓ Disk space: ${disk_usage}% used"
+    echo " Disk space: ${disk_usage}% used"
 else
-    echo "⚠ Disk space: ${disk_usage}% used (WARNING)"
+    echo " Disk space: ${disk_usage}% used (WARNING)"
 fi
 
 # Check log files
 if [ -d "/var/log/mycodo" ]; then
     log_count=$(find /var/log/mycodo -name "*.log" | wc -l)
-    echo "✓ Log files: $log_count found"
+    echo " Log files: $log_count found"
 else
-    echo "⚠ Log directory not found"
+    echo " Log directory not found"
 fi
 
 echo ""
@@ -619,13 +619,13 @@ EOF
 
 print_success "Setup completed successfully!"
 print_status "Installation summary:"
-echo "  ✓ System packages updated and installed"
-echo "  ✓ Python environment configured with required libraries"
-echo "  ✓ Hardware interfaces enabled (I2C, SPI, 1-Wire, UART)"
-echo "  ✓ Database systems installed and configured (InfluxDB, Redis)"
-echo "  ✓ Web server configured (Nginx)"
-echo "  ✓ Backup system configured"
-echo "  ✓ Test scripts created"
+echo "   System packages updated and installed"
+echo "   Python environment configured with required libraries"
+echo "   Hardware interfaces enabled (I2C, SPI, 1-Wire, UART)"
+echo "   Database systems installed and configured (InfluxDB, Redis)"
+echo "   Web server configured (Nginx)"
+echo "   Backup system configured"
+echo "   Test scripts created"
 echo ""
 print_status "Next steps:"
 echo "  1. Reboot the system to enable hardware interfaces"

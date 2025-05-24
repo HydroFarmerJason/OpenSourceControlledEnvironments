@@ -4,7 +4,7 @@
 
 This guide details how to convert an existing freight farm or shipping container growing system to use the open-source Container Farm Control System. This conversion maintains existing infrastructure while adding intelligent, customizable control.
 
-## ⚠️ Safety First
+##  Safety First
 
 **CRITICAL SAFETY REQUIREMENTS:**
 - **Hire a licensed electrician** for all high-voltage work (120V/240V)
@@ -173,7 +173,7 @@ RELAY_CONFIG = {
 
 ### Phase 3: High-Voltage Integration
 
-**⚠️ LICENSED ELECTRICIAN REQUIRED FOR THIS PHASE**
+** LICENSED ELECTRICIAN REQUIRED FOR THIS PHASE**
 
 **1. Contactor Installation**
 Install contactors between existing equipment and relay controls:

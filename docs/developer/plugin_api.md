@@ -622,4 +622,4 @@ class TemperatureAlertPlugin(Plugin):
 
 Remember: The best plugins solve real problems for real growers. Talk to users, understand their needs, and build something that makes their lives easier.
 
-Happy plugin development! 🌱
+Happy plugin development! 

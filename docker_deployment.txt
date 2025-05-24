@@ -444,7 +444,7 @@ check_health() {
     services=("farm-api" "farm-worker" "postgres" "redis")
     for service in "${services[@]}"; do
         if docker-compose ps | grep -q "$service.*Up"; then
-            log "✓ $service is running"
+            log " $service is running"
         else
             error "$service is not running properly"
         fi
@@ -452,7 +452,7 @@ check_health() {
     
     # Check API endpoint
     if curl -f -s http://localhost:5000/health > /dev/null; then
-        log "✓ API is responding"
+        log " API is responding"
     else
         warning "API health check failed"
     fi

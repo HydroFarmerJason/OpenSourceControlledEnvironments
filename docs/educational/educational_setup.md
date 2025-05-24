@@ -131,7 +131,7 @@ try:
     I2C_AVAILABLE = True
 except ImportError:
     I2C_AVAILABLE = False
-    print("⚠️ I2C libraries not available - running in simulation mode")
+    print(" I2C libraries not available - running in simulation mode")
 
 @dataclass
 class SensorReading:
@@ -157,8 +157,8 @@ class EducationalGrowController:
         self.pump_running = False
         self.last_watering = None
         
-        print("🎓 Educational Growing System Initialized")
-        print("🛡️ Safety systems active")
+        print(" Educational Growing System Initialized")
+        print(" Safety systems active")
         
     def load_config(self):
         """Load educational configuration"""
@@ -210,7 +210,7 @@ class EducationalGrowController:
             GPIO.setup(pin, GPIO.OUT)
             GPIO.output(pin, GPIO.LOW)  # Safe state - OFF
         
-        print("✅ GPIO configured for educational safety")
+        print(" GPIO configured for educational safety")
     
     def setup_sensors(self):
         """Initialize sensors with error handling"""
@@ -220,16 +220,16 @@ class EducationalGrowController:
         try:
             self.temperature_sensors = W1ThermSensor.get_available_sensors()
             if self.temperature_sensors:
-                print(f"✅ Found {len(self.temperature_sensors)} temperature sensors")
+                print(f" Found {len(self.temperature_sensors)} temperature sensors")
                 # Label sensors by location
                 locations = ["ambient", "canopy", "root_zone"]
                 for i, sensor in enumerate(self.temperature_sensors):
                     location = locations[i] if i < len(locations) else f"sensor_{i+1}"
                     self.sensors[f"temp_{location}"] = sensor
             else:
-                print("⚠️ No temperature sensors found")
+                print(" No temperature sensors found")
         except Exception as e:
-            print(f"⚠️ Temperature sensor setup failed: {e}")
+            print(f" Temperature sensor setup failed: {e}")
         
         # I2C sensors
         if I2C_AVAILABLE:
@@ -241,20 +241,20 @@ class EducationalGrowController:
                     self.bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
                     self.bme280.sea_level_pressure = 1013.25
                     self.sensors["environment"] = self.bme280
-                    print("✅ BME280 environmental sensor ready")
+                    print(" BME280 environmental sensor ready")
                 except Exception as e:
-                    print(f"⚠️ BME280 setup failed: {e}")
+                    print(f" BME280 setup failed: {e}")
                 
                 # Light sensor (TSL2591)
                 try:
                     self.light_sensor = adafruit_tsl2591.TSL2591(i2c)
                     self.sensors["light"] = self.light_sensor
-                    print("✅ TSL2591 light sensor ready")
+                    print(" TSL2591 light sensor ready")
                 except Exception as e:
-                    print(f"⚠️ TSL2591 setup failed: {e}")
+                    print(f" TSL2591 setup failed: {e}")
                     
             except Exception as e:
-                print(f"⚠️ I2C setup failed: {e}")
+                print(f" I2C setup failed: {e}")
         
     def setup_database(self):
         """Create educational database with student-friendly structure"""
@@ -319,7 +319,7 @@ class EducationalGrowController:
         
         conn.commit()
         conn.close()
-        print("✅ Educational database initialized")
+        print(" Educational database initialized")
     
     def check_safety_systems(self):
         """Check emergency stop and safety systems"""
@@ -329,13 +329,13 @@ class EducationalGrowController:
                 self.emergency_stop_active = True
                 self.safe_shutdown()
                 self.log_event("emergency_stop", "Emergency stop activated", "physical_button")
-                print("🚨 EMERGENCY STOP ACTIVATED")
+                print(" EMERGENCY STOP ACTIVATED")
             return False
         else:
             if self.emergency_stop_active:
                 self.emergency_stop_active = False
                 self.log_event("emergency_stop_reset", "Emergency stop reset", "physical_button")
-                print("✅ Emergency stop reset")
+                print(" Emergency stop reset")
         
         # Check teacher override
         self.teacher_override = GPIO.input(self.config["safety"]["teacher_override_gpio"]) == GPIO.LOW
@@ -349,7 +349,7 @@ class EducationalGrowController:
         
         self.lights_on = False
         self.pump_running = False
-        print("🛡️ All systems safely shut down")
+        print(" All systems safely shut down")
     
     def read_sensors(self) -> List[SensorReading]:
         """Read all sensors and return educational data"""
@@ -370,7 +370,7 @@ class EducationalGrowController:
                         location=location
                     ))
                 except Exception as e:
-                    print(f"⚠️ Error reading {name}: {e}")
+                    print(f" Error reading {name}: {e}")
         
         # Environmental sensor (BME280)
         if "environment" in self.sensors:
@@ -382,7 +382,7 @@ class EducationalGrowController:
                     SensorReading(current_time, "pressure", round(bme.pressure, 1), "hPa", "environment")
                 ])
             except Exception as e:
-                print(f"⚠️ Error reading BME280: {e}")
+                print(f" Error reading BME280: {e}")
         
         # Light sensor
         if "light" in self.sensors:
@@ -398,7 +398,7 @@ class EducationalGrowController:
                         location="canopy"
                     ))
             except Exception as e:
-                print(f"⚠️ Error reading light sensor: {e}")
+                print(f" Error reading light sensor: {e}")
         
         return readings
     
@@ -412,7 +412,7 @@ class EducationalGrowController:
             self.lights_on = turn_on
             action = "on" if turn_on else "off"
             self.log_event("lights", f"Grow lights turned {action}", "automatic")
-            print(f"💡 Grow lights: {action}")
+            print(f" Grow lights: {action}")
         
         return True
     
@@ -426,17 +426,17 @@ class EducationalGrowController:
         min_interval = self.config["safety"]["min_pump_interval"]
         
         if duration_seconds > max_runtime:
-            print(f"⚠️ Pump duration limited to {max_runtime} seconds for safety")
+            print(f" Pump duration limited to {max_runtime} seconds for safety")
             duration_seconds = max_runtime
         
         if self.last_watering:
             time_since_last = (datetime.now() - self.last_watering).total_seconds()
             if time_since_last < min_interval:
-                print(f"⚠️ Pump interval too short. Wait {min_interval - time_since_last:.0f} more seconds")
+                print(f" Pump interval too short. Wait {min_interval - time_since_last:.0f} more seconds")
                 return False
         
         # Run pump
-        print(f"💧 Watering plants for {duration_seconds} seconds")
+        print(f" Watering plants for {duration_seconds} seconds")
         GPIO.output(self.relay_pins["pump"], GPIO.HIGH)
         self.pump_running = True
         
@@ -508,9 +508,9 @@ class EducationalGrowController:
     
     def run_educational_cycle(self):
         """Main educational monitoring loop"""
-        print("🎓 Starting educational growing cycle")
-        print("📚 Data collection optimized for student learning")
-        print("🛡️ Safety systems active - Emergency stop available")
+        print(" Starting educational growing cycle")
+        print(" Data collection optimized for student learning")
+        print(" Safety systems active - Emergency stop available")
         print("Press Ctrl+C to stop\n")
         
         interval = self.config["schedule"]["data_collection_interval"]
@@ -519,7 +519,7 @@ class EducationalGrowController:
             while True:
                 # Safety check first
                 if not self.check_safety_systems():
-                    print("🚨 Safety systems activated - monitoring paused")
+                    print(" Safety systems activated - monitoring paused")
                     time.sleep(10)
                     continue
                 
@@ -531,13 +531,13 @@ class EducationalGrowController:
                     self.log_data(readings)
                     
                     # Display educational summary
-                    print(f"\n📊 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                    print(f"\n {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
                     for reading in readings:
                         print(f"   {reading.sensor_type} ({reading.location}): "
                               f"{reading.value}{reading.unit}")
                     
-                    print(f"💡 Lights: {'ON' if self.lights_on else 'OFF'}")
-                    print(f"💧 Last watering: {self.last_watering.strftime('%H:%M') if self.last_watering else 'None'}")
+                    print(f" Lights: {'ON' if self.lights_on else 'OFF'}")
+                    print(f" Last watering: {self.last_watering.strftime('%H:%M') if self.last_watering else 'None'}")
                     
                     # Check for teachable moments
                     self.check_educational_alerts(readings)
@@ -549,7 +549,7 @@ class EducationalGrowController:
                 time.sleep(interval)
                 
         except KeyboardInterrupt:
-            print("\n🎓 Educational session ended")
+            print("\n Educational session ended")
             self.safe_shutdown()
             GPIO.cleanup()
     
@@ -561,16 +561,16 @@ class EducationalGrowController:
                 target = self.config["thresholds"]["temperature"]["target"]
                 
                 if abs(temp - target) > 3:
-                    print(f"📚 LEARNING OPPORTUNITY: Temperature is {temp}°C "
+                    print(f" LEARNING OPPORTUNITY: Temperature is {temp}°C "
                           f"(target: {target}°C) - Why might this happen?")
             
             elif reading.sensor_type == "humidity":
                 humidity = reading.value
                 if humidity > 80:
-                    print(f"📚 LEARNING OPPORTUNITY: High humidity ({humidity}%) "
+                    print(f" LEARNING OPPORTUNITY: High humidity ({humidity}%) "
                           f"- What problems could this cause for plants?")
                 elif humidity < 40:
-                    print(f"📚 LEARNING OPPORTUNITY: Low humidity ({humidity}%) "
+                    print(f" LEARNING OPPORTUNITY: Low humidity ({humidity}%) "
                           f"- How do plants respond to dry air?")
 
 if __name__ == "__main__":

@@ -40,11 +40,11 @@ log() {
 }
 
 success() {
-    echo -e "${GREEN}[✓]${NC} $1"
+    echo -e "${GREEN}[]${NC} $1"
 }
 
 error() {
-    echo -e "${RED}[✗]${NC} $1" >&2
+    echo -e "${RED}[]${NC} $1" >&2
 }
 
 warning() {
@@ -300,7 +300,7 @@ DASHBOARD_TEMPLATE = '''
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌱 OSCE - Open Source Controlled Environments</h1>
+            <h1> OSCE - Open Source Controlled Environments</h1>
             <p>Version {{ version }} | Platform: {{ platform }}</p>
         </div>
         
@@ -569,7 +569,7 @@ main() {
     # Success message
     echo ""
     echo -e "${GREEN}════════════════════════════════════════════════════════════════${NC}"
-    echo -e "${GREEN}✓ OSCE Installation Complete!${NC}"
+    echo -e "${GREEN} OSCE Installation Complete!${NC}"
     echo -e "${GREEN}════════════════════════════════════════════════════════════════${NC}"
     echo ""
     echo "Access your OSCE dashboard at:"
@@ -606,4 +606,4 @@ cat > "$INSTALL_DIR/install_info.json" << EOINFO
 }
 EOINFO
 
-echo "Happy Growing! 🌱"
+echo "Happy Growing! "

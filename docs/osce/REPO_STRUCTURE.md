@@ -1,189 +1,189 @@
 # OSCE Repository Organization
 
-## 📁 Directory Structure
+##  Directory Structure
 
 ```
 OpenSourceControlledEnvironments/
 │
-├── 📄 README.md                    # Main repository documentation (this file)
-├── 📄 LICENSE                      # MIT License
-├── 📄 CONTRIBUTING.md              # Contribution guidelines
-├── 📄 CODE_OF_CONDUCT.md          # Community code of conduct
-├── 📄 SECURITY.md                 # Security policy and reporting
-├── 📄 CHANGELOG.md                # Version history and changes
-├── 📄 .gitignore                  # Git ignore rules
-├── 📄 .env.example                # Example environment variables
+├──  README.md                    # Main repository documentation (this file)
+├──  LICENSE                      # MIT License
+├──  CONTRIBUTING.md              # Contribution guidelines
+├──  CODE_OF_CONDUCT.md          # Community code of conduct
+├──  SECURITY.md                 # Security policy and reporting
+├──  CHANGELOG.md                # Version history and changes
+├──  .gitignore                  # Git ignore rules
+├──  .env.example                # Example environment variables
 │
-├── 📁 docs/                       # Documentation
-│   ├── 📄 AGENTS.md              # Complete operational guide
-│   ├── 📄 QUICKSTART.md          # 5-minute quickstart
-│   ├── 📄 HARDWARE.md            # Hardware compatibility list
-│   ├── 📄 PLUGINS.md             # Plugin development guide
-│   ├── 📄 DEPLOYMENT.md          # Enterprise deployment
-│   ├── 📄 DEVELOPMENT.md         # Developer guide
-│   ├── 📄 AI_INTEGRATION.md     # AI copilot guide
-│   ├── 📄 SECURITY.md            # Security best practices
-│   ├── 📄 TROUBLESHOOTING.md    # Common issues and solutions
-│   ├── 📄 API.md                 # API documentation
-│   └── 📁 images/                # Documentation images
+├──  docs/                       # Documentation
+│   ├──  AGENTS.md              # Complete operational guide
+│   ├──  QUICKSTART.md          # 5-minute quickstart
+│   ├──  HARDWARE.md            # Hardware compatibility list
+│   ├──  PLUGINS.md             # Plugin development guide
+│   ├──  DEPLOYMENT.md          # Enterprise deployment
+│   ├──  DEVELOPMENT.md         # Developer guide
+│   ├──  AI_INTEGRATION.md     # AI copilot guide
+│   ├──  SECURITY.md            # Security best practices
+│   ├──  TROUBLESHOOTING.md    # Common issues and solutions
+│   ├──  API.md                 # API documentation
+│   └──  images/                # Documentation images
 │
-├── 📁 osce/                       # Core Python package
-│   ├── 📄 __init__.py
-│   ├── 📄 main.py                # Main application entry
-│   ├── 📄 environment.py         # Environment management
-│   ├── 📄 security.py            # Security implementation
-│   ├── 📄 config.py              # Configuration management
+├──  osce/                       # Core Python package
+│   ├──  __init__.py
+│   ├──  main.py                # Main application entry
+│   ├──  environment.py         # Environment management
+│   ├──  security.py            # Security implementation
+│   ├──  config.py              # Configuration management
 │   │
-│   ├── 📁 hardware/              # Hardware abstraction layer
-│   │   ├── 📄 __init__.py
-│   │   ├── 📄 hal.py            # HAL base classes
-│   │   ├── 📄 manager.py        # Hardware manager
-│   │   └── 📁 adapters/         # Hardware adapters
-│   │       ├── 📄 raspberry_pi.py
-│   │       ├── 📄 esp32.py
-│   │       ├── 📄 arduino.py
-│   │       └── 📄 virtual.py
+│   ├──  hardware/              # Hardware abstraction layer
+│   │   ├──  __init__.py
+│   │   ├──  hal.py            # HAL base classes
+│   │   ├──  manager.py        # Hardware manager
+│   │   └──  adapters/         # Hardware adapters
+│   │       ├──  raspberry_pi.py
+│   │       ├──  esp32.py
+│   │       ├──  arduino.py
+│   │       └──  virtual.py
 │   │
-│   ├── 📁 plugins/               # Plugin system
-│   │   ├── 📄 __init__.py
-│   │   ├── 📄 manager.py        # Plugin manager
-│   │   ├── 📄 sandbox.py        # Plugin sandboxing
-│   │   └── 📄 registry.py       # Plugin registry client
+│   ├──  plugins/               # Plugin system
+│   │   ├──  __init__.py
+│   │   ├──  manager.py        # Plugin manager
+│   │   ├──  sandbox.py        # Plugin sandboxing
+│   │   └──  registry.py       # Plugin registry client
 │   │
-│   ├── 📁 rules/                 # Automation rules engine
-│   │   ├── 📄 __init__.py
-│   │   ├── 📄 engine.py         # Rule execution engine
-│   │   ├── 📄 parser.py         # Natural language parser
-│   │   └── 📄 conditions.py     # Rule conditions
+│   ├──  rules/                 # Automation rules engine
+│   │   ├──  __init__.py
+│   │   ├──  engine.py         # Rule execution engine
+│   │   ├──  parser.py         # Natural language parser
+│   │   └──  conditions.py     # Rule conditions
 │   │
-│   ├── 📁 monitoring/            # Monitoring and alerts
-│   │   ├── 📄 __init__.py
-│   │   ├── 📄 alerts.py         # Alert manager
-│   │   ├── 📄 metrics.py        # Metrics collection
-│   │   └── 📄 compliance.py     # Compliance tracking
+│   ├──  monitoring/            # Monitoring and alerts
+│   │   ├──  __init__.py
+│   │   ├──  alerts.py         # Alert manager
+│   │   ├──  metrics.py        # Metrics collection
+│   │   └──  compliance.py     # Compliance tracking
 │   │
-│   ├── 📁 ml/                    # Machine learning
-│   │   ├── 📄 __init__.py
-│   │   ├── 📄 models.py         # ML models
-│   │   ├── 📄 predictions.py    # Prediction engine
-│   │   └── 📄 optimization.py   # Optimization algorithms
+│   ├──  ml/                    # Machine learning
+│   │   ├──  __init__.py
+│   │   ├──  models.py         # ML models
+│   │   ├──  predictions.py    # Prediction engine
+│   │   └──  optimization.py   # Optimization algorithms
 │   │
-│   └── 📁 api/                   # API implementation
-│       ├── 📄 __init__.py
-│       ├── 📄 rest.py           # REST API
-│       ├── 📄 graphql.py        # GraphQL API
-│       └── 📄 websocket.py      # WebSocket handlers
+│   └──  api/                   # API implementation
+│       ├──  __init__.py
+│       ├──  rest.py           # REST API
+│       ├──  graphql.py        # GraphQL API
+│       └──  websocket.py      # WebSocket handlers
 │
-├── 📁 core/                       # Docker services
-│   ├── 📄 Dockerfile             # Main application Dockerfile
-│   ├── 📄 Dockerfile.production  # Production optimized
-│   ├── 📄 requirements.txt       # Python dependencies
-│   └── 📄 osce.py               # Core service implementation
+├──  core/                       # Docker services
+│   ├──  Dockerfile             # Main application Dockerfile
+│   ├──  Dockerfile.production  # Production optimized
+│   ├──  requirements.txt       # Python dependencies
+│   └──  osce.py               # Core service implementation
 │
-├── 📁 services/                   # Additional services
-│   ├── 📁 backup/                # Backup service
-│   │   ├── 📄 Dockerfile
-│   │   ├── 📄 backup.sh
-│   │   └── 📄 restore.sh
+├──  services/                   # Additional services
+│   ├──  backup/                # Backup service
+│   │   ├──  Dockerfile
+│   │   ├──  backup.sh
+│   │   └──  restore.sh
 │   │
-│   └── 📁 monitoring/            # Monitoring stack
-│       ├── 📄 docker-compose.yml
-│       └── 📄 prometheus.yml
+│   └──  monitoring/            # Monitoring stack
+│       ├──  docker-compose.yml
+│       └──  prometheus.yml
 │
-├── 📁 bridges/                    # Integration bridges
-│   ├── 📁 homeassistant/         # Home Assistant bridge
-│   │   ├── 📄 Dockerfile
-│   │   └── 📄 bridge.py
+├──  bridges/                    # Integration bridges
+│   ├──  homeassistant/         # Home Assistant bridge
+│   │   ├──  Dockerfile
+│   │   └──  bridge.py
 │   │
-│   ├── 📁 aws-iot/               # AWS IoT bridge
-│   │   ├── 📄 Dockerfile
-│   │   └── 📄 bridge.py
+│   ├──  aws-iot/               # AWS IoT bridge
+│   │   ├──  Dockerfile
+│   │   └──  bridge.py
 │   │
-│   └── 📁 industrial/            # Industrial protocols
-│       ├── 📄 Dockerfile
-│       └── 📄 gateway.py
+│   └──  industrial/            # Industrial protocols
+│       ├──  Dockerfile
+│       └──  gateway.py
 │
-├── 📁 plugins/                    # Core plugins
-│   ├── 📁 weather-integration/
-│   ├── 📁 data-analytics/
-│   ├── 📁 mobile-app/
-│   └── 📄 README.md
+├──  plugins/                    # Core plugins
+│   ├──  weather-integration/
+│   ├──  data-analytics/
+│   ├──  mobile-app/
+│   └──  README.md
 │
-├── 📁 templates/                  # Device templates
-│   ├── 📁 sensors/               # Sensor configurations
-│   │   ├── 📄 dht22.yaml
-│   │   ├── 📄 bme280.yaml
-│   │   └── 📄 soil_moisture.yaml
+├──  templates/                  # Device templates
+│   ├──  sensors/               # Sensor configurations
+│   │   ├──  dht22.yaml
+│   │   ├──  bme280.yaml
+│   │   └──  soil_moisture.yaml
 │   │
-│   ├── 📁 actuators/             # Actuator configurations
-│   │   ├── 📄 relay.yaml
-│   │   ├── 📄 pwm_led.yaml
-│   │   └── 📄 motor.yaml
+│   ├──  actuators/             # Actuator configurations
+│   │   ├──  relay.yaml
+│   │   ├──  pwm_led.yaml
+│   │   └──  motor.yaml
 │   │
-│   └── 📁 devices/               # Complete device configs
-│       ├── 📄 greenhouse_basic.yaml
-│       └── 📄 hydroponic_nft.yaml
+│   └──  devices/               # Complete device configs
+│       ├──  greenhouse_basic.yaml
+│       └──  hydroponic_nft.yaml
 │
-├── 📁 config/                     # Configuration files
-│   ├── 📁 nginx/                 # Nginx configs
-│   ├── 📁 mosquitto/             # MQTT configs
-│   ├── 📁 grafana/               # Grafana dashboards
-│   └── 📁 prometheus/            # Prometheus rules
+├──  config/                     # Configuration files
+│   ├──  nginx/                 # Nginx configs
+│   ├──  mosquitto/             # MQTT configs
+│   ├──  grafana/               # Grafana dashboards
+│   └──  prometheus/            # Prometheus rules
 │
-├── 📁 scripts/                    # Utility scripts
-│   ├── 📄 install.sh             # Main installer
-│   ├── 📄 install.sh.sig         # Installer signature
-│   ├── 📄 update.sh              # Update script
-│   ├── 📄 backup.sh              # Backup script
-│   ├── 📄 dev-setup.sh           # Developer setup
-│   └── 📄 test-hardware.sh       # Hardware testing
+├──  scripts/                    # Utility scripts
+│   ├──  install.sh             # Main installer
+│   ├──  install.sh.sig         # Installer signature
+│   ├──  update.sh              # Update script
+│   ├──  backup.sh              # Backup script
+│   ├──  dev-setup.sh           # Developer setup
+│   └──  test-hardware.sh       # Hardware testing
 │
-├── 📁 tests/                      # Test suite
-│   ├── 📁 unit/                  # Unit tests
-│   ├── 📁 integration/           # Integration tests
-│   ├── 📁 e2e/                   # End-to-end tests
-│   └── 📄 conftest.py            # Test configuration
+├──  tests/                      # Test suite
+│   ├──  unit/                  # Unit tests
+│   ├──  integration/           # Integration tests
+│   ├──  e2e/                   # End-to-end tests
+│   └──  conftest.py            # Test configuration
 │
-├── 📁 examples/                   # Example implementations
-│   ├── 📄 unified_setup.py       # Setup examples
-│   ├── 📄 basic_greenhouse.py    # Simple greenhouse
-│   ├── 📄 commercial_farm.py     # Commercial setup
-│   └── 📄 research_lab.py        # Research configuration
+├──  examples/                   # Example implementations
+│   ├──  unified_setup.py       # Setup examples
+│   ├──  basic_greenhouse.py    # Simple greenhouse
+│   ├──  commercial_farm.py     # Commercial setup
+│   └──  research_lab.py        # Research configuration
 │
-├── 📁 community-recipes/          # Community contributions
-│   ├── 📁 climate-control/       # Climate recipes
-│   ├── 📁 crop-specific/         # Crop recipes
-│   ├── 📁 energy-saving/         # Energy optimization
-│   └── 📄 CONTRIBUTING.md        # How to contribute
+├──  community-recipes/          # Community contributions
+│   ├──  climate-control/       # Climate recipes
+│   ├──  crop-specific/         # Crop recipes
+│   ├──  energy-saving/         # Energy optimization
+│   └──  CONTRIBUTING.md        # How to contribute
 │
-├── 📁 mobile/                     # Mobile app (future)
-│   ├── 📁 ios/
-│   └── 📁 android/
+├──  mobile/                     # Mobile app (future)
+│   ├──  ios/
+│   └──  android/
 │
-├── 📁 .github/                    # GitHub specific
-│   ├── 📁 workflows/             # GitHub Actions
-│   │   ├── 📄 ci.yml            # Continuous Integration
-│   │   ├── 📄 release.yml       # Release automation
-│   │   └── 📄 security.yml      # Security scanning
+├──  .github/                    # GitHub specific
+│   ├──  workflows/             # GitHub Actions
+│   │   ├──  ci.yml            # Continuous Integration
+│   │   ├──  release.yml       # Release automation
+│   │   └──  security.yml      # Security scanning
 │   │
-│   ├── 📁 ISSUE_TEMPLATE/        # Issue templates
-│   │   ├── 📄 bug_report.md
-│   │   ├── 📄 feature_request.md
-│   │   └── 📄 config.yml
+│   ├──  ISSUE_TEMPLATE/        # Issue templates
+│   │   ├──  bug_report.md
+│   │   ├──  feature_request.md
+│   │   └──  config.yml
 │   │
-│   └── 📄 PULL_REQUEST_TEMPLATE.md
+│   └──  PULL_REQUEST_TEMPLATE.md
 │
-├── 📁 docker/                     # Docker configurations
-│   ├── 📄 docker-compose.yml     # Main compose file
-│   ├── 📄 docker-compose.dev.yml # Development overrides
-│   └── 📄 .dockerignore          # Docker ignore rules
+├──  docker/                     # Docker configurations
+│   ├──  docker-compose.yml     # Main compose file
+│   ├──  docker-compose.dev.yml # Development overrides
+│   └──  .dockerignore          # Docker ignore rules
 │
-└── 📁 releases/                   # Release artifacts
-    └── 📄 .gitkeep
+└──  releases/                   # Release artifacts
+    └──  .gitkeep
 
 ```
 
-## 📋 File Purposes
+##  File Purposes
 
 ### Root Files
 - **README.md**: Main entry point, project overview
@@ -271,7 +271,7 @@ Community-contributed:
 - Optimization strategies
 - Crop-specific guides
 
-## 🔄 Development Workflow
+##  Development Workflow
 
 1. **Fork** the repository
 2. **Create** feature branch: `git checkout -b feature/amazing-feature`
@@ -280,7 +280,7 @@ Community-contributed:
 5. **Push** branch: `git push origin feature/amazing-feature`
 6. **Open** Pull Request
 
-## 🏷️ Branch Strategy
+##  Branch Strategy
 
 - `main` - Stable production code
 - `develop` - Development branch
@@ -289,7 +289,7 @@ Community-contributed:
 - `hotfix/*` - Emergency fixes
 - `release/*` - Release preparation
 
-## 📦 Release Process
+##  Release Process
 
 1. Version bump in `osce/__init__.py`
 2. Update CHANGELOG.md
@@ -300,7 +300,7 @@ Community-contributed:
 7. Build and publish Docker images
 8. Update documentation
 
-## 🎯 Key Files for New Contributors
+##  Key Files for New Contributors
 
 1. Start here: `README.md`
 2. Understand the system: `docs/AGENTS.md`
@@ -309,9 +309,9 @@ Community-contributed:
 5. Run tests: `pytest tests/`
 
 This structure supports:
-- ✅ Easy navigation
-- ✅ Clear separation of concerns
-- ✅ Scalable architecture
-- ✅ Community contributions
-- ✅ Professional development
-- ✅ Enterprise deployment
+-  Easy navigation
+-  Clear separation of concerns
+-  Scalable architecture
+-  Community contributions
+-  Professional development
+-  Enterprise deployment

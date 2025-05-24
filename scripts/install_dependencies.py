@@ -29,7 +29,7 @@ class DependencyInstaller:
         if self.python_version < (3, 9):
             print(f"Error: Python 3.9+ required, found {self.python_version.major}.{self.python_version.minor}")
             sys.exit(1)
-        print(f"✓ Python {self.python_version.major}.{self.python_version.minor} detected")
+        print(f" Python {self.python_version.major}.{self.python_version.minor} detected")
     
     def install_system_dependencies(self):
         """Install system-level dependencies"""
@@ -62,7 +62,7 @@ class DependencyInstaller:
                 ["sudo", "apt-get", "install", "-y"] + system_packages,
                 check=True
             )
-            print("✓ System dependencies installed")
+            print(" System dependencies installed")
         except subprocess.CalledProcessError as e:
             print(f"Error installing system dependencies: {e}")
             sys.exit(1)
@@ -72,9 +72,9 @@ class DependencyInstaller:
         if not self.venv_path.exists():
             print("\nCreating virtual environment...")
             subprocess.run([sys.executable, "-m", "venv", "venv"], check=True)
-            print("✓ Virtual environment created")
+            print(" Virtual environment created")
         else:
-            print("✓ Virtual environment already exists")
+            print(" Virtual environment already exists")
     
     def activate_virtual_environment(self):
         """Get activation command for virtual environment"""
@@ -113,7 +113,7 @@ class DependencyInstaller:
                 "-r", "requirements.txt",
                 "--require-hashes"
             ], check=True)
-            print("✓ Python dependencies installed")
+            print(" Python dependencies installed")
         else:
             print("Warning: requirements.txt not found")
     
@@ -130,7 +130,7 @@ class DependencyInstaller:
         # Add user to gpio group
         subprocess.run(["sudo", "usermod", "-a", "-G", "gpio", os.environ.get("USER", "pi")], check=True)
         
-        print("✓ Raspberry Pi configured")
+        print(" Raspberry Pi configured")
         print("Note: You may need to reboot for I2C changes to take effect")
     
     def create_directory_structure(self):
@@ -156,7 +156,7 @@ class DependencyInstaller:
         for directory in directories:
             Path(directory).mkdir(parents=True, exist_ok=True)
         
-        print("✓ Directory structure created")
+        print(" Directory structure created")
     
     def create_env_file(self):
         """Create .env file from template"""
@@ -164,7 +164,7 @@ class DependencyInstaller:
             print("\nCreating .env file...")
             import shutil
             shutil.copy(".env.example", ".env")
-            print("✓ .env file created")
+            print(" .env file created")
             print("Important: Update .env with your configuration values")
     
     def run_initial_tests(self):
@@ -179,7 +179,7 @@ import sys
 import flask
 import jwt
 import RPi.GPIO as GPIO if 'RPi' in sys.modules else None
-print("✓ All imports successful")
+print(" All imports successful")
 """
         
         result = subprocess.run(
